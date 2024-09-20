@@ -5,6 +5,7 @@ const String ksHomeBottomSheetDescription =
 class KText {
   //
   static const String email = 'email';
+  static const String login = 'Login';
   static const String password = 'password';
   // ignore: constant_identifier_names
   static const String Continue = 'Continue';

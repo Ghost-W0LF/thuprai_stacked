@@ -15,6 +15,12 @@ class KTextTheme {
         fontSize: 16.0,
         fontWeight: FontWeight.w600,
         color: Colors.black.withOpacity(0.8)),
+    //button
+
+    labelLarge: const TextStyle().copyWith(
+        fontSize: 12.0,
+        fontWeight: FontWeight.normal,
+        color: Colors.black.withOpacity(0.8)),
 
     // headlineMedium: const TextStyle().copyWith(
     //     fontSize: 24.0, fontWeight: FontWeight.w600, color: Colors.black),
@@ -48,6 +54,11 @@ class KTextTheme {
     //Title
     titleLarge: const TextStyle().copyWith(
         fontSize: 16.0, fontWeight: FontWeight.w600, color: Colors.white),
+
+    //button
+
+    labelLarge: const TextStyle().copyWith(
+        fontSize: 12.0, fontWeight: FontWeight.normal, color: Colors.white),
 
     // headlineMedium: const TextStyle().copyWith(
     //     fontSize: 24.0, fontWeight: FontWeight.w600, color: Colors.white),

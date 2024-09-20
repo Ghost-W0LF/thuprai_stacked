@@ -10,6 +10,7 @@ class KAppTheme {
     primaryColor: kcPrimaryColor,
     brightness: Brightness.light,
     textTheme: KTextTheme.lightTextTheme,
+
   );
   static ThemeData darkTheme = ThemeData(
     useMaterial3: true,
@@ -17,5 +18,6 @@ class KAppTheme {
     primaryColor: kcPrimaryColor,
     brightness: Brightness.dark,
     textTheme: KTextTheme.darkTextTheme,
+
   );
 }

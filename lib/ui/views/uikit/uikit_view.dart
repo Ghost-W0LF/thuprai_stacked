@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+import 'package:thuprai_stacked/ui/common/app_image.dart';
 import 'package:thuprai_stacked/ui/common/app_strings.dart';
+import 'package:thuprai_stacked/ui/common/ui_helpers.dart';
 import 'package:thuprai_stacked/widgets/primary_appbar.dart';
+import 'package:thuprai_stacked/widgets/primary_button.dart';
+import 'package:thuprai_stacked/widgets/secondary_button.dart';
 
 import 'uikit_viewmodel.dart';
 
@@ -25,7 +29,16 @@ class UikitView extends StackedView<UikitViewModel> {
               Text(
                 KText.loginTitle,
                 style: Theme.of(context).textTheme.titleLarge,
-              )
+              ),
+              verticalSpaceMedium,
+              PrimaryButton(
+                onPressed: () {},
+                text: KText.login,
+              ),
+              verticalSpaceMedium,
+              SecondaryButton(
+                  imageUrl: AppImage.google,
+                  text: KText.signinGoogle)
             ],
           ),
         ));
