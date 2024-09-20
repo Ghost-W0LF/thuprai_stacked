@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:thuprai_stacked/ui/common/app_size.dart';
 import 'package:thuprai_stacked/ui/common/app_colors.dart';
 import 'package:thuprai_stacked/ui/common/app_strings.dart';
@@ -13,7 +14,7 @@ class PrimaryAppbar extends StatelessWidget implements PreferredSizeWidget {
       automaticallyImplyLeading: false,
       leading: IconButton(
           onPressed: () {},
-          icon: Icon(
+          icon:const Icon(
             Icons.menu,
             color: kcPrimaryColor,
             size: KSize.iconlg,
@@ -27,14 +28,14 @@ class PrimaryAppbar extends StatelessWidget implements PreferredSizeWidget {
       actions: [
         IconButton(
             onPressed: () {},
-            icon: Icon(
+            icon:const Icon(
               Icons.search,
               color: kcPrimaryColor,
               size: KSize.iconlg,
             )),
         IconButton(
             onPressed: () {},
-            icon: Icon(
+            icon:const Icon(
               Icons.shopping_cart,
               color: kcPrimaryColor,
               size: KSize.iconlg,
@@ -44,5 +45,5 @@ class PrimaryAppbar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(30);
+  Size get preferredSize => Size.fromHeight(30.h);
 }
