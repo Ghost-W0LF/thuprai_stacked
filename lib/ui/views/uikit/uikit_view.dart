@@ -3,6 +3,7 @@ import 'package:stacked/stacked.dart';
 import 'package:thuprai_stacked/ui/common/app_image.dart';
 import 'package:thuprai_stacked/ui/common/app_strings.dart';
 import 'package:thuprai_stacked/ui/common/ui_helpers.dart';
+import 'package:thuprai_stacked/widgets/banner_slider.dart';
 import 'package:thuprai_stacked/widgets/primary_appbar.dart';
 import 'package:thuprai_stacked/widgets/primary_button.dart';
 import 'package:thuprai_stacked/widgets/primary_text_form_field.dart';
@@ -54,7 +55,15 @@ class UikitView extends StackedView<UikitViewModel> {
               ),
               verticalSpaceMedium,
               verticalSpaceMedium,
-              const SectionSelector()
+              const SectionSelector(),
+              verticalSpaceMedium, 
+
+             const BannerSlider(),
+              SizedBox(
+              height: 400,
+              width: MediaQuery.of(context).size.width,
+             ),
+              verticalSpaceMassive
             ],
           ),
         ));
