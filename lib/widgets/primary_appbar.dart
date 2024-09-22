@@ -2,41 +2,82 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:thuprai_stacked/ui/common/app_size.dart';
 import 'package:thuprai_stacked/ui/common/app_colors.dart';
-import 'package:thuprai_stacked/ui/common/app_strings.dart';
+import 'package:thuprai_stacked/ui/common/app_text.dart';
 
-///Create a custom App bar
+/// Create a custom App bar
+///
 class PrimaryAppbar extends StatelessWidget implements PreferredSizeWidget {
-  const PrimaryAppbar({super.key});
+  /// Create a custom App bar
+  ///
+  /// Creates a App Bar with [leadingIconButton],[titleText],[rightIconButton],
+  /// [leftIconButton],[onPressedCallBack],[leftActionOnPressedCallBack],
+  /// [rightActionOnPressedCallBack].
+  ///
+  /// [leadingIconButton] is set to menu by default.
+  /// [titleText] is set to AppBarTitle(thuprai) by Default.
+  /// [rightIconButton] and [leftIconButton] is set to search as well as Shopping cart by Default.
+
+  const PrimaryAppbar(
+      {super.key,
+      this.leadingIconButton = Icons.menu,
+      this.titleText = AppText.appBarTitle,
+      this.leftIconButton = Icons.search,
+      this.rightIconButton = Icons.shopping_cart,
+      this.onPressedCallBack,
+      this.leftActionOnPressedCallBack,
+      this.rightActionOnPressedCallBack});
+
+  /// Leading Icon Buttton [onPressed] Callback
+  final VoidCallback? onPressedCallBack;
+
+  /// Set Leading Icon Button
+  final IconData? leadingIconButton;
+
+  /// To set the title text of the app bar
+  final String? titleText;
+
+  /// Action
+  /// To set Left Icon Button IconData
+  final IconData? leftIconButton;
+
+  /// Left Action Icon Buttton [onPressed] Callback
+  final VoidCallback? leftActionOnPressedCallBack;
+
+  /// To set Right/Second Icon Button IconData
+  final IconData? rightIconButton;
+
+  /// Left Action Icon Buttton [onPressed] Callback
+  final VoidCallback? rightActionOnPressedCallBack;
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
       automaticallyImplyLeading: false,
       leading: IconButton(
-          onPressed: () {},
-          icon:const Icon(
-            Icons.menu,
+          onPressed: onPressedCallBack,
+          icon: Icon(
+            leadingIconButton,
             color: kcPrimaryColor,
             size: KSize.iconlg,
           )),
       title: Center(
         child: Text(
-          KText.appBarTitle,
+          titleText.toString(),
           style: Theme.of(context).textTheme.headlineLarge,
         ),
       ),
       actions: [
         IconButton(
-            onPressed: () {},
-            icon:const Icon(
-              Icons.search,
+            onPressed: leftActionOnPressedCallBack,
+            icon: Icon(
+              leftIconButton,
               color: kcPrimaryColor,
               size: KSize.iconlg,
             )),
         IconButton(
-            onPressed: () {},
-            icon:const Icon(
-              Icons.shopping_cart,
+            onPressed: rightActionOnPressedCallBack,
+            icon: Icon(
+              rightIconButton,
               color: kcPrimaryColor,
               size: KSize.iconlg,
             ))
@@ -45,5 +86,5 @@ class PrimaryAppbar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(30.h);
+  Size get preferredSize => Size.fromHeight(kToolbarHeight.h);
 }

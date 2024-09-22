@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:thuprai_stacked/ui/common/app_image.dart';
-import 'package:thuprai_stacked/ui/common/app_strings.dart';
+import 'package:thuprai_stacked/ui/common/app_text.dart';
 import 'package:thuprai_stacked/ui/common/ui_helpers.dart';
 import 'package:thuprai_stacked/widgets/banner_slider.dart';
 import 'package:thuprai_stacked/widgets/primary_appbar.dart';
@@ -31,27 +31,27 @@ class UikitView extends StackedView<UikitViewModel> {
               const PrimaryAppbar(),
               const SizedBox(height: 20),
               Text(
-                KText.loginTitle,
+                AppText.loginTitle,
                 style: Theme.of(context).textTheme.titleLarge,
               ),
               verticalSpaceMedium,
               PrimaryButton(
                 onPressedCallBack: () {},
-                text: KText.login,
+                text: AppText.login,
               ),
               verticalSpaceMedium,
               const SecondaryButton(
-                  imageUrl: AppImage.google, text: KText.signinGoogle),
+                  imageUrl: AppImage.google, text: AppText.signinGoogle),
               verticalSpaceMedium,
               //email
               PrimaryTextFormField(
-                hintText: KText.email,
+                hintText: AppText.email,
               ),
               verticalSpaceMedium,
               //Password
               PrimaryTextFormField(
                 isVisible: false,
-                hintText: KText.password,
+                hintText: AppText.password,
                 haveSuffixIcon: true,
               ),
               verticalSpaceMedium,
@@ -63,7 +63,7 @@ class UikitView extends StackedView<UikitViewModel> {
               verticalSpaceMedium,
               //
               //
-             const SectionView(),
+              const SectionView(),
               verticalSpaceMassive
             ],
           ),
@@ -76,4 +76,3 @@ class UikitView extends StackedView<UikitViewModel> {
   ) =>
       UikitViewModel();
 }
-

@@ -2,6 +2,8 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:thuprai_stacked/app/app.locator.dart';
 import 'package:stacked_services/stacked_services.dart';
+import 'package:thuprai_stacked/services/dio_service.dart';
+import 'package:thuprai_stacked/services/login_service.dart';
 // @stacked-import
 
 import 'test_helpers.mocks.dart';
@@ -10,13 +12,17 @@ import 'test_helpers.mocks.dart';
   MockSpec<NavigationService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<BottomSheetService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<DialogService>(onMissingStub: OnMissingStub.returnDefault),
-  // @stacked-mock-spec
+  MockSpec<DioService>(onMissingStub: OnMissingStub.returnDefault),
+  MockSpec<LoginService>(onMissingStub: OnMissingStub.returnDefault),
+// @stacked-mock-spec
 ])
 void registerServices() {
   getAndRegisterNavigationService();
   getAndRegisterBottomSheetService();
   getAndRegisterDialogService();
-  // @stacked-mock-register
+  getAndRegisterDioService();
+  getAndRegisterLoginService();
+// @stacked-mock-register
 }
 
 MockNavigationService getAndRegisterNavigationService() {
@@ -69,6 +75,19 @@ MockDialogService getAndRegisterDialogService() {
   return service;
 }
 
+MockDioService getAndRegisterDioService() {
+  _removeRegistrationIfExists<DioService>();
+  final service = MockDioService();
+  locator.registerSingleton<DioService>(service);
+  return service;
+}
+
+MockLoginService getAndRegisterLoginService() {
+  _removeRegistrationIfExists<LoginService>();
+  final service = MockLoginService();
+  locator.registerSingleton<LoginService>(service);
+  return service;
+}
 // @stacked-mock-create
 
 void _removeRegistrationIfExists<T extends Object>() {

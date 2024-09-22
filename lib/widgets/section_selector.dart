@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:thuprai_stacked/ui/common/app_colors.dart';
 
-
 class SectionSelector extends StatelessWidget {
   const SectionSelector({
     super.key,

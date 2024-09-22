@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:thuprai_stacked/base/theme/custome_theme/ktext_theme.dart';
+import 'package:thuprai_stacked/base/theme/custome_theme/app_text_theme.dart';
 import 'package:thuprai_stacked/ui/common/app_colors.dart';
 
 class KAppTheme {
@@ -9,15 +9,13 @@ class KAppTheme {
     scaffoldBackgroundColor: Colors.white,
     primaryColor: kcPrimaryColor,
     brightness: Brightness.light,
-    textTheme: KTextTheme.lightTextTheme,
-
+    textTheme: AppTextTheme.lightTextTheme,
   );
   static ThemeData darkTheme = ThemeData(
     useMaterial3: true,
     scaffoldBackgroundColor: const Color.fromARGB(255, 32, 32, 32),
     primaryColor: kcPrimaryColor,
     brightness: Brightness.dark,
-    textTheme: KTextTheme.darkTextTheme,
-
+    textTheme: AppTextTheme.darkTextTheme,
   );
 }

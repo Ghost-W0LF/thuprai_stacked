@@ -6,6 +6,8 @@ import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:thuprai_stacked/ui/views/uikit/uikit_view.dart';
 import 'package:thuprai_stacked/ui/views/login/login_view.dart';
+import 'package:thuprai_stacked/services/dio_service.dart';
+import 'package:thuprai_stacked/services/login_service.dart';
 // @stacked-import
 
 @StackedApp(
@@ -20,7 +22,9 @@ import 'package:thuprai_stacked/ui/views/login/login_view.dart';
     LazySingleton(classType: BottomSheetService),
     LazySingleton(classType: DialogService),
     LazySingleton(classType: NavigationService),
-    // @stacked-service
+    LazySingleton(classType: DioService),
+    LazySingleton(classType: LoginService),
+// @stacked-service
   ],
   bottomsheets: [
     StackedBottomsheet(classType: NoticeSheet),
