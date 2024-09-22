@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class RoundedImage extends StatelessWidget {
- const RoundedImage({
+  const RoundedImage({
     super.key,
     this.height,
-    this.borderRadius = 20,
+    this.borderRadius = 5,
     this.width,
     required this.imageUrl,
   });
@@ -19,8 +19,8 @@ class RoundedImage extends StatelessWidget {
       child: Container(
         height: height,
         width: width,
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(borderRadius)),
+        decoration:
+            BoxDecoration(borderRadius: BorderRadius.circular(borderRadius)),
         child: Image(fit: BoxFit.contain, image: AssetImage(imageUrl)),
       ),
     );

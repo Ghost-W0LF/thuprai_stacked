@@ -9,6 +9,7 @@ import 'package:thuprai_stacked/widgets/primary_button.dart';
 import 'package:thuprai_stacked/widgets/primary_text_form_field.dart';
 import 'package:thuprai_stacked/widgets/secondary_button.dart';
 import 'package:thuprai_stacked/widgets/section_selector.dart';
+import 'package:thuprai_stacked/widgets/section_view.dart';
 
 import 'uikit_viewmodel.dart';
 
@@ -35,7 +36,7 @@ class UikitView extends StackedView<UikitViewModel> {
               ),
               verticalSpaceMedium,
               PrimaryButton(
-                onPressed: () {},
+                onPressedCallBack: () {},
                 text: KText.login,
               ),
               verticalSpaceMedium,
@@ -56,13 +57,13 @@ class UikitView extends StackedView<UikitViewModel> {
               verticalSpaceMedium,
               verticalSpaceMedium,
               const SectionSelector(),
-              verticalSpaceMedium, 
+              verticalSpaceMedium,
 
-             const BannerSlider(),
-              SizedBox(
-              height: 400,
-              width: MediaQuery.of(context).size.width,
-             ),
+              const BannerSlider(),
+              verticalSpaceMedium,
+              //
+              //
+             const SectionView(),
               verticalSpaceMassive
             ],
           ),
@@ -75,3 +76,4 @@ class UikitView extends StackedView<UikitViewModel> {
   ) =>
       UikitViewModel();
 }
+
