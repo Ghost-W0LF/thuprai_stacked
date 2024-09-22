@@ -26,7 +26,7 @@ class StartupView extends StackedView<StartupViewModel> {
             Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text('Loading ...', style: TextStyle(fontSize: 16)),
+                const Text('Loading ...', style: TextStyle(fontSize: 16)),
                 horizontalSpaceSmall,
                 const SizedBox(
                   width: 16,

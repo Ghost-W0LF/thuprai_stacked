@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+import 'package:thuprai_stacked/ui/common/ui_helpers.dart';
+import 'package:thuprai_stacked/widgets/banner_slider.dart';
+import 'package:thuprai_stacked/widgets/primary_appbar.dart';
+import 'package:thuprai_stacked/widgets/section_selector.dart';
+import 'package:thuprai_stacked/widgets/section_view.dart';
 
 import 'home_viewmodel.dart';
 
@@ -13,11 +18,22 @@ class HomeView extends StackedView<HomeViewModel> {
     Widget? child,
   ) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
-      body: Container(
-        padding: const EdgeInsets.only(left: 25.0, right: 25.0),
-      ),
-    );
+        backgroundColor: Theme.of(context).colorScheme.surface,
+        appBar: const PrimaryAppbar(),
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              SectionSelector(),
+              verticalSpaceMedium,
+              BannerSlider(),
+              verticalSpaceMedium,
+              SectionSelector(),
+              verticalSpaceMedium,
+              SectionView(),
+              verticalSpaceLarge
+            ],
+          ),
+        ));
   }
 
   @override

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:thuprai_stacked/app/app.locator.dart';
@@ -19,10 +18,11 @@ class LoginrepositoryImplementationService implements LoginRepository {
       if (response.statusCode == 200) {
         final token = response.data['token'];
         //navigation to home view
+        debugPrint(token);
         _tokenStorage.writeToken(token);
         _navigation.replaceWithHomeView();
         return token;
-      }else {
+      } else {
         debugPrint('Login failed: ${response.statusCode}');
         return null;
       }

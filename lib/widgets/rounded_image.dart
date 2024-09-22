@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:thuprai_stacked/ui/common/app_colors.dart';
 
 class RoundedImage extends StatelessWidget {
   const RoundedImage({
@@ -17,11 +18,10 @@ class RoundedImage extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(borderRadius),
       child: Container(
-        height: height,
-        width: width,
-        decoration:
-            BoxDecoration(borderRadius: BorderRadius.circular(borderRadius)),
-        child: Image(fit: BoxFit.contain, image: AssetImage(imageUrl)),
+        decoration: BoxDecoration(
+            border: Border.all(color: kcPrimaryColor),
+            borderRadius: BorderRadius.circular(borderRadius)),
+        child: Image(fit: BoxFit.contain, image: NetworkImage(imageUrl)),
       ),
     );
   }

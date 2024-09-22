@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:thuprai_stacked/ui/common/app_colors.dart';
-import 'package:thuprai_stacked/ui/common/app_image.dart';
 import 'package:thuprai_stacked/widgets/primary_button.dart';
 import 'package:thuprai_stacked/widgets/rounded_image.dart';
 
@@ -14,7 +12,6 @@ class SectionView extends StatelessWidget {
     return Container(
         padding: const EdgeInsets.all(10),
         height: 300,
-        decoration: BoxDecoration(border: Border.all(color: kcPrimaryColor)),
         child: Column(
           children: [
             Row(
@@ -43,7 +40,9 @@ class SectionView extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Expanded(
-                              child: RoundedImage(imageUrl: AppImage.book)),
+                              child: RoundedImage(
+                                  imageUrl:
+                                      'https://media.thuprai.com/__sized__/front_covers/Ijoriya_by_subin_bhattarai_-f-thumbnail-175x255-70.jpg')),
                           Text("Book Title"),
                         ],
                       ),

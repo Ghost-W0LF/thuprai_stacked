@@ -45,5 +45,8 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>NSFileProtectionComplete</key>
+<string>NSFileProtectionCompleteUntilFirstUserAuthentication</string>
+
 </dict>
 </plist>

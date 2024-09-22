@@ -1,6 +1,7 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:stacked/stacked.dart';
 
-class SecurestorageService {
+class SecurestorageService extends BaseViewModel {
   final storage = const FlutterSecureStorage();
 
   Future<void> writeToken(String token) async {
@@ -8,11 +9,14 @@ class SecurestorageService {
   }
 
   Future<String?> readToken() async {
-    final savedToken = await storage.read(key: 'token');
+    String? savedToken = await storage.read(key: 'token');
+    notifyListeners();
+
     return savedToken;
   }
 
   Future<void> deleteTojen() async {
     await storage.delete(key: 'token');
+    notifyListeners();
   }
 }
