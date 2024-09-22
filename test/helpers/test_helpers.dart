@@ -2,8 +2,8 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:thuprai_stacked/app/app.locator.dart';
 import 'package:stacked_services/stacked_services.dart';
-import 'package:thuprai_stacked/services/dio_service.dart';
-import 'package:thuprai_stacked/services/login_service.dart';
+import 'package:thuprai_stacked/ui/views/login/service/login_service.dart';
+import 'package:thuprai_stacked/services/dio_instance_service.dart';
 // @stacked-import
 
 import 'test_helpers.mocks.dart';
@@ -12,24 +12,17 @@ import 'test_helpers.mocks.dart';
   MockSpec<NavigationService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<BottomSheetService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<DialogService>(onMissingStub: OnMissingStub.returnDefault),
-  MockSpec<DioService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<LoginService>(onMissingStub: OnMissingStub.returnDefault),
+  MockSpec<DioInstanceService>(onMissingStub: OnMissingStub.returnDefault),
 // @stacked-mock-spec
 ])
 void registerServices() {
   getAndRegisterNavigationService();
   getAndRegisterBottomSheetService();
   getAndRegisterDialogService();
-  getAndRegisterDioService();
   getAndRegisterLoginService();
+  getAndRegisterDioInstanceService();
 // @stacked-mock-register
-}
-
-MockNavigationService getAndRegisterNavigationService() {
-  _removeRegistrationIfExists<NavigationService>();
-  final service = MockNavigationService();
-  locator.registerSingleton<NavigationService>(service);
-  return service;
 }
 
 MockBottomSheetService getAndRegisterBottomSheetService<T>({
@@ -75,17 +68,17 @@ MockDialogService getAndRegisterDialogService() {
   return service;
 }
 
-MockDioService getAndRegisterDioService() {
-  _removeRegistrationIfExists<DioService>();
-  final service = MockDioService();
-  locator.registerSingleton<DioService>(service);
-  return service;
-}
-
 MockLoginService getAndRegisterLoginService() {
   _removeRegistrationIfExists<LoginService>();
   final service = MockLoginService();
   locator.registerSingleton<LoginService>(service);
+  return service;
+}
+
+MockDioInstanceService getAndRegisterDioInstanceService() {
+  _removeRegistrationIfExists<DioInstanceService>();
+  final service = MockDioInstanceService();
+  locator.registerSingleton<DioInstanceService>(service);
   return service;
 }
 // @stacked-mock-create
