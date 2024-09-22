@@ -36,25 +36,20 @@ class SecondaryButton extends StatelessWidget {
               WidgetStateProperty.all(Colors.grey.withOpacity(0.3)),
         ),
         onPressed: onPressed,
-        child: Expanded(
-          child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(right: 40.w),
-                  child: SizedBox(
-                    height: mediumSize.h,
-                    child: Image.asset(imageUrl),
-                  ),
-                ),
+        child: Row(mainAxisSize: MainAxisSize.min, children: [
+          Padding(
+            padding: EdgeInsets.only(right: 40.w),
+            child: SizedBox(
+              height: mediumSize.h,
+              child: Image.asset(imageUrl),
+            ),
+          ),
 
-                /// Button text
-                Text(
-                  text,
-                  style: Theme.of(context).textTheme.titleMedium,
-                ),
-              ]),
-        ));
+          /// Button text
+          Text(
+            text,
+            style: Theme.of(context).textTheme.titleMedium,
+          ),
+        ]));
   }
 }

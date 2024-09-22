@@ -4,6 +4,8 @@ import 'package:thuprai_stacked/app/app.locator.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:thuprai_stacked/ui/views/login/service/login_service.dart';
 import 'package:thuprai_stacked/services/dio_instance_service.dart';
+import 'package:thuprai_stacked/ui/views/login/repository/loginrepository_implementation_service.dart';
+import 'package:thuprai_stacked/services/securestorage_service.dart';
 // @stacked-import
 
 import 'test_helpers.mocks.dart';
@@ -14,6 +16,9 @@ import 'test_helpers.mocks.dart';
   MockSpec<DialogService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<LoginService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<DioInstanceService>(onMissingStub: OnMissingStub.returnDefault),
+  MockSpec<LoginrepositoryImplementationService>(
+      onMissingStub: OnMissingStub.returnDefault),
+  MockSpec<SecurestorageService>(onMissingStub: OnMissingStub.returnDefault),
 // @stacked-mock-spec
 ])
 void registerServices() {
@@ -22,6 +27,8 @@ void registerServices() {
   getAndRegisterDialogService();
   getAndRegisterLoginService();
   getAndRegisterDioInstanceService();
+  getAndRegisterLoginrepositoryImplementationService();
+  getAndRegisterSecurestorageService();
 // @stacked-mock-register
 }
 
@@ -79,6 +86,21 @@ MockDioInstanceService getAndRegisterDioInstanceService() {
   _removeRegistrationIfExists<DioInstanceService>();
   final service = MockDioInstanceService();
   locator.registerSingleton<DioInstanceService>(service);
+  return service;
+}
+
+MockLoginrepositoryImplementationService
+    getAndRegisterLoginrepositoryImplementationService() {
+  _removeRegistrationIfExists<LoginrepositoryImplementationService>();
+  final service = MockLoginrepositoryImplementationService();
+  locator.registerSingleton<LoginrepositoryImplementationService>(service);
+  return service;
+}
+
+MockSecurestorageService getAndRegisterSecurestorageService() {
+  _removeRegistrationIfExists<SecurestorageService>();
+  final service = MockSecurestorageService();
+  locator.registerSingleton<SecurestorageService>(service);
   return service;
 }
 // @stacked-mock-create

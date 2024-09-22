@@ -8,7 +8,7 @@ import 'package:thuprai_stacked/ui/views/login/model/login_request_model.dart';
 class LoginService {
   final dio = DioInstanceService().dio;
 
-  Future<Response> login(LoginRequestModel loginModel) async {
+  Future<Response> loginService(LoginRequestModel loginModel) async {
     return await dio.post(AppUrl.loginUrl, data: jsonEncode(loginModel));
   }
 }

@@ -13,6 +13,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_screenutil: ^5.9.3
+  flutter_secure_storage: ^4.2.1
   shared_preferences: ^2.3.2
   stacked: ^3.4.0
   stacked_services: ^1.1.0

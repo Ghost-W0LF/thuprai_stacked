@@ -56,9 +56,10 @@ class LoginView extends StackedView<LoginViewModel> {
             verticalSpaceMedium,
             const LoginForm(),
             verticalSpaceMedium,
+            //LoginButton
             PrimaryButton(
               text: AppText.Continue,
-              onPressedCallBack: () {},
+              onPressedCallBack: viewModel.requestLogin,
             ),
 
             /// Footter
