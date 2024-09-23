@@ -6,6 +6,8 @@ import 'package:thuprai_stacked/ui/views/login/service/login_service.dart';
 import 'package:thuprai_stacked/services/dio_instance_service.dart';
 import 'package:thuprai_stacked/ui/views/login/repository/loginrepository_implementation_service.dart';
 import 'package:thuprai_stacked/services/securestorage_service.dart';
+import 'package:thuprai_stacked/ui/views/home/service/home_service.dart';
+import 'package:thuprai_stacked/ui/views/home/repository/homerepositort_implementation_service.dart';
 // @stacked-import
 
 import 'test_helpers.mocks.dart';
@@ -19,6 +21,9 @@ import 'test_helpers.mocks.dart';
   MockSpec<LoginrepositoryImplementationService>(
       onMissingStub: OnMissingStub.returnDefault),
   MockSpec<SecurestorageService>(onMissingStub: OnMissingStub.returnDefault),
+  MockSpec<HomeService>(onMissingStub: OnMissingStub.returnDefault),
+  MockSpec<HomerepositortImplementationService>(
+      onMissingStub: OnMissingStub.returnDefault),
 // @stacked-mock-spec
 ])
 void registerServices() {
@@ -29,6 +34,8 @@ void registerServices() {
   getAndRegisterDioInstanceService();
   getAndRegisterLoginrepositoryImplementationService();
   getAndRegisterSecurestorageService();
+  getAndRegisterHomeService();
+  getAndRegisterHomerepositortImplementationService();
 // @stacked-mock-register
 }
 
@@ -101,6 +108,21 @@ MockSecurestorageService getAndRegisterSecurestorageService() {
   _removeRegistrationIfExists<SecurestorageService>();
   final service = MockSecurestorageService();
   locator.registerSingleton<SecurestorageService>(service);
+  return service;
+}
+
+MockHomeService getAndRegisterHomeService() {
+  _removeRegistrationIfExists<HomeService>();
+  final service = MockHomeService();
+  locator.registerSingleton<HomeService>(service);
+  return service;
+}
+
+MockHomerepositortImplementationService
+    getAndRegisterHomerepositortImplementationService() {
+  _removeRegistrationIfExists<HomerepositortImplementationService>();
+  final service = MockHomerepositortImplementationService();
+  locator.registerSingleton<HomerepositortImplementationService>(service);
   return service;
 }
 // @stacked-mock-create

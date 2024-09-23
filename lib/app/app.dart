@@ -10,6 +10,8 @@ import 'package:thuprai_stacked/services/dio_instance_service.dart';
 import 'package:thuprai_stacked/ui/views/login/repository/loginrepository_implementation_service.dart';
 import 'package:thuprai_stacked/services/securestorage_service.dart';
 import 'package:thuprai_stacked/ui/views/home/home_view.dart';
+import 'package:thuprai_stacked/ui/views/home/service/home_service.dart';
+import 'package:thuprai_stacked/ui/views/home/repository/homerepositort_implementation_service.dart';
 // @stacked-import
 
 @StackedApp(
@@ -28,6 +30,8 @@ import 'package:thuprai_stacked/ui/views/home/home_view.dart';
     LazySingleton(classType: DioInstanceService),
     LazySingleton(classType: LoginrepositoryImplementationService),
     LazySingleton(classType: SecurestorageService),
+    LazySingleton(classType: HomeService),
+    LazySingleton(classType: HomerepositortImplementationService),
 // @stacked-service
   ],
   bottomsheets: [

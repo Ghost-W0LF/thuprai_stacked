@@ -8,6 +8,8 @@ class LoginViewModel extends FormViewModel with $LoginView {
   final loginRepository = locator<LoginrepositoryImplementationService>();
 
   Future<void> requestLogin() async {
+    /*  loginRepository.loginRepository(LoginRequestModel(
+        email: emailController.text, password: passwordController.text)); */
     loginRepository.loginRepository(LoginRequestModel(
         email: emailController.text, password: passwordController.text));
   }

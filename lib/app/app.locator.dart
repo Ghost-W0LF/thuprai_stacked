@@ -13,6 +13,8 @@ import 'package:stacked_shared/stacked_shared.dart';
 
 import '../services/dio_instance_service.dart';
 import '../services/securestorage_service.dart';
+import '../ui/views/home/repository/homerepositort_implementation_service.dart';
+import '../ui/views/home/service/home_service.dart';
 import '../ui/views/login/repository/loginrepository_implementation_service.dart';
 import '../ui/views/login/service/login_service.dart';
 
@@ -34,4 +36,6 @@ Future<void> setupLocator({
   locator.registerLazySingleton(() => DioInstanceService());
   locator.registerLazySingleton(() => LoginrepositoryImplementationService());
   locator.registerLazySingleton(() => SecurestorageService());
+  locator.registerLazySingleton(() => HomeService());
+  locator.registerLazySingleton(() => HomerepositortImplementationService());
 }
