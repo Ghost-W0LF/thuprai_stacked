@@ -80,6 +80,10 @@ class HomeView extends StackedView<HomeViewModel> {
               verticalSpaceMedium,
               //newRelease section
               SectionView(
+                onPressedBuilder: (index) => () => viewModel.onPressedBook(
+                    data.newReleases?[index].title ?? 'No Title', index,
+                    data.newReleases?[index].slug
+                    ),
                 sectionTitleText: "New releases",
                 dataLength: data.newReleases?.length,
                 titleBuilder: (index) =>
@@ -87,10 +91,8 @@ class HomeView extends StackedView<HomeViewModel> {
                 imageUrlBuilder: (index) =>
                     data.newReleases?[index].frontCover ??
                     AppImage.book.toString(),
-                onPressed: () {
-                  print("pressed");
-                },
               ),
+
               verticalSpaceMedium,
               // third section selector
               const SectionSelector(),

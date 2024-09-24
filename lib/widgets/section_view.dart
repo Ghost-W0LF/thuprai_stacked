@@ -13,13 +13,15 @@ class SectionView extends StatelessWidget {
       required this.imageUrlBuilder,
       required this.dataLength,
       required this.sectionTitleText,
-      this.onPressed});
+      this.onPressedBuilder});
 
   /// Sets the string title to be shown under the book. Use callback Function to get the index from the child ie.Sectionview and pass the index to use by the parent
   final String Function(int index) titleBuilder;
 
   /// Sets the string network image to be shown as the book. Use callback Function to get the index from the child ie.Sectionview and pass the index to use by the parent
   final String Function(int index) imageUrlBuilder;
+
+  final VoidCallback? Function(int index)? onPressedBuilder;
 
   /// Sets the number of books to be shown in the section
   final int? dataLength;
@@ -28,7 +30,7 @@ class SectionView extends StatelessWidget {
   final String sectionTitleText;
 
   /// call back onTap method on the container .ie(book)
-  final VoidCallback? onPressed;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -63,7 +65,7 @@ class SectionView extends StatelessWidget {
                       height: 100,
                       // decoration:BoxDecoration(border: Border.all(color: Colors.red)),
                       child: GestureDetector(
-                        onTap: onPressed,
+                        onTap: onPressedBuilder?.call(index),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [

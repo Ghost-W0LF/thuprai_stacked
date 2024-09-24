@@ -8,10 +8,11 @@
 import 'package:flutter/material.dart' as _i7;
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i8;
+import 'package:stacked_services/stacked_services.dart' as _i9;
 import 'package:thuprai_stacked/ui/views/bookdetail/bookdetail_view.dart'
     as _i6;
 import 'package:thuprai_stacked/ui/views/home/home_view.dart' as _i5;
+import 'package:thuprai_stacked/ui/views/home/home_viewmodel.dart' as _i8;
 import 'package:thuprai_stacked/ui/views/login/login_view.dart' as _i4;
 import 'package:thuprai_stacked/ui/views/startup/startup_view.dart' as _i2;
 import 'package:thuprai_stacked/ui/views/uikit/uikit_view.dart' as _i3;
@@ -86,8 +87,14 @@ class StackedRouter extends _i1.RouterBase {
       );
     },
     _i6.BookdetailView: (data) {
+      final args = data.getArgs<BookdetailViewArguments>(nullOk: false);
       return _i7.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i6.BookdetailView(),
+        builder: (context) => _i6.BookdetailView(
+            key: args.key,
+            bookTitle: args.bookTitle,
+            index: args.index,
+            slugs: args.slugs,
+            homeViewModel: args.homeViewModel),
         settings: data,
       );
     },
@@ -100,7 +107,51 @@ class StackedRouter extends _i1.RouterBase {
   Map<Type, _i1.StackedRouteFactory> get pagesMap => _pagesMap;
 }
 
-extension NavigatorStateExtension on _i8.NavigationService {
+class BookdetailViewArguments {
+  const BookdetailViewArguments({
+    this.key,
+    required this.bookTitle,
+    required this.index,
+    this.slugs,
+    this.homeViewModel,
+  });
+
+  final _i7.Key? key;
+
+  final String bookTitle;
+
+  final int index;
+
+  final String? slugs;
+
+  final _i8.HomeViewModel? homeViewModel;
+
+  @override
+  String toString() {
+    return '{"key": "$key", "bookTitle": "$bookTitle", "index": "$index", "slugs": "$slugs", "homeViewModel": "$homeViewModel"}';
+  }
+
+  @override
+  bool operator ==(covariant BookdetailViewArguments other) {
+    if (identical(this, other)) return true;
+    return other.key == key &&
+        other.bookTitle == bookTitle &&
+        other.index == index &&
+        other.slugs == slugs &&
+        other.homeViewModel == homeViewModel;
+  }
+
+  @override
+  int get hashCode {
+    return key.hashCode ^
+        bookTitle.hashCode ^
+        index.hashCode ^
+        slugs.hashCode ^
+        homeViewModel.hashCode;
+  }
+}
+
+extension NavigatorStateExtension on _i9.NavigationService {
   Future<dynamic> navigateToStartupView([
     int? routerId,
     bool preventDuplicates = true,
@@ -157,14 +208,25 @@ extension NavigatorStateExtension on _i8.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> navigateToBookdetailView([
+  Future<dynamic> navigateToBookdetailView({
+    _i7.Key? key,
+    required String bookTitle,
+    required int index,
+    String? slugs,
+    _i8.HomeViewModel? homeViewModel,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return navigateTo<dynamic>(Routes.bookdetailView,
+        arguments: BookdetailViewArguments(
+            key: key,
+            bookTitle: bookTitle,
+            index: index,
+            slugs: slugs,
+            homeViewModel: homeViewModel),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -227,14 +289,25 @@ extension NavigatorStateExtension on _i8.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> replaceWithBookdetailView([
+  Future<dynamic> replaceWithBookdetailView({
+    _i7.Key? key,
+    required String bookTitle,
+    required int index,
+    String? slugs,
+    _i8.HomeViewModel? homeViewModel,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return replaceWith<dynamic>(Routes.bookdetailView,
+        arguments: BookdetailViewArguments(
+            key: key,
+            bookTitle: bookTitle,
+            index: index,
+            slugs: slugs,
+            homeViewModel: homeViewModel),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

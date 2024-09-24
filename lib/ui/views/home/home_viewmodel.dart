@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+import 'package:stacked_services/stacked_services.dart';
 import 'package:thuprai_stacked/app/app.locator.dart';
+import 'package:thuprai_stacked/app/app.router.dart';
 import 'package:thuprai_stacked/ui/views/home/model/home_model.dart';
 import 'package:thuprai_stacked/ui/views/home/repository/homerepositort_implementation_service.dart';
 
 class HomeViewModel extends BaseViewModel with Initialisable {
   final _homeRepository = locator<HomerepositortImplementationService>();
+  final _navigation = locator<NavigationService>();
   HomeModel? featchedDataa = HomeModel();
   bool isLoading = true;
   @override
@@ -18,16 +21,18 @@ class HomeViewModel extends BaseViewModel with Initialisable {
 
     try {
       final response = await _homeRepository.getHomeData();
-      debugPrint(response?.newReleases?[0].title.toString());
       featchedDataa = response;
 
       // isLoading = false;
       setBusy(false);
-      notifyListeners();
     } catch (e) {
       debugPrint(e.toString());
     } finally {
       setBusy(false);
     }
+  }
+
+  onPressedBook(String bookTitle, int index,String? slugs) {
+    _navigation.navigateToBookdetailView(bookTitle: bookTitle, index: index,slugs: slugs);
   }
 }

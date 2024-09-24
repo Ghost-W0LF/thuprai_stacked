@@ -16,4 +16,6 @@ abstract class RestClient {
 
   @GET('index/')
   Future<HomeModel> getHomeData();
+    @GET('book/')
+  Future<HomeModel> getBookData();
 }
