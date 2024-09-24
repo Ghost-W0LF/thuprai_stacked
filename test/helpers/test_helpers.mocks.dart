@@ -1025,9 +1025,9 @@ class MockSecurestorageService extends _i1.Mock
       ) as _i6.Future<String?>);
 
   @override
-  _i6.Future<void> deleteTojen() => (super.noSuchMethod(
+  _i6.Future<void> deleteToken() => (super.noSuchMethod(
         Invocation.method(
-          #deleteTojen,
+          #deleteToken,
           [],
         ),
         returnValue: _i6.Future<void>.value(),
@@ -1451,38 +1451,6 @@ class MockHomerepositortImplementationService extends _i1.Mock
           Invocation.getter(#homeService),
         ),
       ) as _i7.HomeService);
-
-  @override
-  List<_i18.HomeModel> get homeData => (super.noSuchMethod(
-        Invocation.getter(#homeData),
-        returnValue: <_i18.HomeModel>[],
-        returnValueForMissingStub: <_i18.HomeModel>[],
-      ) as List<_i18.HomeModel>);
-
-  @override
-  set homeData(List<_i18.HomeModel>? _homeData) => super.noSuchMethod(
-        Invocation.setter(
-          #homeData,
-          _homeData,
-        ),
-        returnValueForMissingStub: null,
-      );
-
-  @override
-  bool get isLoading => (super.noSuchMethod(
-        Invocation.getter(#isLoading),
-        returnValue: false,
-        returnValueForMissingStub: false,
-      ) as bool);
-
-  @override
-  set isLoading(bool? _isLoading) => super.noSuchMethod(
-        Invocation.setter(
-          #isLoading,
-          _isLoading,
-        ),
-        returnValueForMissingStub: null,
-      );
 
   @override
   _i6.Future<_i18.HomeModel?> getHomeData() => (super.noSuchMethod(

@@ -7,9 +7,6 @@ import 'package:thuprai_stacked/ui/views/login/repository/login_repository.dart'
 class LoginrepositoryImplementationService
     with $LoginView
     implements LoginRepository {
-
-
-
   LoginResponseModel responseModel = LoginResponseModel();
 
   @override
@@ -19,7 +16,6 @@ class LoginrepositoryImplementationService
       final loginResponse = await restClient.login(loginModel);
 
       if (loginResponse.token != null) {
-     
         return loginResponse.token;
       } else {
         return 'Error: Invalid login response';

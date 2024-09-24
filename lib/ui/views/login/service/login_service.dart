@@ -1,5 +1,1 @@
-
-class LoginService {
-
- 
-}
+class LoginService {}

@@ -6,6 +6,5 @@ class DioInstanceService {
     //dio.interceptors.add(LogInterceptor());
     dio.interceptors.add(AuthInterceptor());
   }
-  final dio = Dio(BaseOptions(
-  ));
+  final dio = Dio(BaseOptions());
 }

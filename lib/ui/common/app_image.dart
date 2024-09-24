@@ -3,4 +3,6 @@ class AppImage {
   static const String apple = 'assets/apple-logo.png';
   static const String facebook = 'assets/facebook.png';
   static const String book = 'assets/Book.jpeg';
+  static const String networkBook =
+      'https://www.canva.com/book-covers/templates/';
 }

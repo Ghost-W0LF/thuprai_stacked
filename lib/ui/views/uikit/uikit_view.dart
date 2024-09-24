@@ -59,11 +59,11 @@ class UikitView extends StackedView<UikitViewModel> {
               const SectionSelector(),
               verticalSpaceMedium,
 
-              const BannerSlider(),
+              // const BannerSlider(),
               verticalSpaceMedium,
               //
               //
-               SectionView(),
+              //  SectionView(),
               verticalSpaceMassive
             ],
           ),

@@ -39,8 +39,7 @@ void registerServices() {
 // @stacked-mock-register
 }
 
-void getAndRegisterNavigationService() {
-}
+void getAndRegisterNavigationService() {}
 
 MockBottomSheetService getAndRegisterBottomSheetService<T>({
   SheetResponse<T>? showCustomSheetResponse,

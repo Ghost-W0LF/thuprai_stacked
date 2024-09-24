@@ -15,7 +15,7 @@ class SecurestorageService extends BaseViewModel {
     return savedToken;
   }
 
-  Future<void> deleteTojen() async {
+  Future<void> deleteToken() async {
     await storage.delete(key: 'token');
     notifyListeners();
   }

@@ -1,8 +1,11 @@
+import 'package:thuprai_stacked/ui/views/home/model/home_model.dart';
+
 const String ksHomeBottomSheetTitle = 'Build Great Apps!';
 const String ksHomeBottomSheetDescription =
     'Stacked is built to help you build better apps. Give us a chance and we\'ll prove it to you. Check out stacked.filledstacks.com to learn more';
 
 class AppText {
+  static const String thuprai = 'thuprai';
   //
   static const String email = 'Email';
   static const String login = 'Login';
@@ -30,4 +33,12 @@ class AppText {
 
   //Divider login
   static const String divider = 'Or continue with email';
+
+  // Drawer
+  static const allBooks = 'All Books';
+  static const ebooks = 'E-books';
+  static const audiobook = 'Audiobook';
+  static const genres = 'Genres';
+  static const artical = 'Articles';
+  static const taskar = 'Taksar Magazine';
 }

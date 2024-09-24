@@ -52,14 +52,6 @@ class PrimaryAppbar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      automaticallyImplyLeading: false,
-      leading: IconButton(
-          onPressed: onPressedCallBack,
-          icon: Icon(
-            leadingIconButton,
-            color: kcPrimaryColor,
-            size: KSize.iconlg,
-          )),
       title: Center(
         child: Text(
           titleText.toString(),

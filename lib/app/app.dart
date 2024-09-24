@@ -12,6 +12,7 @@ import 'package:thuprai_stacked/services/securestorage_service.dart';
 import 'package:thuprai_stacked/ui/views/home/home_view.dart';
 import 'package:thuprai_stacked/ui/views/home/service/home_service.dart';
 import 'package:thuprai_stacked/ui/views/home/repository/homerepositort_implementation_service.dart';
+import 'package:thuprai_stacked/ui/views/bookdetail/bookdetail_view.dart';
 // @stacked-import
 
 @StackedApp(
@@ -20,6 +21,7 @@ import 'package:thuprai_stacked/ui/views/home/repository/homerepositort_implemen
     MaterialRoute(page: UikitView),
     MaterialRoute(page: LoginView),
     MaterialRoute(page: HomeView),
+    MaterialRoute(page: BookdetailView),
 // @stacked-route
   ],
   dependencies: [
