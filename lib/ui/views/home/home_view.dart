@@ -5,7 +5,7 @@ import 'package:thuprai_stacked/app/app.locator.dart';
 import 'package:thuprai_stacked/app/app.router.dart';
 import 'package:thuprai_stacked/services/securestorage_service.dart';
 import 'package:thuprai_stacked/ui/common/ui_helpers.dart';
-import 'package:thuprai_stacked/ui/views/home/repository/homerepositort_implementation_service.dart';
+
 import 'package:thuprai_stacked/widgets/banner_slider.dart';
 import 'package:thuprai_stacked/widgets/primary_appbar.dart';
 import 'package:thuprai_stacked/widgets/section_selector.dart';
@@ -29,6 +29,8 @@ class HomeView extends StackedView<HomeViewModel> {
     final navigation = locator<NavigationService>();
 
     final tokenStorage = locator<SecurestorageService>();
+    final data = viewModel.featchedDataa;
+
     return Scaffold(
         backgroundColor: Theme.of(context).colorScheme.surface,
         appBar: PrimaryAppbar(
@@ -37,21 +39,37 @@ class HomeView extends StackedView<HomeViewModel> {
             navigation.replaceWithLoginView();
           },
         ),
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              const SectionSelector(),
-              verticalSpaceMedium,
-              const BannerSlider(),
-              verticalSpaceMedium,
-              const SectionSelector(),
-              verticalSpaceMedium,
-              SectionView(vm: viewModel),
-              verticalSpaceLarge
-              
-            ],
-          ),
-        ));
+        body: viewModel.isBusy
+            ? const CircularProgressIndicator()
+            : SingleChildScrollView(
+                child: Column(
+                  children: [
+                    const SectionSelector(),
+                    verticalSpaceMedium,
+                    const BannerSlider(),
+                    verticalSpaceMedium,
+                    const SectionSelector(),
+                    verticalSpaceMedium,
+                    //newRelease
+                    SectionView(
+                        dataLength: data?.newReleases?.length,
+                        titleBuilder: (index) =>
+                            data?.newReleases?[index].title ?? 'No Title',
+                        imageUrlBuilder: (index) =>
+                            data?.newReleases?[index].frontCover ?? 'notext'),
+                    verticalSpaceMedium,
+                    const SectionSelector(),
+                    SectionView(
+                        dataLength: data?.audiobooks?.length,
+                        titleBuilder: (index) =>
+                            data?.audiobooks?[index].title ?? 'No Title',
+                        imageUrlBuilder: (index) =>
+                            data?.audiobooks?[index].frontCover ?? 'notext'),
+
+                    verticalSpaceLarge
+                  ],
+                ),
+              ));
   }
 
   @override

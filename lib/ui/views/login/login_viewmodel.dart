@@ -10,7 +10,7 @@ import 'package:thuprai_stacked/ui/views/login/repository/loginrepository_implem
 
 class LoginViewModel extends FormViewModel with $LoginView {
   final loginRepository = locator<LoginrepositoryImplementationService>();
-  final snackBar = locator<SnackbarService>();
+  final snackBar = locator.get<SnackbarService>();
 
   final _navigation = locator<NavigationService>();
 
@@ -24,7 +24,9 @@ class LoginViewModel extends FormViewModel with $LoginView {
     } on DioException catch (e) {
       debugPrint('error is:-${e.response?.statusMessage.toString()}');
 
-      snackBar.showSnackbar(message: "${e.response?.data.toString()}");
+      snackBar.showSnackbar(
+          message: "${e.response?.data.toString()}",
+          duration: const Duration(seconds: 2));
     }
   }
 }

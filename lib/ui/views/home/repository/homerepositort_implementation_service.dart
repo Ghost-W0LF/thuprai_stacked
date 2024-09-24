@@ -6,7 +6,6 @@ import 'package:thuprai_stacked/ui/views/home/service/home_service.dart';
 
 class HomerepositortImplementationService implements HomeRepository {
   final homeService = locator<HomeService>();
-  bool isLoading = true;
 
   @override
   Future<HomeModel?> getHomeData() async {

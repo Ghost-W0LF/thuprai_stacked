@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:thuprai_stacked/ui/views/home/home_viewmodel.dart';
 import 'package:thuprai_stacked/widgets/primary_button.dart';
 import 'package:thuprai_stacked/widgets/rounded_image.dart';
 
 class SectionView extends StatelessWidget {
-  const SectionView({super.key, this.vm, this.title});
-  final HomeViewModel? vm;
-  final String? title;
+  const SectionView(
+      {super.key, this.titleBuilder, this.imageUrlBuilder, this.dataLength});
+
+  final String Function(int index)? titleBuilder;
+  final String Function(int index)? imageUrlBuilder;
+  final int? dataLength;
 
   @override
   Widget build(BuildContext context) {
-    final data = vm?.featchedDataa;
     return Container(
         padding: const EdgeInsets.all(10),
         height: 300,
@@ -32,7 +33,7 @@ class SectionView extends StatelessWidget {
             ),
             Expanded(
               child: ListView.builder(
-                  itemCount: data?.newReleases?.length,
+                  itemCount: dataLength,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
                     return SizedBox(
@@ -44,9 +45,9 @@ class SectionView extends StatelessWidget {
                         children: [
                           Expanded(
                               child: RoundedImage(
-                                  imageUrl:
-                                      '${data?.newReleases?[index].frontCover.toString()}')),
-                          Text('${data?.newReleases?[index].title}'),
+                                  imageUrl: imageUrlBuilder?.call(index) ??
+                                      'no image')),
+                          Text(titleBuilder?.call(index) ?? 'no text'),
                         ],
                       ),
                     );
