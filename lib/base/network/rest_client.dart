@@ -15,5 +15,5 @@ abstract class RestClient {
   Future<LoginResponseModel> login(@Body() LoginRequestModel loginRequestModel);
 
   @GET('index/')
-  Future<List<HomeModel>> getHomeData();
+  Future<HomeModel> getHomeData();
 }

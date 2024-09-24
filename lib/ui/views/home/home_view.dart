@@ -5,7 +5,7 @@ import 'package:thuprai_stacked/app/app.locator.dart';
 import 'package:thuprai_stacked/app/app.router.dart';
 import 'package:thuprai_stacked/services/securestorage_service.dart';
 import 'package:thuprai_stacked/ui/common/ui_helpers.dart';
-import 'package:thuprai_stacked/ui/views/login/repository/loginrepository_implementation_service.dart';
+import 'package:thuprai_stacked/ui/views/home/repository/homerepositort_implementation_service.dart';
 import 'package:thuprai_stacked/widgets/banner_slider.dart';
 import 'package:thuprai_stacked/widgets/primary_appbar.dart';
 import 'package:thuprai_stacked/widgets/section_selector.dart';
@@ -14,7 +14,7 @@ import 'package:thuprai_stacked/widgets/section_view.dart';
 import 'home_viewmodel.dart';
 
 class HomeView extends StackedView<HomeViewModel> {
-  const HomeView({Key? key}) : super(key: key);
+  const HomeView({super.key});
 
   @override
   Widget builder(
@@ -24,8 +24,10 @@ class HomeView extends StackedView<HomeViewModel> {
   ) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       //passing in the function (a callback) we wan to execute after the current frame finish rendering
+      viewModel.getHomeData();
     });
     final navigation = locator<NavigationService>();
+
     final tokenStorage = locator<SecurestorageService>();
     return Scaffold(
         backgroundColor: Theme.of(context).colorScheme.surface,
@@ -44,8 +46,9 @@ class HomeView extends StackedView<HomeViewModel> {
               verticalSpaceMedium,
               const SectionSelector(),
               verticalSpaceMedium,
-              const SectionView(),
+              SectionView(vm: viewModel),
               verticalSpaceLarge
+              
             ],
           ),
         ));

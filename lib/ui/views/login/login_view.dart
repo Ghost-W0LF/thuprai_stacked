@@ -16,7 +16,7 @@ import 'login_viewmodel.dart';
   FormTextField(name: 'password'),
 ])
 class LoginView extends StackedView<LoginViewModel> {
-  const LoginView({Key? key}) : super(key: key);
+  const LoginView({super.key});
 
   @override
   Widget builder(

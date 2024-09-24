@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:thuprai_stacked/ui/views/home/home_viewmodel.dart';
 import 'package:thuprai_stacked/widgets/primary_button.dart';
 import 'package:thuprai_stacked/widgets/rounded_image.dart';
 
 class SectionView extends StatelessWidget {
-  const SectionView({
-    super.key,
-  });
+  const SectionView({super.key, this.vm, this.title});
+  final HomeViewModel? vm;
+  final String? title;
 
   @override
   Widget build(BuildContext context) {
+    final data = vm?.featchedDataa;
     return Container(
         padding: const EdgeInsets.all(10),
         height: 300,
@@ -30,9 +32,10 @@ class SectionView extends StatelessWidget {
             ),
             Expanded(
               child: ListView.builder(
+                  itemCount: data?.newReleases?.length,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
-                    return const SizedBox(
+                    return SizedBox(
                       width: 200,
                       height: 150,
                       // decoration:BoxDecoration(border: Border.all(color: Colors.red)),
@@ -42,8 +45,8 @@ class SectionView extends StatelessWidget {
                           Expanded(
                               child: RoundedImage(
                                   imageUrl:
-                                      'https://media.thuprai.com/__sized__/front_covers/Ijoriya_by_subin_bhattarai_-f-thumbnail-175x255-70.jpg')),
-                          Text("Book Title"),
+                                      '${data?.newReleases?[index].frontCover.toString()}')),
+                          Text('${data?.newReleases?[index].title}'),
                         ],
                       ),
                     );

@@ -7,5 +7,6 @@ void main() {
   group('InfoAlertDialogModel Tests -', () {
     setUp(() => registerServices());
     tearDown(() => locator.reset());
+    test('description', () {});
   });
 }

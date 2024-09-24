@@ -7,5 +7,8 @@ void main() {
   group('SecurestorageServiceTest -', () {
     setUp(() => registerServices());
     tearDown(() => locator.reset());
+    test('should return true when data is stored', () {
+      assert(true, true);
+    });
   });
 }

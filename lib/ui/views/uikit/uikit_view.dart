@@ -14,7 +14,7 @@ import 'package:thuprai_stacked/widgets/section_view.dart';
 import 'uikit_viewmodel.dart';
 
 class UikitView extends StackedView<UikitViewModel> {
-  const UikitView({Key? key}) : super(key: key);
+  const UikitView({super.key});
 
   @override
   Widget builder(
@@ -63,7 +63,7 @@ class UikitView extends StackedView<UikitViewModel> {
               verticalSpaceMedium,
               //
               //
-              const SectionView(),
+               SectionView(),
               verticalSpaceMassive
             ],
           ),
