@@ -8,6 +8,7 @@ import 'package:thuprai_stacked/ui/views/login/repository/loginrepository_implem
 import 'package:thuprai_stacked/services/securestorage_service.dart';
 import 'package:thuprai_stacked/ui/views/home/service/home_service.dart';
 import 'package:thuprai_stacked/ui/views/home/repository/homerepositort_implementation_service.dart';
+import 'package:thuprai_stacked/ui/views/bookdetail/repository/bookdetailrepository_implementation_service.dart';
 // @stacked-import
 
 import 'test_helpers.mocks.dart';
@@ -24,6 +25,8 @@ import 'test_helpers.mocks.dart';
   MockSpec<HomeService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<HomerepositortImplementationService>(
       onMissingStub: OnMissingStub.returnDefault),
+  MockSpec<BookdetailrepositoryImplementationService>(
+      onMissingStub: OnMissingStub.returnDefault),
 // @stacked-mock-spec
 ])
 void registerServices() {
@@ -36,6 +39,7 @@ void registerServices() {
   getAndRegisterSecurestorageService();
   getAndRegisterHomeService();
   getAndRegisterHomerepositortImplementationService();
+  getAndRegisterBookdetailrepositoryImplementationService();
 // @stacked-mock-register
 }
 
@@ -125,6 +129,14 @@ MockHomerepositortImplementationService
   _removeRegistrationIfExists<HomerepositortImplementationService>();
   final service = MockHomerepositortImplementationService();
   locator.registerSingleton<HomerepositortImplementationService>(service);
+  return service;
+}
+
+MockBookdetailrepositoryImplementationService
+    getAndRegisterBookdetailrepositoryImplementationService() {
+  _removeRegistrationIfExists<BookdetailrepositoryImplementationService>();
+  final service = MockBookdetailrepositoryImplementationService();
+  locator.registerSingleton<BookdetailrepositoryImplementationService>(service);
   return service;
 }
 // @stacked-mock-create

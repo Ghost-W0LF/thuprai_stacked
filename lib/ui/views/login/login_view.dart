@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked/stacked_annotations.dart';
+import 'package:stacked_services/stacked_services.dart';
+import 'package:thuprai_stacked/app/app.locator.dart';
+import 'package:thuprai_stacked/app/app.router.dart';
 import 'package:thuprai_stacked/ui/common/app_image.dart';
 import 'package:thuprai_stacked/ui/common/app_text.dart';
 import 'package:thuprai_stacked/ui/common/ui_helpers.dart';
+import 'package:thuprai_stacked/ui/views/home/home_view.dart';
 import 'package:thuprai_stacked/ui/views/login/widget/login_form.dart';
 import 'package:thuprai_stacked/widgets/primary_appbar.dart';
 import 'package:thuprai_stacked/widgets/primary_button.dart';
@@ -16,7 +20,8 @@ import 'login_viewmodel.dart';
   FormTextField(name: 'password'),
 ])
 class LoginView extends StackedView<LoginViewModel> {
-  const LoginView({super.key});
+  LoginView({super.key});
+  final navigation = locator<NavigationService>();
 
   @override
   Widget builder(
@@ -81,8 +86,11 @@ class LoginView extends StackedView<LoginViewModel> {
           ],
         ),
       ),
-      floatingActionButton:
-          IconButton(onPressed: () {}, icon: const Icon(Icons.app_blocking)),
+      floatingActionButton: IconButton(
+          onPressed: () {
+            navigation.navigateToUikitView();
+          },
+          icon: const Icon(Icons.app_blocking)),
     );
   }
 

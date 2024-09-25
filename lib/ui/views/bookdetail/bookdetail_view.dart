@@ -24,17 +24,31 @@ class BookdetailView extends StackedView<BookdetailViewModel> {
     BookdetailViewModel viewModel,
     Widget? child,
   ) {
+    if (viewModel.isBusy) {
+      /// Display a loading indicator while data is being fetched
+      return Scaffold(
+        backgroundColor: Theme.of(context).colorScheme.surface,
+        body: const Center(
+          child: CircularProgressIndicator(),
+        ),
+      );
+    }
+    final data = viewModel.bookModel;
     return Scaffold(
         backgroundColor: Theme.of(context).colorScheme.surface,
         appBar: PrimaryAppbar(
             titleText: bookTitle,
             leftIconButton: Icons.shopping_cart,
             rightIconButton: Icons.more_vert),
-        body: const SingleChildScrollView(
+        body: SingleChildScrollView(
             child: Column(children: [
           Row(
             children: [
-     
+              Text(data?.englishTitle.toString() ?? 'no text'),
+              Text(slugs.toString())
+              // Text(d)
+              // RoundedImage(
+              //     imageUrl: data?.frontCover.toString() ?? AppImage.networkBook)
             ],
           )
         ])));
@@ -44,5 +58,5 @@ class BookdetailView extends StackedView<BookdetailViewModel> {
   BookdetailViewModel viewModelBuilder(
     BuildContext context,
   ) =>
-      BookdetailViewModel();
+      BookdetailViewModel(viewModelslug: slugs);
 }

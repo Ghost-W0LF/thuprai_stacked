@@ -13,6 +13,7 @@ import 'package:thuprai_stacked/ui/views/home/home_view.dart';
 import 'package:thuprai_stacked/ui/views/home/service/home_service.dart';
 import 'package:thuprai_stacked/ui/views/home/repository/homerepositort_implementation_service.dart';
 import 'package:thuprai_stacked/ui/views/bookdetail/bookdetail_view.dart';
+import 'package:thuprai_stacked/ui/views/bookdetail/repository/bookdetailrepository_implementation_service.dart';
 // @stacked-import
 
 @StackedApp(
@@ -34,6 +35,7 @@ import 'package:thuprai_stacked/ui/views/bookdetail/bookdetail_view.dart';
     LazySingleton(classType: SecurestorageService),
     LazySingleton(classType: HomeService),
     LazySingleton(classType: HomerepositortImplementationService),
+    LazySingleton(classType: BookdetailrepositoryImplementationService),
 // @stacked-service
   ],
   bottomsheets: [

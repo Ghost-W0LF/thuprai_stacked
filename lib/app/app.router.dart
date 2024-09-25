@@ -75,8 +75,11 @@ class StackedRouter extends _i1.RouterBase {
       );
     },
     _i4.LoginView: (data) {
+      final args = data.getArgs<LoginViewArguments>(
+        orElse: () => const LoginViewArguments(),
+      );
       return _i7.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i4.LoginView(),
+        builder: (context) => _i4.LoginView(key: args.key),
         settings: data,
       );
     },
@@ -105,6 +108,28 @@ class StackedRouter extends _i1.RouterBase {
 
   @override
   Map<Type, _i1.StackedRouteFactory> get pagesMap => _pagesMap;
+}
+
+class LoginViewArguments {
+  const LoginViewArguments({this.key});
+
+  final _i7.Key? key;
+
+  @override
+  String toString() {
+    return '{"key": "$key"}';
+  }
+
+  @override
+  bool operator ==(covariant LoginViewArguments other) {
+    if (identical(this, other)) return true;
+    return other.key == key;
+  }
+
+  @override
+  int get hashCode {
+    return key.hashCode;
+  }
 }
 
 class BookdetailViewArguments {
@@ -180,14 +205,16 @@ extension NavigatorStateExtension on _i9.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> navigateToLoginView([
+  Future<dynamic> navigateToLoginView({
+    _i7.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return navigateTo<dynamic>(Routes.loginView,
+        arguments: LoginViewArguments(key: key),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -261,14 +288,16 @@ extension NavigatorStateExtension on _i9.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> replaceWithLoginView([
+  Future<dynamic> replaceWithLoginView({
+    _i7.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return replaceWith<dynamic>(Routes.loginView,
+        arguments: LoginViewArguments(key: key),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

@@ -13,15 +13,15 @@ class BookModel {
   dynamic englishSubtitle;
   String? nepaliTitle;
   dynamic nepaliSubtitle;
-  dynamic englishDescription;
-  dynamic nepaliDescription;
+  String? englishDescription;
+  String? nepaliDescription;
   String? backCoverText;
   String? language;
   Publisher? publisher;
   List<Category>? categories;
   DateTime? releaseOn;
   String? slug;
-  dynamic ebook;
+  Ebook? ebook;
   Paperback? paperback;
   dynamic hardcover;
   String? frontCover;
@@ -29,9 +29,9 @@ class BookModel {
   String? featuredImage;
   int? id;
   List<dynamic>? relatedBooks;
-  dynamic amazon;
+  String? amazon;
   dynamic pdf;
-  dynamic isUnicode;
+  bool? isUnicode;
   List<dynamic>? contributions;
   List<dynamic>? bookAwards;
   List<dynamic>? bookAwardShortlists;
@@ -95,7 +95,7 @@ class BookModel {
             ? null
             : DateTime.parse(json["release_on"]),
         slug: json["slug"],
-        ebook: json["ebook"],
+        ebook: json["ebook"] == null ? null : Ebook.fromJson(json["ebook"]),
         paperback: json["paperback"] == null
             ? null
             : Paperback.fromJson(json["paperback"]),
@@ -145,7 +145,7 @@ class BookModel {
         "release_on":
             "${releaseOn!.year.toString().padLeft(4, '0')}-${releaseOn!.month.toString().padLeft(2, '0')}-${releaseOn!.day.toString().padLeft(2, '0')}",
         "slug": slug,
-        "ebook": ebook,
+        "ebook": ebook?.toJson(),
         "paperback": paperback?.toJson(),
         "hardcover": hardcover,
         "front_cover": frontCover,
@@ -229,6 +229,81 @@ class Category {
       };
 }
 
+class Ebook {
+  dynamic mrp;
+  dynamic productId;
+  dynamic sellingPrice;
+  OwnershipStatus? ownershipStatus;
+  bool? hasAudio;
+  bool? isImageBook;
+  dynamic googlePlayPid;
+  bool? allowPurchase;
+  bool? hasPreview;
+
+  Ebook({
+    this.mrp,
+    this.productId,
+    this.sellingPrice,
+    this.ownershipStatus,
+    this.hasAudio,
+    this.isImageBook,
+    this.googlePlayPid,
+    this.allowPurchase,
+    this.hasPreview,
+  });
+
+  factory Ebook.fromJson(Map<String, dynamic> json) => Ebook(
+        mrp: json["mrp"],
+        productId: json["product_id"],
+        sellingPrice: json["selling_price"],
+        ownershipStatus: json["ownership_status"] == null
+            ? null
+            : OwnershipStatus.fromJson(json["ownership_status"]),
+        hasAudio: json["has_audio"],
+        isImageBook: json["is_image_book"],
+        googlePlayPid: json["google_play_pid"],
+        allowPurchase: json["allow_purchase"],
+        hasPreview: json["has_preview"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "mrp": mrp,
+        "product_id": productId,
+        "selling_price": sellingPrice,
+        "ownership_status": ownershipStatus?.toJson(),
+        "has_audio": hasAudio,
+        "is_image_book": isImageBook,
+        "google_play_pid": googlePlayPid,
+        "allow_purchase": allowPurchase,
+        "has_preview": hasPreview,
+      };
+}
+
+class OwnershipStatus {
+  bool? access;
+  String? reason;
+  dynamic subscriptionData;
+
+  OwnershipStatus({
+    this.access,
+    this.reason,
+    this.subscriptionData,
+  });
+
+  factory OwnershipStatus.fromJson(Map<String, dynamic> json) =>
+      OwnershipStatus(
+        access: json["access"],
+        reason: json["reason"],
+        subscriptionData: json["subscription_data"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "access": access,
+        "reason": reason,
+        "subscription_data": subscriptionData,
+      };
+}
+
 class Paperback {
   bool? released;
   DateTime? releaseOn;
@@ -238,7 +313,7 @@ class Paperback {
   dynamic width;
   dynamic height;
   dynamic thickness;
-  dynamic weight;
+  int? weight;
   int? mrp;
   int? sellingPrice;
   int? productId;

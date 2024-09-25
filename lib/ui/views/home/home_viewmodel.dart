@@ -10,7 +10,6 @@ class HomeViewModel extends BaseViewModel with Initialisable {
   final _homeRepository = locator<HomerepositortImplementationService>();
   final _navigation = locator<NavigationService>();
   HomeModel? featchedDataa = HomeModel();
-  bool isLoading = true;
   @override
   Future<void> initialise() async {
     await getHomeData();
@@ -22,9 +21,6 @@ class HomeViewModel extends BaseViewModel with Initialisable {
     try {
       final response = await _homeRepository.getHomeData();
       featchedDataa = response;
-
-      // isLoading = false;
-      setBusy(false);
     } catch (e) {
       debugPrint(e.toString());
     } finally {
@@ -32,7 +28,8 @@ class HomeViewModel extends BaseViewModel with Initialisable {
     }
   }
 
-  onPressedBook(String bookTitle, int index,String? slugs) {
-    _navigation.navigateToBookdetailView(bookTitle: bookTitle, index: index,slugs: slugs);
+  onPressedBook(String bookTitle, int index, String? slugs) {
+    _navigation.navigateToBookdetailView(
+        bookTitle: bookTitle, index: index, slugs: slugs);
   }
 }
