@@ -16,9 +16,8 @@ class HomeViewModel extends BaseViewModel with Initialisable {
   }
 
   Future<void> getHomeData() async {
-    setBusy(true);
-
     try {
+      setBusy(true);
       final response = await _homeRepository.getHomeData();
       featchedDataa = response;
     } catch (e) {

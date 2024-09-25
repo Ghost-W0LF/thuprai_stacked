@@ -4,7 +4,6 @@ import 'package:stacked_services/stacked_services.dart';
 import 'package:thuprai_stacked/app/app.locator.dart';
 import 'package:thuprai_stacked/app/app.router.dart';
 import 'package:thuprai_stacked/services/securestorage_service.dart';
-import 'package:thuprai_stacked/ui/common/app_image.dart';
 import 'package:thuprai_stacked/ui/common/ui_helpers.dart';
 import 'package:thuprai_stacked/ui/views/home/widget/home_drawer.dart';
 import 'package:thuprai_stacked/widgets/banner_slider.dart';
@@ -75,7 +74,7 @@ class HomeView extends StackedView<HomeViewModel> {
               BannerSlider(
                 listLength: data.featured?.length ?? 0,
                 imageBuilder: (index) =>
-                    data.featured?[index].image ?? AppImage.networkBook,
+                    data.featured?[index].image ?? 'No data',
               ),
               verticalSpaceMedium,
               // second section selector
@@ -92,8 +91,7 @@ class HomeView extends StackedView<HomeViewModel> {
                 titleBuilder: (index) =>
                     data.newReleases?[index].englishTitle ?? 'No Title',
                 imageUrlBuilder: (index) =>
-                    data.newReleases?[index].frontCover ??
-                    AppImage.book.toString(),
+                    data.newReleases?[index].frontCover ?? 'No data',
               ),
 
               verticalSpaceMedium,

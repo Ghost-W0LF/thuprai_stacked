@@ -15,6 +15,7 @@ import 'package:thuprai_stacked/ui/views/home/repository/homerepositort_implemen
 import 'package:thuprai_stacked/ui/views/bookdetail/bookdetail_view.dart';
 import 'package:thuprai_stacked/ui/views/bookdetail/repository/bookdetailrepository_implementation_service.dart';
 import 'package:thuprai_stacked/ui/views/cart/cart_view.dart';
+import 'package:thuprai_stacked/ui/views/cart/repository/cartrepositoryimplementation_service.dart';
 // @stacked-import
 
 @StackedApp(
@@ -38,6 +39,7 @@ import 'package:thuprai_stacked/ui/views/cart/cart_view.dart';
     LazySingleton(classType: HomeService),
     LazySingleton(classType: HomerepositortImplementationService),
     LazySingleton(classType: BookdetailrepositoryImplementationService),
+    LazySingleton(classType: CartrepositoryimplementationService),
 // @stacked-service
   ],
   bottomsheets: [

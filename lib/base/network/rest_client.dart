@@ -23,7 +23,6 @@ abstract class RestClient {
   Future<BookModel> getBookData(@Path("slug") String slug);
   @GET('index/')
   Future<HomeModel> getHomeData();
-   @GET('api/basket/')
+  @GET('api/basket/')
   Future<GetCartModel> getCart();
-  
 }
