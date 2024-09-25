@@ -5,12 +5,13 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:flutter/material.dart' as _i7;
+import 'package:flutter/material.dart' as _i8;
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i8;
+import 'package:stacked_services/stacked_services.dart' as _i9;
 import 'package:thuprai_stacked/ui/views/bookdetail/bookdetail_view.dart'
     as _i6;
+import 'package:thuprai_stacked/ui/views/cart/cart_view.dart' as _i7;
 import 'package:thuprai_stacked/ui/views/home/home_view.dart' as _i5;
 import 'package:thuprai_stacked/ui/views/login/login_view.dart' as _i4;
 import 'package:thuprai_stacked/ui/views/startup/startup_view.dart' as _i2;
@@ -27,12 +28,15 @@ class Routes {
 
   static const bookdetailView = '/bookdetail-view';
 
+  static const cartView = '/cart-view';
+
   static const all = <String>{
     startupView,
     uikitView,
     loginView,
     homeView,
     bookdetailView,
+    cartView,
   };
 }
 
@@ -58,17 +62,21 @@ class StackedRouter extends _i1.RouterBase {
       Routes.bookdetailView,
       page: _i6.BookdetailView,
     ),
+    _i1.RouteDef(
+      Routes.cartView,
+      page: _i7.CartView,
+    ),
   ];
 
   final _pagesMap = <Type, _i1.StackedRouteFactory>{
     _i2.StartupView: (data) {
-      return _i7.MaterialPageRoute<dynamic>(
+      return _i8.MaterialPageRoute<dynamic>(
         builder: (context) => const _i2.StartupView(),
         settings: data,
       );
     },
     _i3.UikitView: (data) {
-      return _i7.MaterialPageRoute<dynamic>(
+      return _i8.MaterialPageRoute<dynamic>(
         builder: (context) => const _i3.UikitView(),
         settings: data,
       );
@@ -77,22 +85,28 @@ class StackedRouter extends _i1.RouterBase {
       final args = data.getArgs<LoginViewArguments>(
         orElse: () => const LoginViewArguments(),
       );
-      return _i7.MaterialPageRoute<dynamic>(
+      return _i8.MaterialPageRoute<dynamic>(
         builder: (context) => _i4.LoginView(key: args.key),
         settings: data,
       );
     },
     _i5.HomeView: (data) {
-      return _i7.MaterialPageRoute<dynamic>(
+      return _i8.MaterialPageRoute<dynamic>(
         builder: (context) => const _i5.HomeView(),
         settings: data,
       );
     },
     _i6.BookdetailView: (data) {
       final args = data.getArgs<BookdetailViewArguments>(nullOk: false);
-      return _i7.MaterialPageRoute<dynamic>(
+      return _i8.MaterialPageRoute<dynamic>(
         builder: (context) => _i6.BookdetailView(
             key: args.key, bookTitle: args.bookTitle, slugs: args.slugs),
+        settings: data,
+      );
+    },
+    _i7.CartView: (data) {
+      return _i8.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i7.CartView(),
         settings: data,
       );
     },
@@ -108,7 +122,7 @@ class StackedRouter extends _i1.RouterBase {
 class LoginViewArguments {
   const LoginViewArguments({this.key});
 
-  final _i7.Key? key;
+  final _i8.Key? key;
 
   @override
   String toString() {
@@ -134,7 +148,7 @@ class BookdetailViewArguments {
     this.slugs,
   });
 
-  final _i7.Key? key;
+  final _i8.Key? key;
 
   final String bookTitle;
 
@@ -159,7 +173,7 @@ class BookdetailViewArguments {
   }
 }
 
-extension NavigatorStateExtension on _i8.NavigationService {
+extension NavigatorStateExtension on _i9.NavigationService {
   Future<dynamic> navigateToStartupView([
     int? routerId,
     bool preventDuplicates = true,
@@ -189,7 +203,7 @@ extension NavigatorStateExtension on _i8.NavigationService {
   }
 
   Future<dynamic> navigateToLoginView({
-    _i7.Key? key,
+    _i8.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -219,7 +233,7 @@ extension NavigatorStateExtension on _i8.NavigationService {
   }
 
   Future<dynamic> navigateToBookdetailView({
-    _i7.Key? key,
+    _i8.Key? key,
     required String bookTitle,
     String? slugs,
     int? routerId,
@@ -231,6 +245,20 @@ extension NavigatorStateExtension on _i8.NavigationService {
     return navigateTo<dynamic>(Routes.bookdetailView,
         arguments: BookdetailViewArguments(
             key: key, bookTitle: bookTitle, slugs: slugs),
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToCartView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.cartView,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -266,7 +294,7 @@ extension NavigatorStateExtension on _i8.NavigationService {
   }
 
   Future<dynamic> replaceWithLoginView({
-    _i7.Key? key,
+    _i8.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -296,7 +324,7 @@ extension NavigatorStateExtension on _i8.NavigationService {
   }
 
   Future<dynamic> replaceWithBookdetailView({
-    _i7.Key? key,
+    _i8.Key? key,
     required String bookTitle,
     String? slugs,
     int? routerId,
@@ -308,6 +336,20 @@ extension NavigatorStateExtension on _i8.NavigationService {
     return replaceWith<dynamic>(Routes.bookdetailView,
         arguments: BookdetailViewArguments(
             key: key, bookTitle: bookTitle, slugs: slugs),
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithCartView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.cartView,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

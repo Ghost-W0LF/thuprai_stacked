@@ -54,6 +54,9 @@ class HomeView extends StackedView<HomeViewModel> {
         /// display data when data is fetched
         backgroundColor: Theme.of(context).colorScheme.surface,
         appBar: PrimaryAppbar(
+          rightActionOnPressedCallBack: () {
+            navigation.navigateToCartView();
+          },
           leftActionOnPressedCallBack: () {
             tokenStorage.deleteToken();
             navigation.replaceWithLoginView();
