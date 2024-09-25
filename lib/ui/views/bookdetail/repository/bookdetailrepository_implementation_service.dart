@@ -13,8 +13,8 @@ class BookdetailrepositoryImplementationService
           'BookdetailrepositoryImplementationService:-$bookRepositoryslug');
       return bookData;
     } catch (e) {
-debugPrint(e.toString());
-      }
+      debugPrint(e.toString());
+    }
     return null;
   }
 }

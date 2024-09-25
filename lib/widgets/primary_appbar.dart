@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:thuprai_stacked/ui/common/app_size.dart';
 import 'package:thuprai_stacked/ui/common/app_colors.dart';
 import 'package:thuprai_stacked/ui/common/app_text.dart';
@@ -25,7 +26,8 @@ class PrimaryAppbar extends StatelessWidget implements PreferredSizeWidget {
       this.rightIconButton = Icons.shopping_cart,
       this.onPressedCallBack,
       this.leftActionOnPressedCallBack,
-      this.rightActionOnPressedCallBack});
+      this.rightActionOnPressedCallBack,
+      this.textStyle});
 
   /// Leading Icon Buttton [onPressed] Callback
   final VoidCallback? onPressedCallBack;
@@ -49,13 +51,16 @@ class PrimaryAppbar extends StatelessWidget implements PreferredSizeWidget {
   /// Left Action Icon Buttton [onPressed] Callback
   final VoidCallback? rightActionOnPressedCallBack;
 
+  /// set the text style for the app bar title
+  final TextStyle? textStyle;
+
   @override
   Widget build(BuildContext context) {
     return AppBar(
       title: Center(
         child: Text(
           titleText.toString(),
-          style: Theme.of(context).textTheme.headlineLarge,
+          style: textStyle,
         ),
       ),
       actions: [

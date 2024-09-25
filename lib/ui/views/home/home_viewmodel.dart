@@ -30,6 +30,6 @@ class HomeViewModel extends BaseViewModel with Initialisable {
 
   onPressedBook(String bookTitle, int index, String? slugs) {
     _navigation.navigateToBookdetailView(
-        bookTitle: bookTitle, index: index, slugs: slugs);
+        bookTitle: bookTitle,slugs: slugs);
   }
 }

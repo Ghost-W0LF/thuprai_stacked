@@ -16,4 +16,12 @@ class Helpers {
   static titleLarge(BuildContext context) {
     return Theme.of(context).textTheme.titleLarge;
   }
+
+  static titleText(BuildContext context) {
+    return Theme.of(context).textTheme.headlineMedium;
+  }
+
+  static bodyLarge(BuildContext context) {
+    return Theme.of(context).textTheme.titleLarge;
+  }
 }

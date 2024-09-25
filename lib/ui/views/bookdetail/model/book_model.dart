@@ -313,9 +313,9 @@ class Paperback {
   dynamic width;
   dynamic height;
   dynamic thickness;
-  int? weight;
+  double? weight;
   int? mrp;
-  int? sellingPrice;
+  double? sellingPrice;
   int? productId;
   String? origin;
   String? isbn10;

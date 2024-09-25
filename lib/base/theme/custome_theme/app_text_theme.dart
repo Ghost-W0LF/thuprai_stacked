@@ -23,6 +23,10 @@ class AppTextTheme {
         fontSize: 16.0.sp,
         fontWeight: FontWeight.w600,
         color: kcPrimaryTextColor),
+    titleMedium: const TextStyle().copyWith(
+        fontSize: 14.0.sp,
+        fontWeight: FontWeight.w600,
+        color: kcPrimaryTextColor),
     //button
 
     labelLarge: const TextStyle().copyWith(

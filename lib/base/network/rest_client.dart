@@ -17,7 +17,6 @@ abstract class RestClient {
   @GET("book/{slug}")
   Future<BookModel> getBookData(@Path("slug") String slug);
 
-
   @GET('index/')
   Future<HomeModel> getHomeData();
 }
