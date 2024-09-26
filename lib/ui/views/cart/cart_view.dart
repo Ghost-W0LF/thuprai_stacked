@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
 import 'package:thuprai_stacked/base/utils/helpers.dart';
-import 'package:thuprai_stacked/ui/common/app_colors.dart';
-import 'package:thuprai_stacked/ui/common/app_image.dart';
 import 'package:thuprai_stacked/ui/common/app_text.dart';
-import 'package:thuprai_stacked/ui/common/ui_helpers.dart';
 import 'package:thuprai_stacked/widgets/rounded_image.dart';
 
 import 'cart_viewmodel.dart';
@@ -80,7 +77,7 @@ class CartView extends StackedView<CartViewModel> {
                                 IconButton(
                                     onPressed: () {},
                                     icon: const Icon(Icons.remove)),
-                                const Text('1'),
+                                Text("${data?.lines?[index].quantity}"),
                                 IconButton(
                                     onPressed: () {},
                                     icon: const Icon(Icons.add)),

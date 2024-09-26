@@ -3,13 +3,11 @@ import 'package:stacked/stacked.dart';
 import 'package:thuprai_stacked/ui/common/app_image.dart';
 import 'package:thuprai_stacked/ui/common/app_text.dart';
 import 'package:thuprai_stacked/ui/common/ui_helpers.dart';
-import 'package:thuprai_stacked/widgets/banner_slider.dart';
 import 'package:thuprai_stacked/widgets/primary_appbar.dart';
 import 'package:thuprai_stacked/widgets/primary_button.dart';
 import 'package:thuprai_stacked/widgets/primary_text_form_field.dart';
 import 'package:thuprai_stacked/widgets/secondary_button.dart';
 import 'package:thuprai_stacked/widgets/section_selector.dart';
-import 'package:thuprai_stacked/widgets/section_view.dart';
 
 import 'uikit_viewmodel.dart';
 
@@ -28,7 +26,7 @@ class UikitView extends StackedView<UikitViewModel> {
           padding: const EdgeInsets.all(20),
           child: Column(
             children: [
-              const PrimaryAppbar(),
+              PrimaryAppbar(),
               const SizedBox(height: 20),
               Text(
                 AppText.loginTitle,
