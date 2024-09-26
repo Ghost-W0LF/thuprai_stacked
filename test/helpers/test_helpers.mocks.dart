@@ -19,8 +19,10 @@ import 'package:thuprai_stacked/ui/views/bookdetail/model/book_model.dart'
     as _i20;
 import 'package:thuprai_stacked/ui/views/bookdetail/repository/bookdetailrepository_implementation_service.dart'
     as _i19;
-import 'package:thuprai_stacked/ui/views/cart/repository/cartrepositoryimplementation_service.dart'
+import 'package:thuprai_stacked/ui/views/cart/model/add_cart_request_model.dart'
     as _i21;
+import 'package:thuprai_stacked/ui/views/cart/repository/cartrepositoryimplementation_service.dart'
+    as _i22;
 import 'package:thuprai_stacked/ui/views/home/model/home_model.dart' as _i18;
 import 'package:thuprai_stacked/ui/views/home/repository/homerepositort_implementation_service.dart'
     as _i17;
@@ -1415,10 +1417,20 @@ class MockBookdetailrepositoryImplementationService extends _i1.Mock
         returnValue: _i6.Future<_i20.BookModel?>.value(),
         returnValueForMissingStub: _i6.Future<_i20.BookModel?>.value(),
       ) as _i6.Future<_i20.BookModel?>);
+
+  @override
+  _i6.Future<void>? addToCart(_i21.AddCartRequest? addtoCart) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #addToCart,
+          [addtoCart],
+        ),
+        returnValueForMissingStub: _i6.Future<void>.value(),
+      ) as _i6.Future<void>?);
 }
 
 /// A class which mocks [CartrepositoryimplementationService].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockCartrepositoryimplementationService extends _i1.Mock
-    implements _i21.CartrepositoryimplementationService {}
+    implements _i22.CartrepositoryimplementationService {}

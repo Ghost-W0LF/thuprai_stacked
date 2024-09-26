@@ -4,43 +4,33 @@
 
 import 'dart:convert';
 
-AddCartRequest addCartRequestFromJson(String str) =>
-    AddCartRequest.fromJson(json.decode(str));
+List<AddCartRequest> addCartRequestFromJson(String str) =>
+    List<AddCartRequest>.from(
+        json.decode(str).map((x) => AddCartRequest.fromJson(x)));
 
-String addCartRequestToJson(AddCartRequest data) => json.encode(data.toJson());
+String addCartRequestToJson(List<AddCartRequest> data) =>
+    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class AddCartRequest {
-  Reason reason;
+  String? path;
+  int? quantity;
+  String? url;
 
   AddCartRequest({
-    required this.reason,
+    this.path,
+    this.quantity,
+    this.url,
   });
 
   factory AddCartRequest.fromJson(Map<String, dynamic> json) => AddCartRequest(
-        reason: Reason.fromJson(json["reason"]),
+        path: json["path"],
+        quantity: json["quantity"],
+        url: json["url"],
       );
 
   Map<String, dynamic> toJson() => {
-        "reason": reason.toJson(),
-      };
-}
-
-class Reason {
-  List<String> quantity;
-  List<String> url;
-
-  Reason({
-    required this.quantity,
-    required this.url,
-  });
-
-  factory Reason.fromJson(Map<String, dynamic> json) => Reason(
-        quantity: List<String>.from(json["quantity"].map((x) => x)),
-        url: List<String>.from(json["url"].map((x) => x)),
-      );
-
-  Map<String, dynamic> toJson() => {
-        "quantity": List<dynamic>.from(quantity.map((x) => x)),
-        "url": List<dynamic>.from(url.map((x) => x)),
+        "path": path,
+        "quantity": quantity,
+        "url": url,
       };
 }

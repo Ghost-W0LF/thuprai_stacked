@@ -7,7 +7,6 @@ import 'package:thuprai_stacked/app/app.router.dart';
 import 'package:thuprai_stacked/ui/common/app_image.dart';
 import 'package:thuprai_stacked/ui/common/app_text.dart';
 import 'package:thuprai_stacked/ui/common/ui_helpers.dart';
-import 'package:thuprai_stacked/ui/views/home/home_view.dart';
 import 'package:thuprai_stacked/ui/views/login/widget/login_form.dart';
 import 'package:thuprai_stacked/widgets/primary_appbar.dart';
 import 'package:thuprai_stacked/widgets/primary_button.dart';

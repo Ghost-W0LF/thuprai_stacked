@@ -4,7 +4,9 @@ import 'package:stacked/stacked.dart';
 import 'package:thuprai_stacked/base/utils/helpers.dart';
 import 'package:thuprai_stacked/ui/common/app_colors.dart';
 import 'package:thuprai_stacked/ui/common/app_image.dart';
+import 'package:thuprai_stacked/ui/common/ui_helpers.dart';
 import 'package:thuprai_stacked/widgets/primary_appbar.dart';
+import 'package:thuprai_stacked/widgets/primary_button.dart';
 import 'package:thuprai_stacked/widgets/rounded_image.dart';
 import 'bookdetail_viewmodel.dart';
 
@@ -33,9 +35,13 @@ class BookdetailView extends StackedView<BookdetailViewModel> {
       );
     }
     final data = viewModel.bookModel;
+
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surface,
       appBar: PrimaryAppbar(
+          leftActionOnPressedCallBack: () {
+            viewModel.navigationto();
+          },
           textStyle: Theme.of(context)
               .textTheme
               .titleLarge
@@ -156,7 +162,17 @@ class BookdetailView extends StackedView<BookdetailViewModel> {
               "${data?.backCoverText}",
               style: Theme.of(context).textTheme.bodyLarge,
             ),
-          )
+          ),
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: PrimaryButton(
+              width: Helpers.getScreenWidth(context),
+              height: 40,
+              text: 'Add to cart',
+              onPressedCallBack: viewModel.addTocart,
+            ),
+          ),
+          verticalSpaceLarge
         ]),
       ),
     );

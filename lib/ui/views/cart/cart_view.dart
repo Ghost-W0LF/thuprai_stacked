@@ -50,8 +50,6 @@ class CartView extends StackedView<CartViewModel> {
                   child: GestureDetector(
                     onTap: () {},
                     child: SizedBox(
-                      
-                     
                       height: 100.h,
                       width: Helpers.getScreenWidth(context),
                       child: Padding(

@@ -13,6 +13,7 @@ class AuthInterceptor extends InterceptorsWrapper {
     final List<String> tokenRequired = [
       'api/basket/',
       '/login/',
+      'api/basket/add-product/',
       AppUrl.loginUrl
     ];
 

@@ -13,7 +13,6 @@ class StartupViewModel extends BaseViewModel {
   Future runStartupLogic() async {
     await Future.delayed(const Duration(milliseconds: 500));
     String? savedToken = await _secureStorage.readToken();
-    debugPrint("$savedToken");
 
     // This is where you can make decisions on where your app should navigate when
     // you have custom startup logic
