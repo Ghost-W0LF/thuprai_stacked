@@ -8,6 +8,8 @@ import 'package:thuprai_stacked/ui/common/app_colors.dart';
 import 'package:thuprai_stacked/ui/views/bookdetail/model/book_model.dart';
 import 'package:thuprai_stacked/ui/views/bookdetail/repository/bookdetailrepository_implementation_service.dart';
 import 'package:thuprai_stacked/ui/views/cart/model/add_cart_request_model.dart';
+import 'package:thuprai_stacked/ui/views/cart/model/get_cart_model.dart';
+import 'package:thuprai_stacked/ui/views/cart/repository/cartrepositoryimplementation_service.dart';
 
 class BookdetailViewModel extends BaseViewModel with Initialisable {
   BookdetailViewModel({this.viewModelslug});
@@ -17,6 +19,9 @@ class BookdetailViewModel extends BaseViewModel with Initialisable {
   final _bookRepository =
       locator.get<BookdetailrepositoryImplementationService>();
   final snackBar = locator<SnackbarService>();
+    GetCartModel? cartData = GetCartModel();
+
+  final _cartRepository = locator<CartrepositoryimplementationService>();
 
   final int quantity = 1;
 
@@ -82,6 +87,8 @@ class BookdetailViewModel extends BaseViewModel with Initialisable {
       final response =
           await _bookRepository.getBookDetail(viewModelslug.toString());
       bookModel = response;
+          final cartItem = await _cartRepository.getCart();
+      cartData = cartItem;
     } catch (e) {
       debugPrint(e.toString());
     } finally {

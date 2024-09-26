@@ -36,6 +36,7 @@ class HomeView extends StackedView<HomeViewModel> {
       );
     }
     final data = viewModel.featchedDataa;
+    final cartData = viewModel.cartData;
     if (data == null) {
       /// Display a blank Scaffold while data is being fetched
       return Scaffold(
@@ -53,6 +54,7 @@ class HomeView extends StackedView<HomeViewModel> {
         /// display data when data is fetched
         backgroundColor: Theme.of(context).colorScheme.surface,
         appBar: PrimaryAppbar(
+          cartItem: cartData?.lines?.length.toString(),
           rightActionOnPressedCallBack: () {
             navigation.navigateToCartView();
           },

@@ -39,6 +39,7 @@ class BookdetailView extends StackedView<BookdetailViewModel> {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surface,
       appBar: PrimaryAppbar(
+          cartItem: viewModel.cartData?.lines?.length.toString(),
           leftActionOnPressedCallBack: () {
             viewModel.navigationto();
           },
