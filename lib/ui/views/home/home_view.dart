@@ -101,6 +101,10 @@ class HomeView extends StackedView<HomeViewModel> {
               const SectionSelector(),
               //AudioBook
               SectionView(
+                  onPressedBuilder: (index) => () => viewModel.onPressedBook(
+                      data.audiobooks?[index].title ?? 'No Title',
+                      index,
+                      data.audiobooks?[index].slug),
                   sectionTitleText: "Audio Book",
                   dataLength: data.audiobooks?.length,
                   titleBuilder: (index) =>

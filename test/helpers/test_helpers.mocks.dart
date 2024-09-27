@@ -1453,4 +1453,21 @@ class MockCartrepositoryimplementationService extends _i1.Mock
         ),
         returnValueForMissingStub: null,
       ) as _i6.Future<_i23.CartPatchModel>?);
+
+  @override
+  _i6.Future<void> deleteCart(
+    String? cartId,
+    String? linesId,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #deleteCart,
+          [
+            cartId,
+            linesId,
+          ],
+        ),
+        returnValue: _i6.Future<void>.value(),
+        returnValueForMissingStub: _i6.Future<void>.value(),
+      ) as _i6.Future<void>);
 }

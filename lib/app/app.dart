@@ -16,6 +16,7 @@ import 'package:thuprai_stacked/ui/views/bookdetail/bookdetail_view.dart';
 import 'package:thuprai_stacked/ui/views/bookdetail/repository/bookdetailrepository_implementation_service.dart';
 import 'package:thuprai_stacked/ui/views/cart/cart_view.dart';
 import 'package:thuprai_stacked/ui/views/cart/repository/cartrepositoryimplementation_service.dart';
+import 'package:thuprai_stacked/ui/views/bottom_navigation/bottom_navigation_view.dart';
 // @stacked-import
 
 @StackedApp(
@@ -26,6 +27,7 @@ import 'package:thuprai_stacked/ui/views/cart/repository/cartrepositoryimplement
     MaterialRoute(page: HomeView),
     MaterialRoute(page: BookdetailView),
     MaterialRoute(page: CartView),
+    MaterialRoute(page: BottomNavigationView),
 // @stacked-route
   ],
   dependencies: [

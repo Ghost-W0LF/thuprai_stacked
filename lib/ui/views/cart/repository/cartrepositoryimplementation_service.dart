@@ -24,11 +24,11 @@ class CartrepositoryimplementationService implements CartRepository {
       rethrow;
     }
   }
-  
+
   @override
   Future<void> deleteCart(String cartId, String linesId) {
-try {
-      final response = restClient.deleteCart( cartId, linesId);
+    try {
+      final response = restClient.deleteCart(cartId, linesId);
       return response;
     } catch (e) {
       rethrow;

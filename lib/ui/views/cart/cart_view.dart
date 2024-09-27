@@ -39,20 +39,19 @@ class CartView extends StackedView<CartViewModel> {
 
         /// ListView Builder
         ///  This widget is used to display a list of items
-        body: Column(
-          children: [
-            SizedBox(
-              height: Helpers.getScreenHeight(context) - 400,
-              child: ListView.builder(
-                  itemCount: data?.lines?.length,
-                  itemBuilder: (context, index) {
-                    /// returns Padding with [vertical: 5.0]
-                    return Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 5.0),
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(
+                height: Helpers.getScreenHeight(context) - 400,
+                child: ListView.builder(
+                    itemCount: data?.lines?.length,
+                    itemBuilder: (context, index) {
+                      /// returns Padding with [vertical: 5.0]
+                      return Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 5.0),
 
-                        /// Actual List Tile
-                        child: GestureDetector(
-                          onTap: () {},
+                          /// Actual List Tile
                           child: SizedBox(
                             height: 100.h,
                             width: Helpers.getScreenWidth(context),
@@ -62,17 +61,18 @@ class CartView extends StackedView<CartViewModel> {
                                 children: [
                                   /// Leading Image
                                   Padding(
-                                    padding:
-                                        EdgeInsets.symmetric(horizontal: 8.0.r),
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 8.0.r),
                                     child: RoundedImage(
                                         imageUrl:
                                             data?.lines?[index].thumbnail ??
                                                 "No  Image"),
                                   ),
-
+                          
                                   /// Product title
                                   Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.center,
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
@@ -93,15 +93,16 @@ class CartView extends StackedView<CartViewModel> {
                                           },
                                           icon: const Icon(Icons.remove)),
                                       Text("${data?.lines?[index].quantity}"),
-
+                          
                                       /// Remove Icon
                                       IconButton(
                                           onPressed: () async {
                                             viewModel.increaseCart(index);
                                             viewModel.initialised;
                                           },
-                                          icon: const Icon(Icons.add_rounded)),
-
+                                          icon:
+                                              const Icon(Icons.add_rounded)),
+                          
                                       /// delete
                                       IconButton(
                                           onPressed: () {
@@ -116,12 +117,10 @@ class CartView extends StackedView<CartViewModel> {
                                 ],
                               ),
                             ),
-                          ),
-                        ));
-                  }),
-            ),
-            Expanded(
-              child: Container(
+                          ));
+                    }),
+              ),
+              Container(
                 width: Helpers.getScreenWidth(context),
                 decoration:
                     BoxDecoration(color: kcPrimaryColor.withOpacity(0.2)),
@@ -148,8 +147,8 @@ class CartView extends StackedView<CartViewModel> {
                   ],
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ));
   }
 

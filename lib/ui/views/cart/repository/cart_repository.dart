@@ -9,8 +9,7 @@ abstract class CartRepository {
   Future<CartPatchModel>? updateCart(
       CartPatchModel patchModel, String cartId, String linesId) {
     return null;
-  } Future<void> deleteCart(
-       String cartId, String linesId) async {
-   
   }
+
+  Future<void> deleteCart(String cartId, String linesId) async {}
 }
