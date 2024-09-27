@@ -7,12 +7,15 @@ import 'package:thuprai_stacked/ui/views/cart/model/get_cart_model.dart';
 import 'package:thuprai_stacked/ui/views/cart/repository/cartrepositoryimplementation_service.dart';
 
 class CartViewModel extends BaseViewModel with Initialisable {
-  /// Index from the view add and remoce button
-
   /// Items of cart
   GetCartModel? cart = GetCartModel();
+  int productQuantity = 0;
 
   final repositort = locator<CartrepositoryimplementationService>();
+
+
+
+  /// To delete item
   Future<void> deleteItem(int index) async {
     try {
       repositort.deleteCart(
@@ -23,6 +26,7 @@ class CartViewModel extends BaseViewModel with Initialisable {
     }
   }
 
+  /// Increase the counter
   Future<void> increaseCart(int index) async {
     int quantity = cart?.lines?[index].quantity ?? 1;
 
@@ -35,6 +39,7 @@ class CartViewModel extends BaseViewModel with Initialisable {
     }
   }
 
+  /// Decrease the counter
   Future<void> decreaseCart(int index) async {
     int quantity = cart?.lines?[index].quantity ?? 1;
 
@@ -47,6 +52,7 @@ class CartViewModel extends BaseViewModel with Initialisable {
     }
   }
 
+  /// fetch data to cart
   Future<void> getCartData() async {
     setBusy(true);
     try {

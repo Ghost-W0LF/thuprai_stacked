@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
 import 'package:thuprai_stacked/ui/common/app_text.dart';
-import 'package:thuprai_stacked/ui/views/cart/cart_view.dart';
-import 'package:thuprai_stacked/ui/views/home/home_view.dart';
-import 'package:thuprai_stacked/ui/views/login/login_view.dart';
 
 import 'bottom_navigation_viewmodel.dart';
 
@@ -17,11 +14,9 @@ class BottomNavigationView extends StackedView<BottomNavigationViewModel> {
     BottomNavigationViewModel viewModel,
     Widget? child,
   ) {
-    final screen = [const HomeView(), CartView(), LoginView(), LoginView()];
-
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surface,
-      body: screen[viewModel.index],
+      body: viewModel.screen[viewModel.index],
       bottomNavigationBar: NavigationBar(
         height: 50.h,
         selectedIndex: viewModel.index,
