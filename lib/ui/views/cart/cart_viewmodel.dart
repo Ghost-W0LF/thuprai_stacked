@@ -13,11 +13,18 @@ class CartViewModel extends BaseViewModel with Initialisable {
   GetCartModel? cart = GetCartModel();
 
   final repositort = locator<CartrepositoryimplementationService>();
+  Future<void> deleteItem(int index) async {
+    try {
+      repositort.deleteCart(
+          cart?.id.toString() ?? '', cart?.lines?[index].id.toString() ?? '');
+      rebuildUi();
+    } on DioException catch (e) {
+      debugPrint('error:-${e.response?.statusMessage.toString()}');
+    }
+  }
 
   Future<void> increaseCart(int index) async {
     int quantity = cart?.lines?[index].quantity ?? 1;
-
-    debugPrint("secondIndex${index.toString()}");
 
     try {
       repositort.updateCart(CartPatchModel(quantity: quantity + 1),

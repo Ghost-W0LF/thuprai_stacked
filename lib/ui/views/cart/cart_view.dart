@@ -104,7 +104,9 @@ class CartView extends StackedView<CartViewModel> {
 
                                       /// delete
                                       IconButton(
-                                          onPressed: () {},
+                                          onPressed: () {
+                                            viewModel.deleteItem(index);
+                                          },
                                           icon: const Icon(
                                             Icons.delete,
                                             color: Colors.red,

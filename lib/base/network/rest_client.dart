@@ -28,6 +28,10 @@ abstract class RestClient {
   @GET('api/basket/')
   Future<GetCartModel> getCart();
 
+  @DELETE("api/baskets/{cartId}/lines/{linesId}/")
+  Future<void> deleteCart(
+      @Path('cartId') String cartId, @Path('linesId') String linesId);
+
   @PATCH('api/baskets/{cartId}/lines/{linesId}/')
   Future<CartPatchModel> updateCart(@Body() CartPatchModel patchModel,
       @Path('cartId') String cartId, @Path('linesId') String linesId);
