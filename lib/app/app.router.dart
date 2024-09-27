@@ -105,8 +105,11 @@ class StackedRouter extends _i1.RouterBase {
       );
     },
     _i7.CartView: (data) {
+      final args = data.getArgs<CartViewArguments>(
+        orElse: () => const CartViewArguments(),
+      );
       return _i8.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i7.CartView(),
+        builder: (context) => _i7.CartView(key: args.key),
         settings: data,
       );
     },
@@ -170,6 +173,28 @@ class BookdetailViewArguments {
   @override
   int get hashCode {
     return key.hashCode ^ bookTitle.hashCode ^ slugs.hashCode;
+  }
+}
+
+class CartViewArguments {
+  const CartViewArguments({this.key});
+
+  final _i8.Key? key;
+
+  @override
+  String toString() {
+    return '{"key": "$key"}';
+  }
+
+  @override
+  bool operator ==(covariant CartViewArguments other) {
+    if (identical(this, other)) return true;
+    return other.key == key;
+  }
+
+  @override
+  int get hashCode {
+    return key.hashCode;
   }
 }
 
@@ -251,14 +276,16 @@ extension NavigatorStateExtension on _i9.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> navigateToCartView([
+  Future<dynamic> navigateToCartView({
+    _i8.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return navigateTo<dynamic>(Routes.cartView,
+        arguments: CartViewArguments(key: key),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -342,14 +369,16 @@ extension NavigatorStateExtension on _i9.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> replaceWithCartView([
+  Future<dynamic> replaceWithCartView({
+    _i8.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return replaceWith<dynamic>(Routes.cartView,
+        arguments: CartViewArguments(key: key),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

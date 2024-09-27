@@ -19,7 +19,7 @@ class BookdetailViewModel extends BaseViewModel with Initialisable {
   final _bookRepository =
       locator.get<BookdetailrepositoryImplementationService>();
   final snackBar = locator<SnackbarService>();
-    GetCartModel? cartData = GetCartModel();
+  GetCartModel? cartData = GetCartModel();
 
   final _cartRepository = locator<CartrepositoryimplementationService>();
 
@@ -33,7 +33,13 @@ class BookdetailViewModel extends BaseViewModel with Initialisable {
   /// navigate to cart
   void navigationto() {
     final navigation = locator<NavigationService>();
-    navigation.replaceWithCartView();
+    navigation.navigateToCartView();
+  }
+
+  /// navigate to cart
+  void navigationPop() {
+    final navigation = locator<NavigationService>();
+    navigation.replaceWithHomeView();
   }
 
   /// Add to cart
@@ -87,7 +93,7 @@ class BookdetailViewModel extends BaseViewModel with Initialisable {
       final response =
           await _bookRepository.getBookDetail(viewModelslug.toString());
       bookModel = response;
-          final cartItem = await _cartRepository.getCart();
+      final cartItem = await _cartRepository.getCart();
       cartData = cartItem;
     } catch (e) {
       debugPrint(e.toString());

@@ -33,8 +33,6 @@ class AuthInterceptor extends InterceptorsWrapper {
       Response response, ResponseInterceptorHandler handler) async {
     String responseRecived = response.toString();
     if (responseRecived.contains('token')) {
-      debugPrint("${response.data['token']}");
-
       await tokenStorage.writeToken(response.data['token']);
     }
 

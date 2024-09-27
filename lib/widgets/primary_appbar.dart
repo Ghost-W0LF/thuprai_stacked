@@ -21,18 +21,18 @@ class PrimaryAppbar extends StatelessWidget implements PreferredSizeWidget {
   ///
   /// if [leftIconButton] or [rightIconButton] is [Icons.shopping_cart] the red container will be visible
 
-  const PrimaryAppbar({
-    super.key,
-    this.leadingIconButton = Icons.menu,
-    this.titleText = AppText.appBarTitle,
-    this.leftIconButton = Icons.search,
-    this.rightIconButton = Icons.shopping_cart,
-    this.onPressedCallBack,
-    this.leftActionOnPressedCallBack,
-    this.rightActionOnPressedCallBack,
-    this.textStyle,
-    this.cartItem,
-  });
+  const PrimaryAppbar(
+      {super.key,
+      this.leadingIconButton,
+      this.titleText = AppText.appBarTitle,
+      this.leftIconButton = Icons.search,
+      this.rightIconButton = Icons.shopping_cart,
+      this.onPressedCallBack,
+      this.leftActionOnPressedCallBack,
+      this.rightActionOnPressedCallBack,
+      this.textStyle,
+      this.cartItem,
+      this.leadingOnPressCallback});
 
   /// Leading Icon Buttton [onPressed] Callback
   final VoidCallback? onPressedCallBack;
@@ -50,6 +50,9 @@ class PrimaryAppbar extends StatelessWidget implements PreferredSizeWidget {
   /// Left Action Icon Buttton [onPressed] Callback
   final VoidCallback? leftActionOnPressedCallBack;
 
+  /// leading  Icon Buttton [onPressed] Callback
+  final VoidCallback? leadingOnPressCallback;
+
   /// To set Right/Second Icon Button IconData
   final IconData? rightIconButton;
 
@@ -65,6 +68,10 @@ class PrimaryAppbar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      leading: leadingIconButton != null
+          ? IconButton(
+              onPressed: leadingOnPressCallback, icon: Icon(leadingIconButton))
+          : null,
       title: Center(
         child: Text(
           titleText.toString(),
