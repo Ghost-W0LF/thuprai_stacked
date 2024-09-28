@@ -85,19 +85,28 @@ class CartView extends StackedView<CartViewModel> {
                             const Spacer(),
                             Row(
                               children: [
-                                /// Add icon
-                                IconButton(
-                                    onPressed: () async {
-                                      viewModel.decreaseCart(index);
-                                      viewModel.initialised;
-                                    },
-                                    icon: const Icon(Icons.remove)),
+                                /// Remove icon
+                                data?.lines?[index].quantity == 0
+                                    ? Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 5.0.r),
+                                        child: const Icon(Icons.remove),
+                                      )
+                                    : IconButton(
+                                        onPressed: () async {
+                                          viewModel.decreaseCounter(index);
+                                          viewModel.decreaseCart(index);
+                                          viewModel.initialised;
+                                        },
+                                        icon: const Icon(Icons.remove)),
                                 // product Quantity
                                 Text("${data?.lines?[index].quantity}"),
 
-                                /// Remove Icon
+                                /// ADD Icon
+
                                 IconButton(
                                     onPressed: () async {
+                                      viewModel.addCounter();
                                       viewModel.increaseCart(index);
                                       viewModel.initialised;
                                     },
@@ -159,4 +168,4 @@ class CartView extends StackedView<CartViewModel> {
     BuildContext context,
   ) =>
       CartViewModel();
-  }
+}

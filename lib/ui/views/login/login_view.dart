@@ -34,7 +34,7 @@ class LoginView extends StackedView<LoginViewModel> {
         child: Column(
           children: [
             //App Bar
-            PrimaryAppbar(),
+            const PrimaryAppbar(),
             verticalSpaceMedium,
 
             /// Title Text

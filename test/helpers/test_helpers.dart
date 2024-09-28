@@ -30,6 +30,8 @@ import 'test_helpers.mocks.dart';
       onMissingStub: OnMissingStub.returnDefault),
   MockSpec<CartrepositoryimplementationService>(
       onMissingStub: OnMissingStub.returnDefault),
+  MockSpec<DebounceService>(onMissingStub: OnMissingStub.returnDefault),
+  MockSpec<DebounceService>(onMissingStub: OnMissingStub.returnDefault),
 // @stacked-mock-spec
 ])
 void registerServices() {
@@ -44,6 +46,8 @@ void registerServices() {
   getAndRegisterHomerepositortImplementationService();
   getAndRegisterBookdetailrepositoryImplementationService();
   getAndRegisterCartrepositoryimplementationService();
+  getAndRegisterDebounceService();
+  getAndRegisterDebounceService();
 // @stacked-mock-register
 }
 
@@ -151,6 +155,8 @@ MockCartrepositoryimplementationService
   locator.registerSingleton<CartrepositoryimplementationService>(service);
   return service;
 }
+
+
 // @stacked-mock-create
 
 void _removeRegistrationIfExists<T extends Object>() {

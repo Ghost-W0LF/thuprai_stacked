@@ -51,10 +51,8 @@ class BookdetailViewModel extends BaseViewModel with Initialisable {
           url: bookModel?.hardcover != null
               ? 'http://127.0.0.1:8000/v1/api/products/${bookModel?.hardcover["product_id"].toString()}/'
               : 'http://127.0.0.1:8000/v1/api/products/${bookModel?.paperback?.productId}/'));
-      snackBar.showCustomSnackBar(
-        message: "successfully added to cart",
-        variant: 'success',
-      );
+      notifyListeners();
+
       //Snackbar on success
       snackBar.registerCustomSnackbarConfig(
         variant: 'success',
@@ -67,10 +65,15 @@ class BookdetailViewModel extends BaseViewModel with Initialisable {
           snackPosition: SnackPosition.BOTTOM,
         ),
       );
+      snackBar.showCustomSnackBar(
+        message: "successfully added to cart",
+        variant: 'success',
+      );
     } on DioException catch (e) {
       debugPrint('error:-${e.response?.statusMessage.toString()}');
+      notifyListeners();
       snackBar.showCustomSnackBar(
-        message: "e.response?.statusMessage.toString()",
+        message: "${e.response?.statusMessage.toString()}",
         variant: 'error',
       );
       snackBar.registerCustomSnackbarConfig(
