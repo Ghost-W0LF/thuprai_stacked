@@ -46,72 +46,79 @@ class CartView extends StackedView<CartViewModel> {
                 itemBuilder: (context, index) {
                   /// returns Padding with [vertical: 5.0]
                   return Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 5.0),
+                    padding: const EdgeInsets.symmetric(vertical: 5.0),
 
-                      /// Actual List Tile
-                      child: SizedBox(
-                        height: 100.h,
-                        width: Helpers.getScreenWidth(context),
-                        child: Padding(
-                          padding: EdgeInsets.all(3.0.r),
-                          child: Row(
-                            children: [
-                              /// Leading Image
-                              Padding(
-                                padding:
-                                    EdgeInsets.symmetric(horizontal: 8.0.r),
-                                child: RoundedImage(
-                                    imageUrl: data?.lines?[index].thumbnail ??
-                                        "No  Image"),
-                              ),
+                    /// Actual List Tile
+                    child: Container(
+                      decoration: BoxDecoration(boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.1),
+                          spreadRadius: 2,
+                          blurRadius: 5,
+                          offset: const Offset(0, 3),
+                        ),
+                      ]),
+                      height: 100.h,
+                      width: Helpers.getScreenWidth(context),
+                      child: Padding(
+                        padding: EdgeInsets.all(3.0.r),
+                        child: Row(
+                          children: [
+                            /// Leading Image
+                            Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 8.0.r),
+                              child: RoundedImage(
+                                  imageUrl: data?.lines?[index].thumbnail ??
+                                      "No  Image"),
+                            ),
 
-                              /// Product title
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text("${data?.lines?[index].productTitle}"),
-                                  Text("${data?.lines?[index].mrp}"),
-                                  const Text("Book")
-                                ],
-                              ),
-                              const Spacer(),
-                              Row(
-                                children: [
-                                  /// Add icon
-                                  IconButton(
-                                      onPressed: () async {
-                                        viewModel.decreaseCart(index);
-                                        viewModel.initialised;
-                                      },
-                                      icon: const Icon(Icons.remove)),
-                                  // product Quantity
-                                  Text("${data?.lines?[index].quantity}"),
+                            /// Product title
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text("${data?.lines?[index].productTitle}"),
+                                Text("${data?.lines?[index].mrp}"),
+                                const Text("Book")
+                              ],
+                            ),
+                            const Spacer(),
+                            Row(
+                              children: [
+                                /// Add icon
+                                IconButton(
+                                    onPressed: () async {
+                                      viewModel.decreaseCart(index);
+                                      viewModel.initialised;
+                                    },
+                                    icon: const Icon(Icons.remove)),
+                                // product Quantity
+                                Text("${data?.lines?[index].quantity}"),
 
-                                  /// Remove Icon
-                                  IconButton(
-                                      onPressed: () async {
-                                        viewModel.increaseCart(index);
-                                        viewModel.initialised;
-                                      },
-                                      icon: const Icon(Icons.add_rounded)),
+                                /// Remove Icon
+                                IconButton(
+                                    onPressed: () async {
+                                      viewModel.increaseCart(index);
+                                      viewModel.initialised;
+                                    },
+                                    icon: const Icon(Icons.add_rounded)),
 
-                                  /// delete
-                                  IconButton(
-                                      onPressed: () {
-                                        viewModel.deleteItem(index);
-                                      },
-                                      icon: const Icon(
-                                        Icons.delete,
-                                        color: Colors.red,
-                                      ))
-                                ],
-                              )
-                            ],
-                          ),
+                                /// delete
+                                IconButton(
+                                    onPressed: () {
+                                      viewModel.deleteItem(index);
+                                    },
+                                    icon: const Icon(
+                                      Icons.delete,
+                                      color: Colors.red,
+                                    ))
+                              ],
+                            )
+                          ],
                         ),
                       ),
-                      );
+                    ),
+                  );
                 }),
             Positioned(
               bottom: 5.h,
@@ -152,4 +159,4 @@ class CartView extends StackedView<CartViewModel> {
     BuildContext context,
   ) =>
       CartViewModel();
-}
+  }

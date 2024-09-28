@@ -13,14 +13,12 @@ class CartViewModel extends BaseViewModel with Initialisable {
 
   final repositort = locator<CartrepositoryimplementationService>();
 
-
-
   /// To delete item
   Future<void> deleteItem(int index) async {
     try {
       repositort.deleteCart(
           cart?.id.toString() ?? '', cart?.lines?[index].id.toString() ?? '');
-      rebuildUi();
+      await getCartData();
     } on DioException catch (e) {
       debugPrint('error:-${e.response?.statusMessage.toString()}');
     }
@@ -33,7 +31,8 @@ class CartViewModel extends BaseViewModel with Initialisable {
     try {
       repositort.updateCart(CartPatchModel(quantity: quantity + 1),
           cart?.id.toString() ?? '', cart?.lines?[index].id.toString() ?? '');
-      rebuildUi();
+      // Refetch the updated cart data
+      await getCartData();
     } on DioException catch (e) {
       debugPrint('error:-${e.response?.statusMessage.toString()}');
     }
@@ -46,7 +45,7 @@ class CartViewModel extends BaseViewModel with Initialisable {
     try {
       repositort.updateCart(CartPatchModel(quantity: quantity - 1),
           cart?.id.toString() ?? '', cart?.lines?[index].id.toString() ?? '');
-      rebuildUi();
+      await getCartData();
     } on DioException catch (e) {
       debugPrint('error:-${e.response?.statusMessage.toString()}');
     }
