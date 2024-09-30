@@ -15,7 +15,8 @@ class PrimaryTextFormField extends StatefulWidget {
       this.validator,
       this.isVisible = false,
       this.prefixIconData,
-      this.haveSuffixIcon = false});
+      this.haveSuffixIcon = false,
+      this.onTChanged});
 
   /// set the Hitnt text of the TextFormField
   final String? hintText;
@@ -38,6 +39,8 @@ class PrimaryTextFormField extends StatefulWidget {
   /// set the prefix icon of the TextFormField
   final IconData? prefixIconData;
 
+  final Function(String)? onTChanged;
+
   @override
   State<PrimaryTextFormField> createState() => _PrimaryTextFormFieldState();
 }
@@ -49,6 +52,7 @@ class _PrimaryTextFormFieldState extends State<PrimaryTextFormField> {
         validator: widget.validator,
         controller: widget.controller,
         obscureText: !widget.isVisible,
+        onChanged: widget.onTChanged,
         decoration: InputDecoration(
           prefixIcon: Icon(widget.prefixIconData),
           suffixIcon: widget.haveSuffixIcon

@@ -57,7 +57,7 @@ class SignupView extends StackedView<SignupViewModel> {
             //LoginButton
             PrimaryButton(
               text: AppText.signup,
-              onPressedCallBack:viewModel.signup,
+              onPressedCallBack: viewModel.signup,
             ),
             verticalSpaceMedium,
 

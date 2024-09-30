@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:thuprai_stacked/app/app.locator.dart';
@@ -19,18 +18,23 @@ class LoginViewModel extends FormViewModel with $LoginView {
   }
 
   Future<void> requestLogin() async {
-    /*  loginRepository.loginRepository(LoginRequestModel(
-        email: emailController.text, password: passwordController.text)); */
-    try {
-      await loginRepository.loginRepository(LoginRequestModel(
-          email: emailController.text, password: passwordController.text));
-      _navigation.replaceWithHomeView();
-    } on DioException catch (e) {
-      debugPrint('error is:-${e.response?.statusMessage.toString()}');
-
+    if (hasEmailValidationMessage) {
       snackBar.showSnackbar(
-          message: "${e.response?.data.toString()}",
-          duration: const Duration(seconds: 2));
+          message: "Invalid Email", duration: const Duration(seconds: 2));
+    } else if (hasPasswordValidationMessage) {
+      snackBar.showSnackbar(
+          message: "Invalid Password", duration: const Duration(seconds: 2));
+    } else {
+      try {
+        await loginRepository.loginRepository(LoginRequestModel(
+            email: emailController.text, password: passwordController.text));
+        _navigation.replaceWithHomeView();
+      } on DioException catch (e) {
+        snackBar.showSnackbar(
+            title: "${e.response?.statusMessage.toString()}",
+            message: "${e.response?.data["non_field_errors"].toString()}",
+            duration: const Duration(seconds: 2));
+      }
     }
   }
 }

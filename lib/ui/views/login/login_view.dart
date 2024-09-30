@@ -4,21 +4,23 @@ import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:thuprai_stacked/app/app.locator.dart';
 import 'package:thuprai_stacked/app/app.router.dart';
+import 'package:thuprai_stacked/base/validator/text_form_field_validator.dart';
 import 'package:thuprai_stacked/ui/common/app_image.dart';
 import 'package:thuprai_stacked/ui/common/app_text.dart';
 import 'package:thuprai_stacked/ui/common/ui_helpers.dart';
-import 'package:thuprai_stacked/ui/views/login/widget/login_form.dart';
-import 'package:thuprai_stacked/widgets/primary_appbar.dart';
+import 'package:thuprai_stacked/ui/views/login/login_view.form.dart';
 import 'package:thuprai_stacked/widgets/primary_button.dart';
+import 'package:thuprai_stacked/widgets/primary_text_form_field.dart';
 import 'package:thuprai_stacked/widgets/secondary_button.dart';
 
 import 'login_viewmodel.dart';
 
 @FormView(fields: [
-  FormTextField(name: 'email'),
-  FormTextField(name: 'password'),
+  FormTextField(name: 'email', validator: TextFormValidators.emailValidators),
+  FormTextField(
+      name: 'password', validator: TextFormValidators.passwordValidators),
 ])
-class LoginView extends StackedView<LoginViewModel> {
+class LoginView extends StackedView<LoginViewModel> with $LoginView {
   LoginView({super.key});
   final navigation = locator<NavigationService>();
 
@@ -30,11 +32,17 @@ class LoginView extends StackedView<LoginViewModel> {
   ) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surface,
+      appBar: AppBar(
+        title: Text(
+          AppText.thuprai,
+          style: Theme.of(context).textTheme.headlineLarge,
+        ),
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
             //App Bar
-            const PrimaryAppbar(),
+
             verticalSpaceMedium,
 
             /// Title Text
@@ -58,7 +66,47 @@ class LoginView extends StackedView<LoginViewModel> {
             const SecondaryButton(
                 imageUrl: AppImage.google, text: AppText.signinGoogle),
             verticalSpaceMedium,
-            const LoginForm(),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+              child: Form(
+                  child: Column(
+                children: [
+                  PrimaryTextFormField(
+                    controller: emailController,
+                    isVisible: true,
+                    labelText: AppText.email,
+                    hintText: AppText.email,
+                  ),
+                  if (viewModel.hasEmailValidationMessage) ...[
+                    Text(
+                      viewModel.emailValidationMessage!,
+                      style: const TextStyle(
+                        color: Colors.red,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    )
+                  ],
+                  verticalSpaceMedium,
+                  PrimaryTextFormField(
+                    controller: passwordController,
+                    labelText: AppText.password,
+                    hintText: AppText.password,
+                    haveSuffixIcon: true,
+                  ),
+                  if (viewModel.hasPasswordValidationMessage) ...[
+                    Text(
+                      viewModel.passwordValidationMessage!,
+                      style: const TextStyle(
+                        color: Colors.red,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    )
+                  ],
+                ],
+              )),
+            ),
             verticalSpaceMedium,
             //LoginButton
             PrimaryButton(
@@ -90,6 +138,11 @@ class LoginView extends StackedView<LoginViewModel> {
           },
           icon: const Icon(Icons.app_blocking)),
     );
+  }
+
+  @override
+  void onViewModelReady(LoginViewModel viewModel) {
+    syncFormWithViewModel(viewModel);
   }
 
   @override
