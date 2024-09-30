@@ -20,6 +20,7 @@ import '../ui/views/home/repository/homerepositort_implementation_service.dart';
 import '../ui/views/home/service/home_service.dart';
 import '../ui/views/login/repository/loginrepository_implementation_service.dart';
 import '../ui/views/login/service/login_service.dart';
+import '../ui/views/signup/repository/signup_repository_implementation_service.dart';
 
 final locator = StackedLocator.instance;
 
@@ -44,5 +45,6 @@ Future<void> setupLocator({
   locator
       .registerLazySingleton(() => BookdetailrepositoryImplementationService());
   locator.registerLazySingleton(() => CartrepositoryimplementationService());
+  locator.registerLazySingleton(() => SignupRepositoryImplementationService());
   locator.registerLazySingleton(() => SnackbarService());
 }

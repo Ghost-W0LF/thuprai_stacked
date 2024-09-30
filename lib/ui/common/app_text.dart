@@ -1,5 +1,3 @@
-import 'package:thuprai_stacked/ui/views/home/model/home_model.dart';
-
 const String ksHomeBottomSheetTitle = 'Build Great Apps!';
 const String ksHomeBottomSheetDescription =
     'Stacked is built to help you build better apps. Give us a chance and we\'ll prove it to you. Check out stacked.filledstacks.com to learn more';
@@ -8,12 +6,13 @@ class AppText {
   static const String thuprai = 'thuprai';
   //
   static const String email = 'Email';
+  static const String fullname = 'Full Name';
   static const String login = 'Login';
   static const String password = 'password';
   // ignore: constant_identifier_names
   static const String Continue = 'Continue';
   static const String forgotPassword = 'Forgot Password?';
-  static const String signup = 'Signup';
+  static const String signup = 'Sign Up';
 
   //buttom navigation bar
 
@@ -27,6 +26,7 @@ class AppText {
 
   //LoginPage
   static const String loginTitle = 'Please login to your account using';
+  static const String signupTitle = 'Hi,there! Welcome to thuprai';
   static const String signinGoogle = 'Sign in with Google';
   static const String signinFacebook = 'Sign in with Facebook';
   static const String signinApple = 'Sign in with Apple';

@@ -1,31 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked/stacked_annotations.dart';
-import 'package:stacked_services/stacked_services.dart';
-import 'package:thuprai_stacked/app/app.locator.dart';
-import 'package:thuprai_stacked/app/app.router.dart';
 import 'package:thuprai_stacked/ui/common/app_image.dart';
 import 'package:thuprai_stacked/ui/common/app_text.dart';
 import 'package:thuprai_stacked/ui/common/ui_helpers.dart';
-import 'package:thuprai_stacked/ui/views/login/widget/login_form.dart';
-import 'package:thuprai_stacked/widgets/primary_appbar.dart';
+import 'package:thuprai_stacked/ui/views/signup/signup_form.dart';
 import 'package:thuprai_stacked/widgets/primary_button.dart';
 import 'package:thuprai_stacked/widgets/secondary_button.dart';
 
-import 'login_viewmodel.dart';
+import 'signup_viewmodel.dart';
 
 @FormView(fields: [
+  FormTextField(name: 'full_name'),
   FormTextField(name: 'email'),
   FormTextField(name: 'password'),
 ])
-class LoginView extends StackedView<LoginViewModel> {
-  LoginView({super.key});
-  final navigation = locator<NavigationService>();
+class SignupView extends StackedView<SignupViewModel> {
+  const SignupView({super.key});
 
   @override
   Widget builder(
     BuildContext context,
-    LoginViewModel viewModel,
+    SignupViewModel viewModel,
     Widget? child,
   ) {
     return Scaffold(
@@ -33,13 +29,11 @@ class LoginView extends StackedView<LoginViewModel> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            //App Bar
-            const PrimaryAppbar(),
-            verticalSpaceMedium,
+            verticalSpaceMassive,
 
             /// Title Text
             Text(
-              AppText.loginTitle,
+              AppText.signupTitle,
               style: Theme.of(context).textTheme.titleLarge,
             ),
             verticalSpaceMedium,
@@ -58,43 +52,38 @@ class LoginView extends StackedView<LoginViewModel> {
             const SecondaryButton(
                 imageUrl: AppImage.google, text: AppText.signinGoogle),
             verticalSpaceMedium,
-            const LoginForm(),
+            const SignupForm(),
             verticalSpaceMedium,
             //LoginButton
             PrimaryButton(
-              text: AppText.Continue,
-              onPressedCallBack: viewModel.requestLogin,
+              text: AppText.signup,
+              onPressedCallBack:viewModel.signup,
             ),
+            verticalSpaceMedium,
 
             /// Footter
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            Column(
+              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                PrimaryButton(
-                  isATextButtton: true,
-                  text: AppText.forgotPassword,
-                  onPressedCallBack: () {},
+                Text(
+                  'Already Have an account?',
+                  style: Theme.of(context).textTheme.labelLarge,
                 ),
                 PrimaryButton(
                     isATextButtton: true,
-                    text: AppText.signup,
-                    onPressedCallBack: viewModel.navigationToSignup),
+                    text: "Login Here!",
+                    onPressedCallBack: () {}),
               ],
             )
           ],
         ),
       ),
-      floatingActionButton: IconButton(
-          onPressed: () {
-            navigation.navigateToUikitView();
-          },
-          icon: const Icon(Icons.app_blocking)),
     );
   }
 
   @override
-  LoginViewModel viewModelBuilder(
+  SignupViewModel viewModelBuilder(
     BuildContext context,
   ) =>
-      LoginViewModel();
+      SignupViewModel();
 }

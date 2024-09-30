@@ -14,6 +14,10 @@ class LoginViewModel extends FormViewModel with $LoginView {
 
   final _navigation = locator<NavigationService>();
 
+  void navigationToSignup() {
+    _navigation.navigateToSignupView();
+  }
+
   Future<void> requestLogin() async {
     /*  loginRepository.loginRepository(LoginRequestModel(
         email: emailController.text, password: passwordController.text)); */

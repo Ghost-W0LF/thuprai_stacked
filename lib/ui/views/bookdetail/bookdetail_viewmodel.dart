@@ -39,7 +39,7 @@ class BookdetailViewModel extends BaseViewModel with Initialisable {
   /// navigate to cart
   void navigationPop() {
     final navigation = locator<NavigationService>();
-    navigation.replaceWithHomeView();
+    navigation.replaceWithBottomNavigationView();
   }
 
   /// Add to cart

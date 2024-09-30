@@ -26,7 +26,7 @@ class UikitView extends StackedView<UikitViewModel> {
           padding: const EdgeInsets.all(20),
           child: Column(
             children: [
-              PrimaryAppbar(),
+              const PrimaryAppbar(),
               const SizedBox(height: 20),
               Text(
                 AppText.loginTitle,

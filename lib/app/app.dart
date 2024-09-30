@@ -17,6 +17,9 @@ import 'package:thuprai_stacked/ui/views/bookdetail/repository/bookdetailreposit
 import 'package:thuprai_stacked/ui/views/cart/cart_view.dart';
 import 'package:thuprai_stacked/ui/views/cart/repository/cartrepositoryimplementation_service.dart';
 import 'package:thuprai_stacked/ui/views/bottom_navigation/bottom_navigation_view.dart';
+import 'package:thuprai_stacked/ui/views/signup/signup_view.dart';
+import 'package:thuprai_stacked/ui/views/mylibrary/mylibrary_view.dart';
+import 'package:thuprai_stacked/ui/views/signup/repository/signup_repository_implementation_service.dart';
 // @stacked-import
 
 @StackedApp(
@@ -28,6 +31,8 @@ import 'package:thuprai_stacked/ui/views/bottom_navigation/bottom_navigation_vie
     MaterialRoute(page: BookdetailView),
     MaterialRoute(page: CartView),
     MaterialRoute(page: BottomNavigationView),
+    MaterialRoute(page: SignupView),
+    MaterialRoute(page: MylibraryView),
 // @stacked-route
   ],
   dependencies: [
@@ -42,6 +47,7 @@ import 'package:thuprai_stacked/ui/views/bottom_navigation/bottom_navigation_vie
     LazySingleton(classType: HomerepositortImplementationService),
     LazySingleton(classType: BookdetailrepositoryImplementationService),
     LazySingleton(classType: CartrepositoryimplementationService),
+    LazySingleton(classType: SignupRepositoryImplementationService),
 // @stacked-service
   ],
   bottomsheets: [

@@ -10,9 +10,8 @@ import 'package:thuprai_stacked/ui/views/home/service/home_service.dart';
 import 'package:thuprai_stacked/ui/views/home/repository/homerepositort_implementation_service.dart';
 import 'package:thuprai_stacked/ui/views/bookdetail/repository/bookdetailrepository_implementation_service.dart';
 import 'package:thuprai_stacked/ui/views/cart/repository/cartrepositoryimplementation_service.dart';
+import 'package:thuprai_stacked/ui/views/signup/repository/signup_repository_implementation_service.dart';
 // @stacked-import
-
-import 'test_helpers.mocks.dart';
 
 @GenerateMocks([], customMocks: [
   MockSpec<NavigationService>(onMissingStub: OnMissingStub.returnDefault),
@@ -32,6 +31,8 @@ import 'test_helpers.mocks.dart';
       onMissingStub: OnMissingStub.returnDefault),
   MockSpec<DebounceService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<DebounceService>(onMissingStub: OnMissingStub.returnDefault),
+  MockSpec<SignupRepositoryImplementationService>(
+      onMissingStub: OnMissingStub.returnDefault),
 // @stacked-mock-spec
 ])
 void registerServices() {
@@ -48,8 +49,13 @@ void registerServices() {
   getAndRegisterCartrepositoryimplementationService();
   getAndRegisterDebounceService();
   getAndRegisterDebounceService();
+  getAndRegisterSignupRepositoryImplementationService();
 // @stacked-mock-register
 }
+
+void getAndRegisterDebounceService() {}
+
+class DebounceService {}
 
 void getAndRegisterNavigationService() {}
 
@@ -85,30 +91,64 @@ MockBottomSheetService getAndRegisterBottomSheetService<T>({
   )).thenAnswer((realInvocation) =>
       Future.value(showCustomSheetResponse ?? SheetResponse<T>()));
 
-  locator.registerSingleton<BottomSheetService>(service);
+  locator.registerSingleton<BottomSheetService>(service as BottomSheetService);
   return service;
 }
+
+extension on MockBottomSheetService {
+  showCustomSheet(
+      {required enableDrag,
+      required enterBottomSheetDuration,
+      required exitBottomSheetDuration,
+      required ignoreSafeArea,
+      required isScrollControlled,
+      required barrierDismissible,
+      required additionalButtonTitle,
+      required variant,
+      required title,
+      required hasImage,
+      required imageUrl,
+      required showIconInMainButton,
+      required mainButtonTitle,
+      required showIconInSecondaryButton,
+      required secondaryButtonTitle,
+      required showIconInAdditionalButton,
+      required takesInput,
+      required barrierColor,
+      required barrierLabel,
+      required customData,
+      required data,
+      required description}) {}
+}
+
+class MockBottomSheetService {}
 
 MockDialogService getAndRegisterDialogService() {
   _removeRegistrationIfExists<DialogService>();
   final service = MockDialogService();
-  locator.registerSingleton<DialogService>(service);
+  locator.registerSingleton<DialogService>(service as DialogService);
   return service;
 }
+
+class MockDialogService {}
 
 MockLoginService getAndRegisterLoginService() {
   _removeRegistrationIfExists<LoginService>();
   final service = MockLoginService();
-  locator.registerSingleton<LoginService>(service);
+  locator.registerSingleton<LoginService>(service as LoginService);
   return service;
 }
+
+class MockLoginService {}
 
 MockDioInstanceService getAndRegisterDioInstanceService() {
   _removeRegistrationIfExists<DioInstanceService>();
   final service = MockDioInstanceService();
-  locator.registerSingleton<DioInstanceService>(service);
+  locator.registerSingleton<DioInstanceService>(service as DioInstanceService);
   return service;
 }
+
+class MockDioInstanceService {}
 
 MockLoginrepositoryImplementationService
     getAndRegisterLoginrepositoryImplementationService() {
@@ -118,6 +158,8 @@ MockLoginrepositoryImplementationService
   return service;
 }
 
+class MockLoginrepositoryImplementationService {}
+
 MockSecurestorageService getAndRegisterSecurestorageService() {
   _removeRegistrationIfExists<SecurestorageService>();
   final service = MockSecurestorageService();
@@ -125,12 +167,16 @@ MockSecurestorageService getAndRegisterSecurestorageService() {
   return service;
 }
 
+class MockSecurestorageService {}
+
 MockHomeService getAndRegisterHomeService() {
   _removeRegistrationIfExists<HomeService>();
   final service = MockHomeService();
   locator.registerSingleton<HomeService>(service);
   return service;
 }
+
+class MockHomeService {}
 
 MockHomerepositortImplementationService
     getAndRegisterHomerepositortImplementationService() {
@@ -140,23 +186,37 @@ MockHomerepositortImplementationService
   return service;
 }
 
+class MockHomerepositortImplementationService {}
+
 MockBookdetailrepositoryImplementationService
     getAndRegisterBookdetailrepositoryImplementationService() {
   _removeRegistrationIfExists<BookdetailrepositoryImplementationService>();
   final service = MockBookdetailrepositoryImplementationService();
-  locator.registerSingleton<BookdetailrepositoryImplementationService>(service);
+  locator.registerSingleton<BookdetailrepositoryImplementationService>(
+      service as BookdetailrepositoryImplementationService);
   return service;
 }
+
+class MockBookdetailrepositoryImplementationService {}
 
 MockCartrepositoryimplementationService
     getAndRegisterCartrepositoryimplementationService() {
   _removeRegistrationIfExists<CartrepositoryimplementationService>();
   final service = MockCartrepositoryimplementationService();
-  locator.registerSingleton<CartrepositoryimplementationService>(service);
+  locator.registerSingleton<CartrepositoryimplementationService>(
+      service as CartrepositoryimplementationService);
   return service;
 }
 
+class MockCartrepositoryimplementationService {}
 
+MockSignupRepositoryImplementationService
+    getAndRegisterSignupRepositoryImplementationService() {
+  _removeRegistrationIfExists<SignupRepositoryImplementationService>();
+  final service = MockSignupRepositoryImplementationService();
+  locator.registerSingleton<SignupRepositoryImplementationService>(service);
+  return service;
+}
 // @stacked-mock-create
 
 void _removeRegistrationIfExists<T extends Object>() {
