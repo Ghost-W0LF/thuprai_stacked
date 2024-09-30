@@ -71,6 +71,8 @@ class SectionView extends StatelessWidget {
                           children: [
                             Expanded(
                                 child: RoundedImage(
+                                    height: 200,
+                                    width: 130,
                                     imageUrl: imageUrlBuilder.call(index))),
                             Text(titleBuilder.call(index)),
                           ],

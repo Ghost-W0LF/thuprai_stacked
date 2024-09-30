@@ -52,6 +52,8 @@ class BookdetailView extends StackedView<BookdetailViewModel> {
           titleText: bookTitle,
           leftIconButton: Icons.shopping_cart,
           rightIconButton: Icons.more_vert),
+
+      /// Body
       body: SingleChildScrollView(
         child: Column(children: [
           /// Top section
@@ -60,7 +62,7 @@ class BookdetailView extends StackedView<BookdetailViewModel> {
             children: [
               /// Image
               Padding(
-                padding: const EdgeInsets.all(10.0),
+                padding: EdgeInsets.all(10.0.r),
                 child: RoundedImage(
                     height: 200.h,
                     width: 150.w,
@@ -68,50 +70,62 @@ class BookdetailView extends StackedView<BookdetailViewModel> {
                         data?.frontCover.toString() ?? AppImage.networkBook),
               ),
 
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  ///  Nepali title
-                  Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 10.0.w, vertical: 5.h),
-                    child: Text(
-                      data?.nepaliTitle.toString() ?? "",
-                      style: Helpers.titleText(context),
+              SizedBox(
+                width: 200.w,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ///  Nepali title
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 10.0.w, vertical: 5.h),
+                      child: data?.nepaliTitle == null
+                          ? Text(
+                              data?.englishTitle.toString() ?? "No title",
+                              style: Helpers.titleText(context),
+                            )
+                          : Text(
+                              data?.nepaliTitle.toString() ?? "No title",
+                              style: Helpers.titleText(context),
+                            ),
                     ),
-                  ),
 
-                  /// author title
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 10.0.r),
-                    child: Text(
-                      data?.authors?[0].localizedName.toString() ?? "",
-                      style: Theme.of(context)
-                          .textTheme
-                          .headlineMedium
-                          ?.copyWith(color: kcPrimaryColor),
+                    /// author title
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 10.0.r),
+                      child: data?.authors?[0].localizedName == null
+                          ? Text(data?.authors?[0].name ?? 'No title')
+                          : Text(
+                              data?.authors?[0].localizedName.toString() ??
+                                  "No title",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headlineMedium
+                                  ?.copyWith(color: kcPrimaryColor),
+                            ),
                     ),
-                  ),
 
-                  /// catagorie
-                  Padding(
-                    padding: EdgeInsets.all(10.0.r),
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color: kcPrimaryColor.withOpacity(0.2),
-                          borderRadius: BorderRadius.circular(10.r)),
-                      child: Padding(
-                        padding: EdgeInsets.all(12.h),
-                        child: Center(
-                          child: Text(
-                            data?.categories?[0].name.toString() ?? "",
-                            style: Theme.of(context).textTheme.titleMedium,
+                    /// catagorie
+                    Padding(
+                      padding: EdgeInsets.all(10.0.r),
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: kcPrimaryColor.withOpacity(0.2),
+                            borderRadius: BorderRadius.circular(10.r)),
+                        child: Padding(
+                          padding: EdgeInsets.all(12.h),
+                          child: Center(
+                            child: Text(
+                              data?.categories?[0].name.toString() ??
+                                  "No title",
+                              style: Theme.of(context).textTheme.titleMedium,
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ],
           ),
@@ -130,6 +144,7 @@ class BookdetailView extends StackedView<BookdetailViewModel> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    /// Price
                     if (data?.hardcover != null)
                       Text(
                         "HardCover",
@@ -139,7 +154,7 @@ class BookdetailView extends StackedView<BookdetailViewModel> {
                       Text("PaperBack", style: Helpers.bodyLarge(context)),
                     if (data?.hardcover != null)
                       Text(
-                        'Rs.${data?.hardcover['mrp'].toString()}',
+                        'Rs.${data?.hardcover?.mrp.toString()}',
                         style: Theme.of(context)
                             .textTheme
                             .bodyLarge
@@ -150,7 +165,13 @@ class BookdetailView extends StackedView<BookdetailViewModel> {
                           style: Theme.of(context)
                               .textTheme
                               .bodyLarge
-                              ?.copyWith(color: kcPrimaryColor))
+                              ?.copyWith(color: kcPrimaryColor)),
+
+                    if (data?.ebook != null)
+                      Text(
+                        "Ebook",
+                        style: Helpers.bodyLarge(context),
+                      )
                   ],
                 ),
               ),
@@ -158,14 +179,16 @@ class BookdetailView extends StackedView<BookdetailViewModel> {
           ),
 
           /// Description
-          SizedBox(
-            width: Helpers.getScreenWidth(context),
-            child: Text(
-              textAlign: TextAlign.left,
-              "${data?.backCoverText}",
-              style: Theme.of(context).textTheme.bodyLarge,
-            ),
-          ),
+          data?.backCoverText != null
+              ? SizedBox(
+                  width: Helpers.getScreenWidth(context),
+                  child: Text(
+                    textAlign: TextAlign.left,
+                    data?.backCoverText ?? "No Text here",
+                    style: Theme.of(context).textTheme.bodyLarge,
+                  ),
+                )
+              : const SizedBox(),
           Padding(
             padding: const EdgeInsets.all(10.0),
             child: PrimaryButton(

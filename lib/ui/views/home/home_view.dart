@@ -111,6 +111,21 @@ class HomeView extends StackedView<HomeViewModel> {
                       data.audiobooks?[index].title ?? 'No Title',
                   imageUrlBuilder: (index) =>
                       data.audiobooks?[index].frontCover ?? 'notext'),
+              verticalSpaceMedium,
+              // fourth section selector
+              const SectionSelector(),
+              //bestsellingEbooks
+              SectionView(
+                  onPressedBuilder: (index) => () => viewModel.onPressedBook(
+                      data.bestsellingEbooks?[index].title ?? 'No Title',
+                      index,
+                      data.bestsellingEbooks?[index].slug),
+                  sectionTitleText: "Bestselling Ebooks",
+                  dataLength: data.bestsellingEbooks?.length,
+                  titleBuilder: (index) =>
+                      data.bestsellingEbooks?[index].title ?? 'No Title',
+                  imageUrlBuilder: (index) =>
+                      data.bestsellingEbooks?[index].frontCover ?? 'notext'),
 
               verticalSpaceLarge
             ],
