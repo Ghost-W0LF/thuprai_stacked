@@ -9,8 +9,8 @@ import 'package:thuprai_stacked/ui/common/app_image.dart';
 import 'package:thuprai_stacked/ui/common/app_text.dart';
 import 'package:thuprai_stacked/ui/common/ui_helpers.dart';
 import 'package:thuprai_stacked/ui/views/login/login_view.form.dart';
+import 'package:thuprai_stacked/ui/views/login/widget/login_form.dart';
 import 'package:thuprai_stacked/widgets/primary_button.dart';
-import 'package:thuprai_stacked/widgets/primary_text_form_field.dart';
 import 'package:thuprai_stacked/widgets/secondary_button.dart';
 
 import 'login_viewmodel.dart';
@@ -66,47 +66,7 @@ class LoginView extends StackedView<LoginViewModel> with $LoginView {
             const SecondaryButton(
                 imageUrl: AppImage.google, text: AppText.signinGoogle),
             verticalSpaceMedium,
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
-              child: Form(
-                  child: Column(
-                children: [
-                  PrimaryTextFormField(
-                    controller: emailController,
-                    isVisible: true,
-                    labelText: AppText.email,
-                    hintText: AppText.email,
-                  ),
-                  if (viewModel.hasEmailValidationMessage) ...[
-                    Text(
-                      viewModel.emailValidationMessage!,
-                      style: const TextStyle(
-                        color: Colors.red,
-                        fontSize: 12,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    )
-                  ],
-                  verticalSpaceMedium,
-                  PrimaryTextFormField(
-                    controller: passwordController,
-                    labelText: AppText.password,
-                    hintText: AppText.password,
-                    haveSuffixIcon: true,
-                  ),
-                  if (viewModel.hasPasswordValidationMessage) ...[
-                    Text(
-                      viewModel.passwordValidationMessage!,
-                      style: const TextStyle(
-                        color: Colors.red,
-                        fontSize: 12,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    )
-                  ],
-                ],
-              )),
-            ),
+           LoginForm(viewmodel: viewModel,),
             verticalSpaceMedium,
             //LoginButton
             PrimaryButton(

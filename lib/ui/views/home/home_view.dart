@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import 'package:stacked_services/stacked_services.dart';
-import 'package:thuprai_stacked/app/app.locator.dart';
-import 'package:thuprai_stacked/app/app.router.dart';
-import 'package:thuprai_stacked/services/securestorage_service.dart';
 import 'package:thuprai_stacked/ui/common/ui_helpers.dart';
 import 'package:thuprai_stacked/ui/views/home/widget/home_drawer.dart';
 import 'package:thuprai_stacked/widgets/banner_slider.dart';
@@ -22,10 +18,6 @@ class HomeView extends StackedView<HomeViewModel> {
     HomeViewModel viewModel,
     Widget? child,
   ) {
-    final navigation = locator<NavigationService>();
-
-    final tokenStorage = locator<SecurestorageService>();
-
     if (viewModel.isBusy) {
       /// Display a loading indicator while data is being fetched
       return Scaffold(
@@ -43,8 +35,7 @@ class HomeView extends StackedView<HomeViewModel> {
           backgroundColor: Theme.of(context).colorScheme.surface,
           appBar: PrimaryAppbar(
             leftActionOnPressedCallBack: () {
-              tokenStorage.deleteToken();
-              navigation.replaceWithLoginView();
+              viewModel.logout();
             },
           ));
     }
@@ -56,11 +47,10 @@ class HomeView extends StackedView<HomeViewModel> {
         appBar: PrimaryAppbar(
           cartItem: cartData?.lines?.length.toString(),
           rightActionOnPressedCallBack: () {
-            navigation.navigateToCartView();
+            viewModel.navigatetoCart();
           },
           leftActionOnPressedCallBack: () {
-            tokenStorage.deleteToken();
-            navigation.replaceWithLoginView();
+            viewModel.logout();
           },
         ),
 

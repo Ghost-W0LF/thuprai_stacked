@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:thuprai_stacked/ui/common/app_colors.dart';
 import 'package:thuprai_stacked/ui/common/app_text.dart';
 import 'package:thuprai_stacked/ui/common/ui_helpers.dart';
 import 'package:thuprai_stacked/ui/views/login/login_view.form.dart';
@@ -27,10 +28,11 @@ class LoginForm extends StatelessWidget with $LoginView {
           ),
           if (viewmodel.hasEmailValidationMessage) ...[
             Text(
+              textAlign: TextAlign.left,
               viewmodel.emailValidationMessage!,
               style: const TextStyle(
-                color: Colors.red,
-                fontSize: 12,
+                color: kcPrimaryColor,
+                fontSize: 10,
                 fontWeight: FontWeight.w700,
               ),
             )
@@ -44,10 +46,11 @@ class LoginForm extends StatelessWidget with $LoginView {
           ),
           if (viewmodel.hasPasswordValidationMessage) ...[
             Text(
+
               viewmodel.passwordValidationMessage!,
               style: const TextStyle(
-                color: Colors.red,
-                fontSize: 12,
+                color: kcPrimaryColor,
+                fontSize: 10,
                 fontWeight: FontWeight.w700,
               ),
             )

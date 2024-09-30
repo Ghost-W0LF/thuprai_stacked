@@ -3,10 +3,12 @@ import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:thuprai_stacked/app/app.locator.dart';
 import 'package:thuprai_stacked/app/app.router.dart';
+import 'package:thuprai_stacked/services/securestorage_service.dart';
 import 'package:thuprai_stacked/ui/views/cart/model/get_cart_model.dart';
 import 'package:thuprai_stacked/ui/views/cart/repository/cartrepositoryimplementation_service.dart';
 import 'package:thuprai_stacked/ui/views/home/model/home_model.dart';
 import 'package:thuprai_stacked/ui/views/home/repository/homerepositort_implementation_service.dart';
+
 
 class HomeViewModel extends BaseViewModel with Initialisable {
   final _homeRepository = locator<HomerepositortImplementationService>();
@@ -14,9 +16,20 @@ class HomeViewModel extends BaseViewModel with Initialisable {
   final _navigation = locator<NavigationService>();
   HomeModel? featchedDataa = HomeModel();
   GetCartModel? cartData = GetCartModel();
+
+  final tokenStorage = locator<SecurestorageService>();
   @override
   Future<void> initialise() async {
     await getHomeData();
+  }
+
+  void navigatetoCart() {
+    _navigation.navigateToCartView();
+  }
+
+  void logout() {
+    tokenStorage.deleteToken();
+    _navigation.replaceWithLoginView();
   }
 
   Future<void> getHomeData() async {
