@@ -24,6 +24,8 @@ abstract class RestClient {
   Future<LoginResponseModel> login(@Body() LoginRequestModel loginRequestModel);
   @POST('api/basket/add-product/')
   Future<AddCartRequest> addCart(@Body() AddCartRequest addToCart);
+  @POST('user/logout/')
+  Future<void> logout();
 
   @GET("book/{slug}")
   Future<BookModel> getBookData(@Path("slug") String slug);

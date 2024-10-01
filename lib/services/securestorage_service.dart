@@ -19,4 +19,15 @@ class SecurestorageService extends BaseViewModel {
     await storage.delete(key: 'token');
     notifyListeners();
   }
+
+  Future<void> writeSid(String sid) async {
+    await storage.write(key: 'session-id', value: sid);
+  }
+
+  Future<String?> readSessionId() async {
+    String? sid = await storage.read(key: 'session-id');
+    notifyListeners();
+
+    return sid;
+  }
 }

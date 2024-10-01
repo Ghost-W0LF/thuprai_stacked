@@ -3,6 +3,7 @@ import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:thuprai_stacked/app/app.locator.dart';
 import 'package:thuprai_stacked/app/app.router.dart';
+import 'package:thuprai_stacked/base/network/retro_fit_injection.dart';
 import 'package:thuprai_stacked/services/securestorage_service.dart';
 import 'package:thuprai_stacked/ui/views/cart/model/get_cart_model.dart';
 import 'package:thuprai_stacked/ui/views/cart/repository/cartrepositoryimplementation_service.dart';
@@ -27,6 +28,7 @@ class HomeViewModel extends BaseViewModel with Initialisable {
   }
 
   void logout() {
+    restClient.logout();
     tokenStorage.deleteToken();
     _navigation.replaceWithLoginView();
   }
