@@ -17,7 +17,7 @@ class StartupViewModel extends BaseViewModel {
     // you have custom startup logic
 
     savedToken == null
-        ? _navigationService.replaceWithLoginView()
+        ? _navigationService.replaceWithBottomNavigationView()
         : _navigationService.replaceWithBottomNavigationView();
   }
 }

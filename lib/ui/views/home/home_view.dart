@@ -45,6 +45,7 @@ class HomeView extends StackedView<HomeViewModel> {
         /// display data when data is fetched
         backgroundColor: Theme.of(context).colorScheme.surface,
         appBar: PrimaryAppbar(
+          leftIconButton: Icons.logout,
           cartItem: cartData?.lines?.length.toString(),
           rightActionOnPressedCallBack: () {
             viewModel.navigatetoCart();
@@ -55,7 +56,9 @@ class HomeView extends StackedView<HomeViewModel> {
         ),
 
         /// drawer
-        drawer: const HomeDrawer(),
+        drawer: HomeDrawer(
+          viewModel: viewModel,
+        ),
         body: SingleChildScrollView(
           child: Column(
             children: [

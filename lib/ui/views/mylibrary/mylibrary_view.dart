@@ -5,7 +5,7 @@ import 'package:thuprai_stacked/ui/common/app_text.dart';
 import 'mylibrary_viewmodel.dart';
 
 class MylibraryView extends StackedView<MylibraryViewModel> {
-  const MylibraryView({Key? key}) : super(key: key);
+  const MylibraryView({super.key});
 
   @override
   Widget builder(

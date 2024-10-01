@@ -9,7 +9,6 @@ import 'package:thuprai_stacked/ui/views/cart/repository/cartrepositoryimplement
 import 'package:thuprai_stacked/ui/views/home/model/home_model.dart';
 import 'package:thuprai_stacked/ui/views/home/repository/homerepositort_implementation_service.dart';
 
-
 class HomeViewModel extends BaseViewModel with Initialisable {
   final _homeRepository = locator<HomerepositortImplementationService>();
   final _cartRepository = locator<CartrepositoryimplementationService>();

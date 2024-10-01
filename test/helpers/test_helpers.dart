@@ -1,5 +1,5 @@
 import 'package:mockito/annotations.dart';
-import 'package:mockito/mockito.dart';
+
 import 'package:thuprai_stacked/app/app.locator.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:thuprai_stacked/ui/views/login/service/login_service.dart';
@@ -65,61 +65,11 @@ MockBottomSheetService getAndRegisterBottomSheetService<T>({
   _removeRegistrationIfExists<BottomSheetService>();
   final service = MockBottomSheetService();
 
-  when(service.showCustomSheet<T, T>(
-    enableDrag: anyNamed('enableDrag'),
-    enterBottomSheetDuration: anyNamed('enterBottomSheetDuration'),
-    exitBottomSheetDuration: anyNamed('exitBottomSheetDuration'),
-    ignoreSafeArea: anyNamed('ignoreSafeArea'),
-    isScrollControlled: anyNamed('isScrollControlled'),
-    barrierDismissible: anyNamed('barrierDismissible'),
-    additionalButtonTitle: anyNamed('additionalButtonTitle'),
-    variant: anyNamed('variant'),
-    title: anyNamed('title'),
-    hasImage: anyNamed('hasImage'),
-    imageUrl: anyNamed('imageUrl'),
-    showIconInMainButton: anyNamed('showIconInMainButton'),
-    mainButtonTitle: anyNamed('mainButtonTitle'),
-    showIconInSecondaryButton: anyNamed('showIconInSecondaryButton'),
-    secondaryButtonTitle: anyNamed('secondaryButtonTitle'),
-    showIconInAdditionalButton: anyNamed('showIconInAdditionalButton'),
-    takesInput: anyNamed('takesInput'),
-    barrierColor: anyNamed('barrierColor'),
-    barrierLabel: anyNamed('barrierLabel'),
-    customData: anyNamed('customData'),
-    data: anyNamed('data'),
-    description: anyNamed('description'),
-  )).thenAnswer((realInvocation) =>
-      Future.value(showCustomSheetResponse ?? SheetResponse<T>()));
-
   locator.registerSingleton<BottomSheetService>(service as BottomSheetService);
   return service;
 }
 
-extension on MockBottomSheetService {
-  showCustomSheet(
-      {required enableDrag,
-      required enterBottomSheetDuration,
-      required exitBottomSheetDuration,
-      required ignoreSafeArea,
-      required isScrollControlled,
-      required barrierDismissible,
-      required additionalButtonTitle,
-      required variant,
-      required title,
-      required hasImage,
-      required imageUrl,
-      required showIconInMainButton,
-      required mainButtonTitle,
-      required showIconInSecondaryButton,
-      required secondaryButtonTitle,
-      required showIconInAdditionalButton,
-      required takesInput,
-      required barrierColor,
-      required barrierLabel,
-      required customData,
-      required data,
-      required description}) {}
-}
+extension on MockBottomSheetService {}
 
 class MockBottomSheetService {}
 
@@ -154,7 +104,8 @@ MockLoginrepositoryImplementationService
     getAndRegisterLoginrepositoryImplementationService() {
   _removeRegistrationIfExists<LoginrepositoryImplementationService>();
   final service = MockLoginrepositoryImplementationService();
-  locator.registerSingleton<LoginrepositoryImplementationService>(service);
+  locator.registerSingleton<LoginrepositoryImplementationService>(
+      service as LoginrepositoryImplementationService);
   return service;
 }
 
@@ -163,7 +114,8 @@ class MockLoginrepositoryImplementationService {}
 MockSecurestorageService getAndRegisterSecurestorageService() {
   _removeRegistrationIfExists<SecurestorageService>();
   final service = MockSecurestorageService();
-  locator.registerSingleton<SecurestorageService>(service);
+  locator
+      .registerSingleton<SecurestorageService>(service as SecurestorageService);
   return service;
 }
 
@@ -172,7 +124,7 @@ class MockSecurestorageService {}
 MockHomeService getAndRegisterHomeService() {
   _removeRegistrationIfExists<HomeService>();
   final service = MockHomeService();
-  locator.registerSingleton<HomeService>(service);
+  locator.registerSingleton<HomeService>(service as HomeService);
   return service;
 }
 
@@ -182,7 +134,8 @@ MockHomerepositortImplementationService
     getAndRegisterHomerepositortImplementationService() {
   _removeRegistrationIfExists<HomerepositortImplementationService>();
   final service = MockHomerepositortImplementationService();
-  locator.registerSingleton<HomerepositortImplementationService>(service);
+  locator.registerSingleton<HomerepositortImplementationService>(
+      service as HomerepositortImplementationService);
   return service;
 }
 
@@ -214,9 +167,12 @@ MockSignupRepositoryImplementationService
     getAndRegisterSignupRepositoryImplementationService() {
   _removeRegistrationIfExists<SignupRepositoryImplementationService>();
   final service = MockSignupRepositoryImplementationService();
-  locator.registerSingleton<SignupRepositoryImplementationService>(service);
+  locator.registerSingleton<SignupRepositoryImplementationService>(
+      service as SignupRepositoryImplementationService);
   return service;
 }
+
+class MockSignupRepositoryImplementationService {}
 // @stacked-mock-create
 
 void _removeRegistrationIfExists<T extends Object>() {

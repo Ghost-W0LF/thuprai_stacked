@@ -22,6 +22,7 @@ class BookdetailViewModel extends BaseViewModel with Initialisable {
   GetCartModel? cartData = GetCartModel();
 
   final _cartRepository = locator<CartrepositoryimplementationService>();
+      final navigation = locator<NavigationService>();
 
   final int quantity = 1;
 
@@ -30,15 +31,19 @@ class BookdetailViewModel extends BaseViewModel with Initialisable {
     await getBookData();
   }
 
+
   /// navigate to cart
   void navigationto() {
-    final navigation = locator<NavigationService>();
+
     navigation.navigateToCartView();
   }
 
+  onPressedBook(String bookTitle, int index, String? slugs) {
+    navigation.replaceWithBookdetailView(bookTitle: bookTitle, slugs: slugs);
+  }
   /// navigate to cart
   void navigationPop() {
-    final navigation = locator<NavigationService>();
+
     navigation.replaceWithBottomNavigationView();
   }
 

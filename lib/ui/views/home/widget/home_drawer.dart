@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:thuprai_stacked/base/utils/helpers.dart';
 import 'package:thuprai_stacked/ui/common/app_text.dart';
+import 'package:thuprai_stacked/ui/views/home/home_viewmodel.dart';
 import 'package:thuprai_stacked/widgets/primary_listtile.dart';
 
 class HomeDrawer extends StatelessWidget {
-  const HomeDrawer({
+ const  HomeDrawer({
     super.key,
+   required this.viewModel
   });
+ final HomeViewModel? viewModel;
 
   @override
   Widget build(BuildContext context) {
     return Drawer(
         child: ListView(children: [
+          
       DrawerHeader(
           child: Center(
         child: Text(
@@ -19,6 +23,7 @@ class HomeDrawer extends StatelessWidget {
           style: Helpers.headlineLarg(context),
         ),
       )),
+
 
       /// list tile
       const PrimaryListTile(
@@ -40,6 +45,7 @@ class HomeDrawer extends StatelessWidget {
         title: AppText.artical,
       ),
       const PrimaryListTile(
+  
         title: AppText.taskar,
       ),
     ]));
