@@ -55,7 +55,8 @@ class LoginShimmer extends StatelessWidget {
                       child: RoundedImage(
                         height: 200,
                         width: 130,
-                        color: Colors.white, imageUrl: 'null',
+                        color: Colors.white,
+                        imageUrl: 'null',
                       ));
                 },
               ),
