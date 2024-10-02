@@ -20,6 +20,7 @@ dependencies:
   retrofit: ^4.4.1
 
   shared_preferences: ^2.3.2
+  shimmer: ^3.0.0
   stacked: ^3.4.0
   stacked_services: ^1.1.0
 

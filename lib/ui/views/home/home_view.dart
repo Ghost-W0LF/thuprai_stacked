@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:thuprai_stacked/ui/common/ui_helpers.dart';
+import 'package:thuprai_stacked/ui/views/home/shimmer/login_shimmer.dart';
 import 'package:thuprai_stacked/ui/views/home/widget/home_drawer.dart';
 import 'package:thuprai_stacked/widgets/banner_slider.dart';
 import 'package:thuprai_stacked/widgets/primary_appbar.dart';
@@ -8,6 +9,7 @@ import 'package:thuprai_stacked/widgets/section_selector.dart';
 import 'package:thuprai_stacked/widgets/section_view.dart';
 
 import 'home_viewmodel.dart';
+import 'package:shimmer/shimmer.dart';
 
 class HomeView extends StackedView<HomeViewModel> {
   const HomeView({super.key});
@@ -21,11 +23,8 @@ class HomeView extends StackedView<HomeViewModel> {
     if (viewModel.isBusy) {
       /// Display a loading indicator while data is being fetched
       return Scaffold(
-        backgroundColor: Theme.of(context).colorScheme.surface,
-        body: const Center(
-          child: CircularProgressIndicator(),
-        ),
-      );
+          backgroundColor: Theme.of(context).colorScheme.surface,
+          body: const LoginShimmer());
     }
     final data = viewModel.featchedDataa;
     final cartData = viewModel.cartData;

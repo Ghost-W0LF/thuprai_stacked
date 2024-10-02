@@ -1,20 +1,22 @@
 import 'package:mockito/annotations.dart';
-
+import 'package:mockito/mockito.dart';
 import 'package:thuprai_stacked/app/app.locator.dart';
 import 'package:stacked_services/stacked_services.dart';
+import 'package:thuprai_stacked/base/debouncer/debounce.dart';
+import 'package:thuprai_stacked/ui/views/bookdetail/repository/bookdetailrepository_implementation_service.dart';
+import 'package:thuprai_stacked/ui/views/cart/repository/cartrepositoryimplementation_service.dart';
+import 'package:thuprai_stacked/ui/views/home/repository/homerepositort_implementation_service.dart';
+import 'package:thuprai_stacked/ui/views/home/service/home_service.dart';
 import 'package:thuprai_stacked/ui/views/login/service/login_service.dart';
 import 'package:thuprai_stacked/services/dio_instance_service.dart';
 import 'package:thuprai_stacked/ui/views/login/repository/loginrepository_implementation_service.dart';
 import 'package:thuprai_stacked/services/securestorage_service.dart';
-import 'package:thuprai_stacked/ui/views/home/service/home_service.dart';
-import 'package:thuprai_stacked/ui/views/home/repository/homerepositort_implementation_service.dart';
-import 'package:thuprai_stacked/ui/views/bookdetail/repository/bookdetailrepository_implementation_service.dart';
-import 'package:thuprai_stacked/ui/views/cart/repository/cartrepositoryimplementation_service.dart';
 import 'package:thuprai_stacked/ui/views/signup/repository/signup_repository_implementation_service.dart';
 // @stacked-import
 
+import 'test_helpers.mocks.dart';
+
 @GenerateMocks([], customMocks: [
-  MockSpec<NavigationService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<BottomSheetService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<DialogService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<LoginService>(onMissingStub: OnMissingStub.returnDefault),
@@ -27,37 +29,31 @@ import 'package:thuprai_stacked/ui/views/signup/repository/signup_repository_imp
       onMissingStub: OnMissingStub.returnDefault),
   MockSpec<BookdetailrepositoryImplementationService>(
       onMissingStub: OnMissingStub.returnDefault),
+
   MockSpec<CartrepositoryimplementationService>(
       onMissingStub: OnMissingStub.returnDefault),
-  MockSpec<DebounceService>(onMissingStub: OnMissingStub.returnDefault),
-  MockSpec<DebounceService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<SignupRepositoryImplementationService>(
       onMissingStub: OnMissingStub.returnDefault),
+  MockSpec<SnackbarService>(onMissingStub: OnMissingStub.returnDefault),
+  MockSpec<Debouncer>(onMissingStub: OnMissingStub.returnDefault),
+
+  MockSpec<NavigationService>(onMissingStub: OnMissingStub.returnDefault),
 // @stacked-mock-spec
 ])
 void registerServices() {
-  getAndRegisterNavigationService();
   getAndRegisterBottomSheetService();
+  getAndRegisterHomerepositortImplementationService();
   getAndRegisterDialogService();
   getAndRegisterLoginService();
   getAndRegisterDioInstanceService();
   getAndRegisterLoginrepositoryImplementationService();
   getAndRegisterSecurestorageService();
-  getAndRegisterHomeService();
-  getAndRegisterHomerepositortImplementationService();
-  getAndRegisterBookdetailrepositoryImplementationService();
+  getAndRegisterNavigationService();
+  getAndRegisterSnackbarService();
   getAndRegisterCartrepositoryimplementationService();
-  getAndRegisterDebounceService();
-  getAndRegisterDebounceService();
-  getAndRegisterSignupRepositoryImplementationService();
+  getAndRegisterDebouncer();
 // @stacked-mock-register
 }
-
-void getAndRegisterDebounceService() {}
-
-class DebounceService {}
-
-void getAndRegisterNavigationService() {}
 
 MockBottomSheetService getAndRegisterBottomSheetService<T>({
   SheetResponse<T>? showCustomSheetResponse,
@@ -65,114 +61,123 @@ MockBottomSheetService getAndRegisterBottomSheetService<T>({
   _removeRegistrationIfExists<BottomSheetService>();
   final service = MockBottomSheetService();
 
-  locator.registerSingleton<BottomSheetService>(service as BottomSheetService);
+  when(service.showCustomSheet<T, T>(
+    enableDrag: anyNamed('enableDrag'),
+    enterBottomSheetDuration: anyNamed('enterBottomSheetDuration'),
+    exitBottomSheetDuration: anyNamed('exitBottomSheetDuration'),
+    ignoreSafeArea: anyNamed('ignoreSafeArea'),
+    isScrollControlled: anyNamed('isScrollControlled'),
+    barrierDismissible: anyNamed('barrierDismissible'),
+    additionalButtonTitle: anyNamed('additionalButtonTitle'),
+    variant: anyNamed('variant'),
+    title: anyNamed('title'),
+    hasImage: anyNamed('hasImage'),
+    imageUrl: anyNamed('imageUrl'),
+    showIconInMainButton: anyNamed('showIconInMainButton'),
+    mainButtonTitle: anyNamed('mainButtonTitle'),
+    showIconInSecondaryButton: anyNamed('showIconInSecondaryButton'),
+    secondaryButtonTitle: anyNamed('secondaryButtonTitle'),
+    showIconInAdditionalButton: anyNamed('showIconInAdditionalButton'),
+    takesInput: anyNamed('takesInput'),
+    barrierColor: anyNamed('barrierColor'),
+    barrierLabel: anyNamed('barrierLabel'),
+    customData: anyNamed('customData'),
+    data: anyNamed('data'),
+    description: anyNamed('description'),
+  )).thenAnswer((realInvocation) =>
+      Future.value(showCustomSheetResponse ?? SheetResponse<T>()));
+
+  locator.registerSingleton<BottomSheetService>(service);
   return service;
 }
-
-extension on MockBottomSheetService {}
-
-class MockBottomSheetService {}
 
 MockDialogService getAndRegisterDialogService() {
   _removeRegistrationIfExists<DialogService>();
   final service = MockDialogService();
-  locator.registerSingleton<DialogService>(service as DialogService);
+  locator.registerSingleton<DialogService>(service);
   return service;
 }
 
-class MockDialogService {}
+MockDebouncer getAndRegisterDebouncer() {
+  _removeRegistrationIfExists<Debouncer>();
+  final service = MockDebouncer();
+  locator.registerSingleton<Debouncer>(service);
+  return service;
+}
+
+MockNavigationService getAndRegisterNavigationService() {
+  _removeRegistrationIfExists<NavigationService>();
+  final service = MockNavigationService();
+  locator.registerSingleton<NavigationService>(service);
+  return service;
+}
 
 MockLoginService getAndRegisterLoginService() {
   _removeRegistrationIfExists<LoginService>();
   final service = MockLoginService();
-  locator.registerSingleton<LoginService>(service as LoginService);
+  locator.registerSingleton<LoginService>(service);
   return service;
 }
-
-class MockLoginService {}
 
 MockDioInstanceService getAndRegisterDioInstanceService() {
   _removeRegistrationIfExists<DioInstanceService>();
   final service = MockDioInstanceService();
-  locator.registerSingleton<DioInstanceService>(service as DioInstanceService);
+  locator.registerSingleton<DioInstanceService>(service);
   return service;
 }
-
-class MockDioInstanceService {}
 
 MockLoginrepositoryImplementationService
     getAndRegisterLoginrepositoryImplementationService() {
   _removeRegistrationIfExists<LoginrepositoryImplementationService>();
   final service = MockLoginrepositoryImplementationService();
-  locator.registerSingleton<LoginrepositoryImplementationService>(
-      service as LoginrepositoryImplementationService);
+  locator.registerSingleton<LoginrepositoryImplementationService>(service);
   return service;
 }
-
-class MockLoginrepositoryImplementationService {}
 
 MockSecurestorageService getAndRegisterSecurestorageService() {
   _removeRegistrationIfExists<SecurestorageService>();
   final service = MockSecurestorageService();
-  locator
-      .registerSingleton<SecurestorageService>(service as SecurestorageService);
+  locator.registerSingleton<SecurestorageService>(service);
   return service;
 }
-
-class MockSecurestorageService {}
 
 MockHomeService getAndRegisterHomeService() {
   _removeRegistrationIfExists<HomeService>();
   final service = MockHomeService();
-  locator.registerSingleton<HomeService>(service as HomeService);
+  locator.registerSingleton<HomeService>(service);
   return service;
 }
-
-class MockHomeService {}
 
 MockHomerepositortImplementationService
     getAndRegisterHomerepositortImplementationService() {
   _removeRegistrationIfExists<HomerepositortImplementationService>();
   final service = MockHomerepositortImplementationService();
-  locator.registerSingleton<HomerepositortImplementationService>(
-      service as HomerepositortImplementationService);
+  locator.registerSingleton<HomerepositortImplementationService>(service);
   return service;
 }
-
-class MockHomerepositortImplementationService {}
-
-MockBookdetailrepositoryImplementationService
-    getAndRegisterBookdetailrepositoryImplementationService() {
-  _removeRegistrationIfExists<BookdetailrepositoryImplementationService>();
-  final service = MockBookdetailrepositoryImplementationService();
-  locator.registerSingleton<BookdetailrepositoryImplementationService>(
-      service as BookdetailrepositoryImplementationService);
-  return service;
-}
-
-class MockBookdetailrepositoryImplementationService {}
 
 MockCartrepositoryimplementationService
     getAndRegisterCartrepositoryimplementationService() {
-  _removeRegistrationIfExists<CartrepositoryimplementationService>();
+  _removeRegistrationIfExists<BookdetailrepositoryImplementationService>();
   final service = MockCartrepositoryimplementationService();
-  locator.registerSingleton<CartrepositoryimplementationService>(
-      service as CartrepositoryimplementationService);
+  locator.registerSingleton<CartrepositoryimplementationService>(service);
   return service;
 }
-
-class MockCartrepositoryimplementationService {}
 
 MockSignupRepositoryImplementationService
     getAndRegisterSignupRepositoryImplementationService() {
-  _removeRegistrationIfExists<SignupRepositoryImplementationService>();
+  _removeRegistrationIfExists<BookdetailrepositoryImplementationService>();
   final service = MockSignupRepositoryImplementationService();
-  locator.registerSingleton<SignupRepositoryImplementationService>(
-      service as SignupRepositoryImplementationService);
+  locator.registerSingleton<SignupRepositoryImplementationService>(service);
   return service;
 }
 
-class MockSignupRepositoryImplementationService {}
+MockSnackbarService getAndRegisterSnackbarService() {
+  _removeRegistrationIfExists<SnackbarService>();
+  final service = MockSnackbarService();
+  locator.registerSingleton<SnackbarService>(service);
+  return service;
+}
 // @stacked-mock-create
 
 void _removeRegistrationIfExists<T extends Object>() {

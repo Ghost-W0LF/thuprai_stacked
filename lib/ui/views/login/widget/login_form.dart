@@ -46,7 +46,6 @@ class LoginForm extends StatelessWidget with $LoginView {
           ),
           if (viewmodel.hasPasswordValidationMessage) ...[
             Text(
-
               viewmodel.passwordValidationMessage!,
               style: const TextStyle(
                 color: kcPrimaryColor,

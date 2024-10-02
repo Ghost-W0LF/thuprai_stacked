@@ -66,7 +66,9 @@ class LoginView extends StackedView<LoginViewModel> with $LoginView {
             const SecondaryButton(
                 imageUrl: AppImage.google, text: AppText.signinGoogle),
             verticalSpaceMedium,
-           LoginForm(viewmodel: viewModel,),
+            LoginForm(
+              viewmodel: viewModel,
+            ),
             verticalSpaceMedium,
             //LoginButton
             PrimaryButton(
