@@ -5,7 +5,9 @@ import '../../../../helpers/test_helpers.dart';
 
 void main() {
   group('LoginrepositoryImplementationServiceTest -', () {
-    setUp(() => registerServices());
+    setUp(() {
+      registerServices();
+    });
     tearDown(() => locator.reset());
   });
 }

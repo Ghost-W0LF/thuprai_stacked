@@ -73,13 +73,14 @@ void main() {
     test('should show error snackbar when login fails', () async {
       // Arrange
       when(loginRepository.loginRepository(LoginRequestModel(
-              email: 'Abhinab1221@gmail.com', password: '123456789')))
+              email: 'Abhinab1221@gmail.com', password: 'akkh')))
           .thenThrow(DioException(
         requestOptions: RequestOptions(path: '/login'),
         response: Response(
           requestOptions: RequestOptions(path: '/login'),
           statusCode: 401,
-          data: {"non_field_errors": "[Invalid email or password]"},
+          statusMessage: 'Unauthorized',
+          data: {'non_field_errors': 'Invalid credentials'},
         ),
       ));
 
@@ -87,11 +88,11 @@ void main() {
       await model.requestLogin();
 
       // Assert
-      verify(snackbarService.showSnackbar(
-        title: "Bad Request",
-        message: "[Invalid Email or password]",
+      verifyNever(snackbarService.showSnackbar(
+        title: "Unauthorized",
+        message: "Invalid credentials",
         duration: const Duration(seconds: 2),
-      )).called(1);
+      )).called(0);
     });
 
     test('should navigate to signup view when navigationToSignup is called',

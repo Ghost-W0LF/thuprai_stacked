@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:thuprai_stacked/base/utils/helpers.dart';
 import 'package:thuprai_stacked/widgets/rounded_image.dart';
@@ -20,12 +21,12 @@ class LoginShimmer extends StatelessWidget {
               padding: const EdgeInsets.all(20.0),
               child: Container(
                 color: Colors.white,
-                height: 400,
-                width: Helpers.getScreenWidth(context) * 0.8,
+                height: 400.h,
+                width: Helpers.getScreenWidth(context) * 0.8.w,
               ),
             ),
             SizedBox(
-              height: 200,
+              height: 200.h,
               child: ListView.builder(
                 physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
@@ -35,8 +36,8 @@ class LoginShimmer extends StatelessWidget {
                   return Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: Container(
-                        height: 200,
-                        width: 150,
+                        height: 200.h,
+                        width: 150.w,
                         color: Colors.white,
                       ));
                 },
@@ -50,11 +51,11 @@ class LoginShimmer extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 itemCount: 20, // Adjust the count based on your needs
                 itemBuilder: (context, index) {
-                  return const Padding(
-                      padding: EdgeInsets.all(10.0),
+                  return Padding(
+                      padding: EdgeInsets.all(10.0.r),
                       child: RoundedImage(
-                        height: 200,
-                        width: 130,
+                        height: 200.h,
+                        width: 130.w,
                         color: Colors.white,
                         imageUrl: 'null',
                       ));

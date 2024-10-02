@@ -21,6 +21,5 @@ void main() {
       // Assert
       expect(model.increaseCounter, initialCounterValue + 1);
     });
- 
   });
 }

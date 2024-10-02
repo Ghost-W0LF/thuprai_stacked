@@ -33,14 +33,14 @@ class HomeViewModel extends BaseViewModel with Initialisable {
     _navigation.replaceWithLoginView();
   }
 
-  Future<void> getHomeData() async {
+  Future<HomeModel?> getHomeData() async {
     try {
       setBusy(true);
       final response = await _homeRepository.getHomeData();
 
       featchedDataa = response;
-      final cartItem = await _cartRepository.getCart();
-      cartData = cartItem;
+
+      return featchedDataa;
     } catch (e) {
       debugPrint(e.toString());
     } finally {
