@@ -10,7 +10,6 @@ class AuthInterceptor extends InterceptorsWrapper {
   Future onRequest(
       RequestOptions options, RequestInterceptorHandler handler) async {
     final savedToken = await tokenStorage.readToken();
-    final savedSid = await tokenStorage.readSessionId();
     final List<String> tokenRequired = [
       'api/basket/',
       '/login/',
@@ -23,7 +22,7 @@ class AuthInterceptor extends InterceptorsWrapper {
       if (savedToken != null) {
         options.headers['Authorization'] = 'Token $savedToken';
         debugPrint("Token Sent to the site$savedToken");
-      } 
+      }
     }
 
     return handler.next(options);
