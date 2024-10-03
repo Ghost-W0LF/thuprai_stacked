@@ -36,7 +36,7 @@ class BookdetailViewModel extends BaseViewModel with Initialisable {
     navigation.navigateToCartView();
   }
 
-  onPressedBook(String bookTitle, int index, String? slugs) {
+  void onPressedBook(String bookTitle, int index, String? slugs) {
     navigation.replaceWithBookdetailView(bookTitle: bookTitle, slugs: slugs);
   }
 
@@ -46,7 +46,7 @@ class BookdetailViewModel extends BaseViewModel with Initialisable {
   }
 
   /// Add to cart
-  Future<void> addTocart() async {
+  Future<String> addTocart() async {
     try {
       await _bookRepository.addToCart(AddCartRequest(
           path: '/book/$viewModelslug/',
@@ -72,13 +72,11 @@ class BookdetailViewModel extends BaseViewModel with Initialisable {
         message: "successfully added to cart",
         variant: 'success',
       );
+      snackBar.showSnackbar(message: "success");
+      return 'success';
     } on DioException catch (e) {
       debugPrint('error:-${e.response?.statusMessage.toString()}');
       notifyListeners();
-      snackBar.showCustomSnackBar(
-        message: "${e.response?.statusMessage.toString()}",
-        variant: 'error',
-      );
       snackBar.registerCustomSnackbarConfig(
         variant: 'error',
         config: SnackbarConfig(
@@ -89,11 +87,16 @@ class BookdetailViewModel extends BaseViewModel with Initialisable {
           snackPosition: SnackPosition.BOTTOM,
         ),
       );
+      snackBar.showCustomSnackBar(
+        message: "${e.response?.statusMessage.toString()}",
+        variant: 'error',
+      );
+      return 'Error: ${e.response?.statusMessage.toString()}';
     }
   }
 
   /// Get book data
-  Future<void> getBookData() async {
+  Future<BookModel?> getBookData() async {
     setBusy(true);
     try {
       final response =
@@ -106,5 +109,6 @@ class BookdetailViewModel extends BaseViewModel with Initialisable {
     } finally {
       setBusy(false);
     }
+    return bookModel;
   }
 }

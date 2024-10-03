@@ -82,13 +82,15 @@ class CartViewModel extends BaseViewModel with Initialisable {
   }
 
   /// fetch data to cart
-  Future<void> getCartData() async {
+  Future<GetCartModel?> getCartData() async {
     setBusy(true);
     try {
       final fetchedData = await repositort.getCart();
       cart = fetchedData;
+      return cart;
     } catch (e) {
       debugPrint(e.toString());
+      return null;
     } finally {
       setBusy(false);
     }

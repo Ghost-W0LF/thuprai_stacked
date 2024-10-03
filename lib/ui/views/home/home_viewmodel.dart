@@ -39,6 +39,8 @@ class HomeViewModel extends BaseViewModel with Initialisable {
       final response = await _homeRepository.getHomeData();
 
       featchedDataa = response;
+      final respose = await _cartRepository.getCart();
+      cartData = respose;
 
       return featchedDataa;
     } catch (e) {
@@ -46,6 +48,7 @@ class HomeViewModel extends BaseViewModel with Initialisable {
     } finally {
       setBusy(false);
     }
+    return featchedDataa;
   }
 
   onPressedBook(String bookTitle, int index, String? slugs) {

@@ -5,7 +5,11 @@ import 'package:thuprai_stacked/ui/views/home/repository/home_repository.dart';
 class HomerepositortImplementationService implements HomeRepository {
   @override
   Future<HomeModel?> getHomeData() async {
-    final data = restClient.getHomeData();
-    return data;
+    try {
+      final data = restClient.getHomeData();
+      return data;
+    } catch (e) {
+      rethrow;
+    }
   }
 }

@@ -14,9 +14,8 @@ void main() {
 
     setUp(() {
       registerServices(); // Register required services using mockito or a helper.
-      homeRepository =
-          locator<HomerepositortImplementationService>();
-      homeViewModel = HomeViewModel(); 
+      homeRepository = locator<HomerepositortImplementationService>();
+      homeViewModel = HomeViewModel();
     });
 
     test("should return HomeModel when getHomeData is called", () async {
@@ -44,7 +43,7 @@ void main() {
       expect(model, isNull);
     });
     tearDown(() {
-      locator.reset(); 
+      locator.reset();
     });
   });
 }

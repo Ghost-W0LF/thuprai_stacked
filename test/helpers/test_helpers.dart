@@ -3,6 +3,7 @@ import 'package:mockito/mockito.dart';
 import 'package:thuprai_stacked/app/app.locator.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:thuprai_stacked/base/debouncer/debounce.dart';
+import 'package:thuprai_stacked/ui/views/bookdetail/bookdetail_viewmodel.dart';
 import 'package:thuprai_stacked/ui/views/bookdetail/repository/bookdetailrepository_implementation_service.dart';
 import 'package:thuprai_stacked/ui/views/cart/repository/cartrepositoryimplementation_service.dart';
 import 'package:thuprai_stacked/ui/views/home/home_viewmodel.dart';
@@ -40,6 +41,8 @@ import 'test_helpers.mocks.dart';
   MockSpec<HomeViewModel>(onMissingStub: OnMissingStub.returnDefault),
 
   MockSpec<NavigationService>(onMissingStub: OnMissingStub.returnDefault),
+  MockSpec<BookdetailViewModel>(onMissingStub: OnMissingStub.returnDefault),
+
 // @stacked-mock-spec
 ])
 void registerServices() {
@@ -53,9 +56,10 @@ void registerServices() {
   getAndRegisterNavigationService();
   getAndRegisterSnackbarService();
   getAndRegisterCartrepositoryimplementationService();
-  getAndRegisterDebouncer();
   getAndRegisterNavigationService();
   getAndRegisterHomeViewModel();
+  getAndRegisterBookdetailViewModel();
+  getAndRegisterBookdetailrepositoryImplementationService();
 // @stacked-mock-register
 }
 
@@ -102,17 +106,25 @@ MockDialogService getAndRegisterDialogService() {
   return service;
 }
 
+MockBookdetailViewModel getAndRegisterBookdetailViewModel() {
+  _removeRegistrationIfExists<BookdetailViewModel>();
+  final service = MockBookdetailViewModel();
+  locator.registerSingleton<BookdetailViewModel>(service);
+  return service;
+}
+
+MockBookdetailrepositoryImplementationService
+    getAndRegisterBookdetailrepositoryImplementationService() {
+  _removeRegistrationIfExists<BookdetailrepositoryImplementationService>();
+  final service = MockBookdetailrepositoryImplementationService();
+  locator.registerSingleton<BookdetailrepositoryImplementationService>(service);
+  return service;
+}
+
 MockHomeViewModel getAndRegisterHomeViewModel() {
   _removeRegistrationIfExists<HomeViewModel>();
   final service = MockHomeViewModel();
   locator.registerSingleton<HomeViewModel>(service);
-  return service;
-}
-
-MockDebouncer getAndRegisterDebouncer() {
-  _removeRegistrationIfExists<Debouncer>();
-  final service = MockDebouncer();
-  locator.registerSingleton<Debouncer>(service);
   return service;
 }
 
@@ -169,7 +181,7 @@ MockHomeService getAndRegisterHomeService() {
 
 MockCartrepositoryimplementationService
     getAndRegisterCartrepositoryimplementationService() {
-  _removeRegistrationIfExists<BookdetailrepositoryImplementationService>();
+  _removeRegistrationIfExists<CartrepositoryimplementationService>();
   final service = MockCartrepositoryimplementationService();
   locator.registerSingleton<CartrepositoryimplementationService>(service);
   return service;
@@ -177,7 +189,7 @@ MockCartrepositoryimplementationService
 
 MockSignupRepositoryImplementationService
     getAndRegisterSignupRepositoryImplementationService() {
-  _removeRegistrationIfExists<BookdetailrepositoryImplementationService>();
+  _removeRegistrationIfExists<SignupRepositoryImplementationService>();
   final service = MockSignupRepositoryImplementationService();
   locator.registerSingleton<SignupRepositoryImplementationService>(service);
   return service;
