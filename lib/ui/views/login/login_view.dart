@@ -4,6 +4,7 @@ import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:thuprai_stacked/app/app.locator.dart';
 import 'package:thuprai_stacked/app/app.router.dart';
+import 'package:thuprai_stacked/base/keys/key.dart';
 import 'package:thuprai_stacked/base/validator/text_form_field_validator.dart';
 import 'package:thuprai_stacked/ui/common/app_image.dart';
 import 'package:thuprai_stacked/ui/common/app_text.dart';
@@ -31,6 +32,7 @@ class LoginView extends StackedView<LoginViewModel> with $LoginView {
     Widget? child,
   ) {
     return Scaffold(
+      key: Key(loginViewKey),
       backgroundColor: Theme.of(context).colorScheme.surface,
       appBar: AppBar(
         title: Text(
@@ -72,6 +74,7 @@ class LoginView extends StackedView<LoginViewModel> with $LoginView {
             verticalSpaceMedium,
             //LoginButton
             PrimaryButton(
+              widgetKey: Key(loginButton),
               text: AppText.Continue,
               onPressedCallBack: viewModel.requestLogin,
             ),

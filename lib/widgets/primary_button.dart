@@ -19,6 +19,7 @@ class PrimaryButton extends StatelessWidget {
     this.width = 20,
     this.height,
     this.isATextButtton = false,
+    this.widgetKey
   });
 
   /// Set the child ie. Text of the buttom
@@ -38,7 +39,8 @@ class PrimaryButton extends StatelessWidget {
 
   /// To set the button as text button
   bool isATextButtton;
-
+/// sets the widget key
+ final Key? widgetKey;
   @override
   Widget build(BuildContext context) {
     return isATextButtton
@@ -46,6 +48,7 @@ class PrimaryButton extends StatelessWidget {
 
         ///TextButton
         TextButton(
+          key: widgetKey,
             onPressed: onPressedCallBack,
             child: Center(
               child: Text(
@@ -61,6 +64,7 @@ class PrimaryButton extends StatelessWidget {
 
         ///ElevatedButton
         ElevatedButton(
+          key: widgetKey,
             style: ButtonStyle(
               shape: WidgetStateProperty.all(RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10.r),

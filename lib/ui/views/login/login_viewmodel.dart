@@ -23,6 +23,7 @@ class LoginViewModel extends FormViewModel with $LoginView {
           message: "Invalid Email", duration: const Duration(seconds: 2));
     } else if (hasPasswordValidationMessage) {
       snackBar.showSnackbar(
+      
           message: "Invalid Password", duration: const Duration(seconds: 2));
     } else {
       try {
@@ -31,6 +32,7 @@ class LoginViewModel extends FormViewModel with $LoginView {
         _navigation.replaceWithHomeView();
       } on DioException catch (e) {
         snackBar.showSnackbar(
+          
             title: "${e.response?.statusMessage.toString()}",
             message: "${e.response?.data["non_field_errors"].toString()}",
             duration: const Duration(seconds: 2));

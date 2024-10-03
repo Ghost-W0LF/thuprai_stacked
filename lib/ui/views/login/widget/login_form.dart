@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:thuprai_stacked/base/keys/key.dart';
 import 'package:thuprai_stacked/ui/common/app_colors.dart';
 import 'package:thuprai_stacked/ui/common/app_text.dart';
 import 'package:thuprai_stacked/ui/common/ui_helpers.dart';
@@ -21,6 +22,7 @@ class LoginForm extends StatelessWidget with $LoginView {
           child: Column(
         children: [
           PrimaryTextFormField(
+            widgetKey: Key(loginEmail),
             controller: emailController,
             isVisible: true,
             labelText: AppText.email,
@@ -39,6 +41,7 @@ class LoginForm extends StatelessWidget with $LoginView {
           ],
           verticalSpaceMedium,
           PrimaryTextFormField(
+                       widgetKey: Key(loginPassword),
             controller: passwordController,
             labelText: AppText.password,
             hintText: AppText.password,

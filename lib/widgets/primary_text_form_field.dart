@@ -16,7 +16,8 @@ class PrimaryTextFormField extends StatefulWidget {
       this.isVisible = false,
       this.prefixIconData,
       this.haveSuffixIcon = false,
-      this.onTChanged});
+      this.onTChanged,
+      this.widgetKey});
 
   /// set the Hitnt text of the TextFormField
   final String? hintText;
@@ -41,6 +42,10 @@ class PrimaryTextFormField extends StatefulWidget {
 
   final Function(String)? onTChanged;
 
+
+  /// Sets the ket for the widget
+  final Key? widgetKey;
+
   @override
   State<PrimaryTextFormField> createState() => _PrimaryTextFormFieldState();
 }
@@ -49,6 +54,7 @@ class _PrimaryTextFormFieldState extends State<PrimaryTextFormField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+        key:widget.widgetKey,
         validator: widget.validator,
         controller: widget.controller,
         obscureText: !widget.isVisible,
