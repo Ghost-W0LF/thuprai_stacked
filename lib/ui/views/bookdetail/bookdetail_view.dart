@@ -197,12 +197,6 @@ class BookdetailView extends StackedView<BookdetailViewModel> {
                                           .textTheme
                                           .bodyLarge
                                           ?.copyWith(color: kcPrimaryColor)),
-
-                                  // if (data?.ebook != null)
-                                  //   Text(
-                                  //     "Ebook",
-                                  //     style: Helpers.bodyLarge(context),
-                                  //   )
                                 ],
                               ),
                             ),

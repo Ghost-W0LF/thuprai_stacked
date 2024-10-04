@@ -72,7 +72,7 @@ class BookdetailViewModel extends BaseViewModel with Initialisable {
         message: "successfully added to cart",
         variant: 'success',
       );
-      snackBar.showSnackbar(message: "success");
+
       return 'success';
     } on DioException catch (e) {
       debugPrint('error:-${e.response?.statusMessage.toString()}');

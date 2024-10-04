@@ -14,9 +14,8 @@ class BookdetailrepositoryImplementationService
           'BookdetailrepositoryImplementationService:-$bookRepositoryslug');
       return bookData;
     } catch (e) {
-      debugPrint(e.toString());
+      rethrow;
     }
-    return null;
   }
 
   /// to post product to cart
