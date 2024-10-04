@@ -20,10 +20,10 @@ class LoginViewModel extends FormViewModel with $LoginView {
   Future<void> requestLogin() async {
     if (hasEmailValidationMessage) {
       snackBar.showSnackbar(
-          message: "Invalid Email", duration: const Duration(seconds: 2));
+        message: "Invalid Email",
+      );
     } else if (hasPasswordValidationMessage) {
       snackBar.showSnackbar(
-      
           message: "Invalid Password", duration: const Duration(seconds: 2));
     } else {
       try {
@@ -32,7 +32,6 @@ class LoginViewModel extends FormViewModel with $LoginView {
         _navigation.replaceWithHomeView();
       } on DioException catch (e) {
         snackBar.showSnackbar(
-          
             title: "${e.response?.statusMessage.toString()}",
             message: "${e.response?.data["non_field_errors"].toString()}",
             duration: const Duration(seconds: 2));

@@ -30,6 +30,7 @@ class MainApp extends StatelessWidget {
         minTextAdapt: true,
         builder: (_, child) {
           return MaterialApp(
+            debugShowCheckedModeBanner: false,
             themeMode: ThemeMode.system,
             theme: KAppTheme.lightTheme,
             darkTheme: KAppTheme.darkTheme,

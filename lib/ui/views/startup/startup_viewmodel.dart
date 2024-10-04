@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:thuprai_stacked/app/app.locator.dart';
 import 'package:thuprai_stacked/app/app.router.dart';
@@ -12,12 +13,13 @@ class StartupViewModel extends BaseViewModel {
   Future runStartupLogic() async {
     await Future.delayed(const Duration(milliseconds: 500));
     String? savedToken = await _secureStorage.readToken();
+    debugPrint(savedToken);
 
     // This is where you can make decisions on where your app should navigate when
     // you have custom startup logic
 
     savedToken == null
-        ? _navigationService.replaceWithBottomNavigationView()
+        ? _navigationService.replaceWithLoginView()
         : _navigationService.replaceWithBottomNavigationView();
   }
 }

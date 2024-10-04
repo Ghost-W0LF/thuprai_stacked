@@ -86,15 +86,15 @@ class PrimaryAppbar extends StatelessWidget implements PreferredSizeWidget {
                 icon: Icon(
                   leftIconButton,
                   color: kcPrimaryColor,
-                  size: KSize.iconlg,
+                  size: KSize.iconmd.r,
                 )),
             leftIconButton == Icons.shopping_cart
                 ? Positioned(
                     top: 0.r,
-                    right: 0.r,
+                    right: 5.r,
                     child: Container(
-                      height: 20.h,
-                      width: 20.w,
+                      height: 15.h,
+                      width: 15.w,
                       decoration: const BoxDecoration(
                           shape: BoxShape.circle, color: Colors.red),
                       child: Center(
@@ -118,15 +118,15 @@ class PrimaryAppbar extends StatelessWidget implements PreferredSizeWidget {
                 icon: Icon(
                   rightIconButton,
                   color: kcPrimaryColor,
-                  size: KSize.iconlg,
+                  size: KSize.iconmd.r,
                 )),
             rightIconButton == Icons.shopping_cart
                 ? Positioned(
                     top: 0.r,
-                    right: 0.r,
+                    right: 5.r,
                     child: Container(
-                      height: 20.h,
-                      width: 20.w,
+                      height: 15.h,
+                      width: 15.w,
                       decoration: const BoxDecoration(
                           shape: BoxShape.circle, color: Colors.red),
                       child: Center(
@@ -148,5 +148,5 @@ class PrimaryAppbar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(kToolbarHeight.r);
+  Size get preferredSize => Size.fromHeight(80.h);
 }

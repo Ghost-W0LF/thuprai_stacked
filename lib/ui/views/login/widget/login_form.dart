@@ -41,7 +41,7 @@ class LoginForm extends StatelessWidget with $LoginView {
           ],
           verticalSpaceMedium,
           PrimaryTextFormField(
-                       widgetKey: Key(loginPassword),
+            widgetKey: Key(loginPassword),
             controller: passwordController,
             labelText: AppText.password,
             hintText: AppText.password,

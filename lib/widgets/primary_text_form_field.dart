@@ -42,7 +42,6 @@ class PrimaryTextFormField extends StatefulWidget {
 
   final Function(String)? onTChanged;
 
-
   /// Sets the ket for the widget
   final Key? widgetKey;
 
@@ -54,7 +53,7 @@ class _PrimaryTextFormFieldState extends State<PrimaryTextFormField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-        key:widget.widgetKey,
+        key: widget.widgetKey,
         validator: widget.validator,
         controller: widget.controller,
         obscureText: !widget.isVisible,

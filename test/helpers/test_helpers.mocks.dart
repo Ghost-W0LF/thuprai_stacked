@@ -1362,6 +1362,19 @@ class MockDebouncer extends _i1.Mock implements _i30.Debouncer {
 /// See the documentation for Mockito's code generation for more information.
 class MockHomeViewModel extends _i1.Mock implements _i31.HomeViewModel {
   @override
+  _i7.SecurestorageService get tokenStorage => (super.noSuchMethod(
+        Invocation.getter(#tokenStorage),
+        returnValue: _FakeSecurestorageService_6(
+          this,
+          Invocation.getter(#tokenStorage),
+        ),
+        returnValueForMissingStub: _FakeSecurestorageService_6(
+          this,
+          Invocation.getter(#tokenStorage),
+        ),
+      ) as _i7.SecurestorageService);
+
+  @override
   set featchedDataa(_i20.HomeModel? _featchedDataa) => super.noSuchMethod(
         Invocation.setter(
           #featchedDataa,
@@ -1378,19 +1391,6 @@ class MockHomeViewModel extends _i1.Mock implements _i31.HomeViewModel {
         ),
         returnValueForMissingStub: null,
       );
-
-  @override
-  _i7.SecurestorageService get tokenStorage => (super.noSuchMethod(
-        Invocation.getter(#tokenStorage),
-        returnValue: _FakeSecurestorageService_6(
-          this,
-          Invocation.getter(#tokenStorage),
-        ),
-        returnValueForMissingStub: _FakeSecurestorageService_6(
-          this,
-          Invocation.getter(#tokenStorage),
-        ),
-      ) as _i7.SecurestorageService);
 
   @override
   bool get hasListeners => (super.noSuchMethod(

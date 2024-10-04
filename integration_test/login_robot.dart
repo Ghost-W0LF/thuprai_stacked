@@ -1,4 +1,4 @@
-import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:thuprai_stacked/base/keys/key.dart';
 
@@ -10,17 +10,19 @@ class LoginRobot {
     expect(loginView, findsOneWidget);
   }
 
-  Future<void> enterEmail() async {
+  Future<void> enterEmail(String email) async {
     final emailField = find.byKey(Key(loginEmail));
     expect(emailField, findsOneWidget);
-    await tester.enterText(emailField, "abhinab1221@gmail.com");
+    await tester.enterText(emailField, email);
+    debugPrint("Test one complete");
     await tester.pump();
   }
 
-  Future<void> enterPassword() async {
+  Future<void> enterPassword(String password) async {
     final passwordField = find.byKey(Key(loginPassword));
     expect(passwordField, findsOneWidget);
-    await tester.enterText(passwordField, "1234232343");
+    await tester.enterText(passwordField, password);
+    debugPrint("Test two complete");
     await tester.pump();
   }
 
@@ -28,11 +30,21 @@ class LoginRobot {
     final loginButtonk = find.byKey(Key(loginButton));
     expect(loginButtonk, findsOneWidget);
     await tester.tap(loginButtonk);
-    await tester.pump();
+    debugPrint("Test three complete");
   }
 
-  void verifyError() {
-    final snackBar = find.byKey(Key(''));
-    expect(snackBar, findsOneWidget);
+  Future<void> verifyNav() async {
+    await tester.pumpAndSettle();
+    final loginView = find.byKey(Key(loginViewKey));
+    expect(loginView, findsAtLeast(1));
+  }
+
+  Future<void> verifySnackBar() async {
+    await tester.pump();
+    final homeScreen = find.byWidget(SnackBar(
+      content: Text(""),
+    ));
+    debugPrint("Test four complete");
+    expect(homeScreen, findsOneWidget);
   }
 }

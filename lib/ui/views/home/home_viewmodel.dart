@@ -15,7 +15,6 @@ class HomeViewModel extends BaseViewModel with Initialisable {
   final _cartRepository = locator<CartrepositoryimplementationService>();
   final _navigation = locator<NavigationService>();
 
-
   final tokenStorage = locator<SecurestorageService>();
   @override
   Future<void> initialise() async {
@@ -31,8 +30,8 @@ class HomeViewModel extends BaseViewModel with Initialisable {
     tokenStorage.deleteToken();
     _navigation.replaceWithLoginView();
   }
-  
-    HomeModel? featchedDataa = HomeModel();
+
+  HomeModel? featchedDataa = HomeModel();
   GetCartModel? cartData = GetCartModel();
 
   Future<HomeModel?> getHomeData() async {

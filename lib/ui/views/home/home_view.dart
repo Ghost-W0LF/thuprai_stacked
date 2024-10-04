@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+import 'package:thuprai_stacked/base/keys/key.dart';
 import 'package:thuprai_stacked/ui/common/ui_helpers.dart';
 import 'package:thuprai_stacked/ui/views/home/shimmer/login_shimmer.dart';
 import 'package:thuprai_stacked/ui/views/home/widget/home_drawer.dart';
@@ -7,9 +8,7 @@ import 'package:thuprai_stacked/widgets/banner_slider.dart';
 import 'package:thuprai_stacked/widgets/primary_appbar.dart';
 import 'package:thuprai_stacked/widgets/section_selector.dart';
 import 'package:thuprai_stacked/widgets/section_view.dart';
-
 import 'home_viewmodel.dart';
-import 'package:shimmer/shimmer.dart';
 
 class HomeView extends StackedView<HomeViewModel> {
   const HomeView({super.key});
@@ -23,6 +22,7 @@ class HomeView extends StackedView<HomeViewModel> {
     if (viewModel.isBusy) {
       /// Display a loading indicator while data is being fetched
       return Scaffold(
+          key: Key(homeviewKey),
           backgroundColor: Theme.of(context).colorScheme.surface,
           body: const LoginShimmer());
     }
@@ -31,6 +31,7 @@ class HomeView extends StackedView<HomeViewModel> {
     if (data == null) {
       /// Display a blank Scaffold while data is being fetched
       return Scaffold(
+          key: Key(homeviewKey),
           backgroundColor: Theme.of(context).colorScheme.surface,
           appBar: PrimaryAppbar(
             leftActionOnPressedCallBack: () {
@@ -40,6 +41,7 @@ class HomeView extends StackedView<HomeViewModel> {
     }
 
     return Scaffold(
+        key: Key(homeviewKey),
 
         /// display data when data is fetched
         backgroundColor: Theme.of(context).colorScheme.surface,
@@ -61,19 +63,20 @@ class HomeView extends StackedView<HomeViewModel> {
         body: SingleChildScrollView(
           child: Column(
             children: [
+              
               // top section selector
               const SectionSelector(),
-              verticalSpaceMedium,
+              verticalSpaceSmall,
               // top featured List
               BannerSlider(
                 listLength: data.featured?.length ?? 0,
                 imageBuilder: (index) =>
                     data.featured?[index].image ?? 'No data',
               ),
-              verticalSpaceMedium,
+
               // second section selector
               const SectionSelector(),
-              verticalSpaceMedium,
+
               //newRelease section
               SectionView(
                 onPressedBuilder: (index) => () => viewModel.onPressedBook(
@@ -88,7 +91,7 @@ class HomeView extends StackedView<HomeViewModel> {
                     data.newReleases?[index].frontCover ?? 'No data',
               ),
 
-              verticalSpaceMedium,
+              verticalSpaceSmall,
               // third section selector
               const SectionSelector(),
               //AudioBook
@@ -103,7 +106,7 @@ class HomeView extends StackedView<HomeViewModel> {
                       data.audiobooks?[index].title ?? 'No Title',
                   imageUrlBuilder: (index) =>
                       data.audiobooks?[index].frontCover ?? 'notext'),
-              verticalSpaceMedium,
+              verticalSpaceSmall,
               // fourth section selector
               const SectionSelector(),
               //bestsellingEbooks
@@ -118,8 +121,6 @@ class HomeView extends StackedView<HomeViewModel> {
                       data.bestsellingEbooks?[index].title ?? 'No Title',
                   imageUrlBuilder: (index) =>
                       data.bestsellingEbooks?[index].frontCover ?? 'notext'),
-
-              verticalSpaceLarge
             ],
           ),
         ));

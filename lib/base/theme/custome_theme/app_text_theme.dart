@@ -55,6 +55,8 @@ class AppTextTheme {
     // headLine
     headlineLarge: const TextStyle().copyWith(
         fontSize: 32.0.sp, fontWeight: FontWeight.bold, color: kcPrimaryColor),
+    headlineMedium: const TextStyle().copyWith(
+        fontSize: 24.0.sp, fontWeight: FontWeight.bold, color: Colors.white),
     //Title
     titleLarge: const TextStyle().copyWith(
         fontSize: 16.0.sp, fontWeight: FontWeight.w600, color: Colors.white),

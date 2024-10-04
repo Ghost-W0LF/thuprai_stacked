@@ -37,191 +37,216 @@ class BookdetailView extends StackedView<BookdetailViewModel> {
     final data = viewModel.bookModel;
 
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.surface,
-      appBar: PrimaryAppbar(
-          leadingIconButton: Icons.arrow_back_ios,
-          leadingOnPressCallback: viewModel.navigationPop,
-          cartItem: viewModel.cartData?.lines?.length.toString(),
-          leftActionOnPressedCallBack: () {
-            viewModel.navigationto();
-          },
-          textStyle: Theme.of(context)
-              .textTheme
-              .titleLarge
-              ?.copyWith(color: kcPrimaryColor),
-          titleText: bookTitle,
-          leftIconButton: Icons.shopping_cart,
-          rightIconButton: Icons.more_vert),
+        backgroundColor: Theme.of(context).colorScheme.surface,
+        appBar: PrimaryAppbar(
+            leadingIconButton: Icons.arrow_back_ios,
+            leadingOnPressCallback: viewModel.navigationPop,
+            cartItem: viewModel.cartData?.lines?.length.toString(),
+            leftActionOnPressedCallBack: () {
+              viewModel.navigationto();
+            },
+            textStyle: Theme.of(context)
+                .textTheme
+                .titleLarge
+                ?.copyWith(color: kcPrimaryColor),
+            titleText: bookTitle,
+            leftIconButton: Icons.shopping_cart,
+            rightIconButton: Icons.more_vert),
 
-      /// Body
-      body: Stack(
-        children: [
-          SingleChildScrollView(
-            child: Column(children: [
-              /// Top section
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  /// Image
-                  Padding(
-                    padding: EdgeInsets.all(10.0.r),
-                    child: RoundedImage(
-                        height: 200.h,
-                        width: 150.w,
-                        imageUrl: data?.frontCover.toString() ??
-                            AppImage.networkBook),
-                  ),
+        /// Body
+        body: Stack(
+          children: [
+            SingleChildScrollView(
+              child: Column(children: [
+                /// Top section
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    /// Image
+                    Padding(
+                      padding: EdgeInsets.all(10.0.r),
+                      child: RoundedImage(
+                          height: 200.h,
+                          width: 150.w,
+                          imageUrl: data?.frontCover.toString() ??
+                              AppImage.networkBook),
+                    ),
 
-                  SizedBox(
-                    width: 200.w,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        ///  Nepali title
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 10.0.w, vertical: 5.h),
-                          child: data?.nepaliTitle == null
-                              ? Text(
-                                  data?.englishTitle.toString() ?? "No title",
-                                  style: Helpers.titleText(context),
-                                )
-                              : Text(
-                                  data?.nepaliTitle.toString() ?? "No title",
-                                  style: Helpers.titleText(context),
-                                ),
-                        ),
+                    SizedBox(
+                      width: 200.w,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          ///  Nepali title
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 10.0.w, vertical: 5.h),
+                            child: data?.nepaliTitle == null
+                                ? Text(
+                                    data?.englishTitle.toString() ?? "No title",
+                                    style: Helpers.titleText(context),
+                                  )
+                                : Text(
+                                    data?.nepaliTitle.toString() ?? "No title",
+                                    style: Helpers.titleText(context),
+                                  ),
+                          ),
 
-                        /// author title
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 10.0.r),
-                          child: data?.authors?[0].localizedName == null
-                              ? Text(data?.authors?[0].name ?? 'No title')
-                              : Text(
-                                  data?.authors?[0].localizedName.toString() ??
-                                      "No title",
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .headlineMedium
-                                      ?.copyWith(color: kcPrimaryColor),
-                                ),
-                        ),
+                          /// author title
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 10.0.r),
+                            child: data?.authors?[0].localizedName == null
+                                ? Text(data?.authors?[0].name ?? 'No title')
+                                : Text(
+                                    data?.authors?[0].localizedName
+                                            .toString() ??
+                                        "No title",
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headlineMedium
+                                        ?.copyWith(color: kcPrimaryColor),
+                                  ),
+                          ),
 
-                        /// catagorie
-                        Padding(
-                          padding: EdgeInsets.all(10.0.r),
-                          child: Container(
-                            decoration: BoxDecoration(
-                                color: kcPrimaryColor.withOpacity(0.2),
-                                borderRadius: BorderRadius.circular(10.r)),
-                            child: Padding(
-                              padding: EdgeInsets.all(12.h),
-                              child: Center(
-                                child: Text(
-                                  data?.categories?[0].name.toString() ??
-                                      "No title",
-                                  style:
-                                      Theme.of(context).textTheme.titleMedium,
+                          /// catagorie
+                          Padding(
+                            padding: EdgeInsets.all(10.0.r),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  color: kcPrimaryColor.withOpacity(0.2),
+                                  borderRadius: BorderRadius.circular(10.r)),
+                              child: Padding(
+                                padding: EdgeInsets.all(12.h),
+                                child: Center(
+                                  child: Text(
+                                    data?.categories?[0].name.toString() ??
+                                        "No title",
+                                    style:
+                                        Theme.of(context).textTheme.titleMedium,
+                                  ),
                                 ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-
-              /// Price container
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: GestureDetector(
-                  onTap: () {},
-                  child: Container(
-                    width: Helpers.getScreenWidth(context) * 0.9.w,
-                    height: 80.h,
-                    decoration: BoxDecoration(
-                        color: kcPrimaryColor.withOpacity(0.13),
-                        border: Border.all(color: kcPrimaryColor)),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        /// Price
-                        if (data?.hardcover != null)
-                          Text(
-                            "HardCover",
-                            style: Helpers.bodyLarge(context),
-                          )
-                        else
-                          Text("PaperBack", style: Helpers.bodyLarge(context)),
-                        if (data?.hardcover != null)
-                          Text(
-                            'Rs.${data?.hardcover?["mrp"].toString()}',
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyLarge
-                                ?.copyWith(color: kcPrimaryColor),
-                          )
-                        else
-                          Text('Rs.${data?.paperback?.mrp.toString()}',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyLarge
-                                  ?.copyWith(color: kcPrimaryColor)),
-
-                        if (data?.ebook != null)
-                          Text(
-                            "Ebook",
-                            style: Helpers.bodyLarge(context),
-                          )
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-
-              /// Description
-              data?.backCoverText != null
-                  ? SizedBox(
-                      width: Helpers.getScreenWidth(context),
-                      child: Text(
-                        textAlign: TextAlign.left,
-                        data?.backCoverText ?? "No Text here",
-                        style: Theme.of(context).textTheme.bodyLarge,
-                      ),
-                    )
-                  : const SizedBox(),
-
-              verticalSpaceLarge,
-            ]),
-          ),
-          Positioned(
-              bottom: 0,
-              child: Container(
-                color: Colors.white,
-                width: Helpers.getScreenWidth(context),
-                height: 50.h,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: PrimaryButton(
-                        height: 90,
-                        text: 'Add to cart',
-                        onPressedCallBack: viewModel.addTocart,
+                        ],
                       ),
                     ),
                   ],
                 ),
-              )
-              /*  */
-              )
-        ],
-      ),
-    );
+
+                /// Price container
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: GestureDetector(
+                    onTap: () {},
+                    child: SizedBox(
+                      height: 90.h,
+                      width: Helpers.getScreenWidth(context),
+
+                      ///
+                      /////
+                      ///
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          /// Hardcover
+                          if (data?.hardcover != null)
+                            Container(
+                              width: data?.paperback != null
+                                  ? Helpers.getScreenWidth(context) * 0.48
+                                  : Helpers.getScreenWidth(context) * 0.9,
+                              height: 70.h,
+                              decoration: BoxDecoration(
+                                  color: kcPrimaryColor.withOpacity(0.13),
+                                  border: Border.all(color: kcPrimaryColor)),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  /// Price
+                                  Text(
+                                    "HardCover",
+                                    style: Helpers.bodyLarge(context),
+                                  ),
+                                  Text(
+                                    'Rs.${data?.hardcover?["mrp"].toString()}',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyLarge
+                                        ?.copyWith(color: kcPrimaryColor),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          //PaperBack
+                          if (data?.paperback != null)
+                            Container(
+                              height: 70.h,
+                              width: data?.hardcover != null
+                                  ? Helpers.getScreenWidth(context) * 0.48
+                                  : Helpers.getScreenWidth(context) * 0.9,
+                              decoration: BoxDecoration(
+                                  color: kcPrimaryColor.withOpacity(0.13),
+                                  border: Border.all(color: kcPrimaryColor)),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text("PaperBack",
+                                      style: Helpers.bodyLarge(context)),
+                                  Text('Rs.${data?.paperback?.mrp.toString()}',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyLarge
+                                          ?.copyWith(color: kcPrimaryColor)),
+
+                                  // if (data?.ebook != null)
+                                  //   Text(
+                                  //     "Ebook",
+                                  //     style: Helpers.bodyLarge(context),
+                                  //   )
+                                ],
+                              ),
+                            ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+
+                /// Description
+                data?.backCoverText != null
+                    ? SizedBox(
+                        width: Helpers.getScreenWidth(context),
+                        child: Text(
+                          textAlign: TextAlign.left,
+                          data?.backCoverText ?? "No Text here",
+                          style: Theme.of(context).textTheme.bodyLarge,
+                        ),
+                      )
+                    : const SizedBox(),
+
+                verticalSpaceLarge,
+              ]),
+            ),
+          ],
+        ),
+        bottomNavigationBar: SizedBox(
+          width: Helpers.getScreenWidth(context),
+          height: 70.h,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Padding(
+                padding: EdgeInsets.all(10.0.r),
+                child: PrimaryButton(
+                  height: 90.r,
+                  text: 'Add to cart',
+                  onPressedCallBack: viewModel.addTocart,
+                ),
+              ),
+            ],
+          ),
+        ));
   }
 
   @override

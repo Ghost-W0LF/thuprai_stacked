@@ -12,7 +12,7 @@ class CartViewModel extends BaseViewModel with Initialisable {
   GetCartModel? cart = GetCartModel();
 
   final repositort = locator<CartrepositoryimplementationService>();
-  final Debouncer _debouncer = Debouncer(milliseconds: 400);
+  final Debouncer _debouncer = Debouncer(milliseconds: 300);
   int increaseCounter = 0;
   int decreaseCount = 0;
 

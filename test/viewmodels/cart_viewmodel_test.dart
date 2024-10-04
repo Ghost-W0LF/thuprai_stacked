@@ -11,7 +11,7 @@ void main() {
   group('CartViewModel Tests -', () {
     late CartViewModel viewModel;
     late CartrepositoryimplementationService cartRepository;
-    
+
     setUp(() {
       registerServices();
       viewModel = CartViewModel();
@@ -48,6 +48,5 @@ void main() {
       // Assert
       expect(model, isNull);
     });
-
   });
 }

@@ -30,7 +30,7 @@ class SecondaryButton extends StatelessWidget {
             ),
           ),
           fixedSize: WidgetStateProperty.all(
-            Size(MediaQuery.of(context).size.width * 0.8.w, 50.h),
+            Size(MediaQuery.of(context).size.width * 0.85.w, 50.h),
           ),
           backgroundColor:
               WidgetStateProperty.all(Colors.grey.withOpacity(0.3)),

@@ -37,7 +37,7 @@ class SectionView extends StatelessWidget {
         padding: const EdgeInsets.all(10),
 
         /// height of the whole .ie parent container
-        height: 280,
+        height: 250,
         child: Column(
           children: [
             Row(
@@ -59,23 +59,26 @@ class SectionView extends StatelessWidget {
                   itemCount: dataLength,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
-                    return SizedBox(
-                      /// height of the
-                      width: 150,
-                      height: 100,
-                      // decoration:BoxDecoration(border: Border.all(color: Colors.red)),
-                      child: GestureDetector(
-                        onTap: onPressedBuilder?.call(index),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Expanded(
-                                child: RoundedImage(
-                                    height: 200,
-                                    width: 130,
-                                    imageUrl: imageUrlBuilder.call(index))),
-                            Text(titleBuilder.call(index)),
-                          ],
+                    return Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: SizedBox(
+                        /// height of the
+                        width: 100,
+                        height: 50,
+                        // decoration:BoxDecoration(border: Border.all(color: Colors.red)),
+                        child: GestureDetector(
+                          onTap: onPressedBuilder?.call(index),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Expanded(
+                                  child: RoundedImage(
+                                      height: 200,
+                                      width: 130,
+                                      imageUrl: imageUrlBuilder.call(index))),
+                              Text(titleBuilder.call(index)),
+                            ],
+                          ),
                         ),
                       ),
                     );

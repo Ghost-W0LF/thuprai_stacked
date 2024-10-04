@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:thuprai_stacked/base/utils/helpers.dart';
 import 'package:thuprai_stacked/ui/common/app_colors.dart';
 
 /// Creates a Primary Button
@@ -11,16 +12,15 @@ class PrimaryButton extends StatelessWidget {
   ///
   /// Creates a Primary Button with [text],[onPressedCallBack],[primaryColor],[height],[width].
   /// [isATextButtton] is set to false by default, set to true to make a text button.
-  PrimaryButton({
-    super.key,
-    this.text,
-    this.onPressedCallBack,
-    this.primaryColor = kcPrimaryColor,
-    this.width = 20,
-    this.height,
-    this.isATextButtton = false,
-    this.widgetKey
-  });
+  PrimaryButton(
+      {super.key,
+      this.text,
+      this.onPressedCallBack,
+      this.primaryColor = kcPrimaryColor,
+      this.width,
+      this.height,
+      this.isATextButtton = false,
+      this.widgetKey});
 
   /// Set the child ie. Text of the buttom
   final String? text;
@@ -35,12 +35,13 @@ class PrimaryButton extends StatelessWidget {
   final double? height;
 
   /// To set the width of the button
-  final double width;
+  final double? width;
 
   /// To set the button as text button
   bool isATextButtton;
-/// sets the widget key
- final Key? widgetKey;
+
+  /// sets the widget key
+  final Key? widgetKey;
   @override
   Widget build(BuildContext context) {
     return isATextButtton
@@ -48,7 +49,7 @@ class PrimaryButton extends StatelessWidget {
 
         ///TextButton
         TextButton(
-          key: widgetKey,
+            key: widgetKey,
             onPressed: onPressedCallBack,
             child: Center(
               child: Text(
@@ -64,14 +65,14 @@ class PrimaryButton extends StatelessWidget {
 
         ///ElevatedButton
         ElevatedButton(
-          key: widgetKey,
+            key: widgetKey,
             style: ButtonStyle(
               shape: WidgetStateProperty.all(RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10.r),
               )),
-              maximumSize: WidgetStateProperty.all(
-                Size(MediaQuery.of(context).size.width * 0.75.w, 40.h),
-              ),
+              fixedSize: WidgetStateProperty.all(Size(
+                  width ?? Helpers.getScreenWidth(context) * 0.8,
+                  height ?? 50.h)),
               backgroundColor: WidgetStateProperty.all(primaryColor),
             ),
             onPressed: onPressedCallBack,

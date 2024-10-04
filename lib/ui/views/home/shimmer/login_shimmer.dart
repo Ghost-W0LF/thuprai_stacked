@@ -49,15 +49,14 @@ class LoginShimmer extends StatelessWidget {
                 physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
-                itemCount: 20, // Adjust the count based on your needs
+                itemCount: 5, // Adjust the count based on your needs
                 itemBuilder: (context, index) {
                   return Padding(
                       padding: EdgeInsets.all(10.0.r),
-                      child: RoundedImage(
+                      child: Container(
                         height: 200.h,
                         width: 130.w,
                         color: Colors.white,
-                        imageUrl: 'null',
                       ));
                 },
               ),
