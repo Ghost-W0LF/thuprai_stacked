@@ -3,7 +3,7 @@ import 'package:integration_test/integration_test.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:thuprai_stacked/app/app.locator.dart';
 import 'package:thuprai_stacked/main.dart' as app;
-import 'package:thuprai_stacked/ui/views/home/home_view.dart';
+
 import '../login_robot.dart';
 
 void main() async {
@@ -14,7 +14,18 @@ void main() async {
   late LoginRobot loginRobot;
 
   group('E2E - ', () {
-    testWidgets('Authenticated Flow', (tester) async {
+    testWidgets('Unauthenticated Flow ', (tester) async {
+      await tester.pumpWidget(const app.MainApp());
+      loginRobot = LoginRobot(tester);
+      await tester.pumpAndSettle();
+      loginRobot.verify();
+      await loginRobot.enterEmail("Abhinab1221@gmail.com");
+      await loginRobot.enterPassword("akkhatri123");
+      await loginRobot.tapLoginButton();
+      await tester.pumpAndSettle();
+      loginRobot.verifyBadRequest();
+    });
+    testWidgets('Authenticated Flow to cart', (tester) async {
       await tester.pumpWidget(const app.MainApp());
       loginRobot = LoginRobot(tester);
       await tester.pumpAndSettle();
@@ -23,15 +34,26 @@ void main() async {
       await loginRobot.enterPassword("akkhatri");
       await loginRobot.tapLoginButton();
       await tester.pumpAndSettle();
-      expect(HomeView(), findsOneWidget);
+      await tester.pumpAndSettle();
+      loginRobot.verifyAppbar();
+      await loginRobot.tapCartIcon();
     });
-    testWidgets('Unauthenticated Flow', (tester) async {
+    testWidgets('Authenticated Flow to bookdetailView', (tester) async {
       await tester.pumpWidget(const app.MainApp());
       loginRobot = LoginRobot(tester);
+      await tester.pumpAndSettle();
       loginRobot.verify();
-      await loginRobot.enterEmail("");
-      await loginRobot.enterPassword("123455677");
+      await loginRobot.enterEmail("Abhinab1221@gmail.com");
+      await loginRobot.enterPassword("akkhatri");
       await loginRobot.tapLoginButton();
+      await tester.pumpAndSettle();
+      loginRobot.verifyAppbar();
+      await loginRobot.tabBook();
+      await loginRobot.tapAddTocart();
+      loginRobot.verifySnackBar();
+      await Future.delayed(Duration(seconds: 3));
+      await loginRobot.tapCartIcon();
+      await Future.delayed(Duration(seconds: 10));
     });
   });
 }

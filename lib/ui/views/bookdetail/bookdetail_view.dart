@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
+import 'package:thuprai_stacked/base/keys/key.dart';
 import 'package:thuprai_stacked/base/utils/helpers.dart';
 import 'package:thuprai_stacked/ui/common/app_colors.dart';
 import 'package:thuprai_stacked/ui/common/app_image.dart';
@@ -233,6 +234,7 @@ class BookdetailView extends StackedView<BookdetailViewModel> {
               Padding(
                 padding: EdgeInsets.all(10.0.r),
                 child: PrimaryButton(
+                  key: Key(addTocart),
                   height: 90.r,
                   text: 'Add to cart',
                   onPressedCallBack: viewModel.addTocart,

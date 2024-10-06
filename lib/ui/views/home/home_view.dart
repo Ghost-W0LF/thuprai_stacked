@@ -46,6 +46,7 @@ class HomeView extends StackedView<HomeViewModel> {
         /// display data when data is fetched
         backgroundColor: Theme.of(context).colorScheme.surface,
         appBar: PrimaryAppbar(
+          appBarKey: Key(appBarKey),
           leftIconButton: Icons.logout,
           cartItem: cartData?.lines?.length.toString(),
           rightActionOnPressedCallBack: () {
@@ -63,7 +64,6 @@ class HomeView extends StackedView<HomeViewModel> {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              
               // top section selector
               const SectionSelector(),
               verticalSpaceSmall,

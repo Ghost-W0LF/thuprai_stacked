@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:thuprai_stacked/ui/views/bookdetail/bookdetail_view.dart';
 import 'package:thuprai_stacked/widgets/primary_button.dart';
 import 'package:thuprai_stacked/widgets/rounded_image.dart';
 
@@ -34,10 +36,10 @@ class SectionView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        padding: const EdgeInsets.all(10),
+        padding: EdgeInsets.all(10.r),
 
         /// height of the whole .ie parent container
-        height: 250,
+        height: 250.h,
         child: Column(
           children: [
             Row(
@@ -60,11 +62,11 @@ class SectionView extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
                     return Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: EdgeInsets.all(8.0.r),
                       child: SizedBox(
                         /// height of the
-                        width: 100,
-                        height: 50,
+                        width: 100.w,
+                        height: 50.h,
                         // decoration:BoxDecoration(border: Border.all(color: Colors.red)),
                         child: GestureDetector(
                           onTap: onPressedBuilder?.call(index),
@@ -73,8 +75,9 @@ class SectionView extends StatelessWidget {
                             children: [
                               Expanded(
                                   child: RoundedImage(
-                                      height: 200,
-                                      width: 130,
+                                      key: Key('RoundedImage$index'),
+                                      height: 200.h,
+                                      width: 130.w,
                                       imageUrl: imageUrlBuilder.call(index))),
                               Text(titleBuilder.call(index)),
                             ],

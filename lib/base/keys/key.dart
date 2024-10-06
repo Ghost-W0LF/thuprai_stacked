@@ -9,3 +9,5 @@ const String loginErrorSnackBar = 'loginErrorSnackBar';
 
 /// home view
 const String homeviewKey = "homeView";
+const String appBarKey = 'appBarKey';
+const String addTocart = 'addTocart';

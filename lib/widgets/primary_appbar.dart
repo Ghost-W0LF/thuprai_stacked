@@ -32,7 +32,9 @@ class PrimaryAppbar extends StatelessWidget implements PreferredSizeWidget {
       this.rightActionOnPressedCallBack,
       this.textStyle,
       this.cartItem,
-      this.leadingOnPressCallback});
+      this.leadingOnPressCallback,
+      this.appBarKey
+      });
 
   /// Leading Icon Buttton [onPressed] Callback
   final VoidCallback? onPressedCallBack;
@@ -64,10 +66,12 @@ class PrimaryAppbar extends StatelessWidget implements PreferredSizeWidget {
 
   /// sets the text to show items in cart
   final String? cartItem;
+  final Key? appBarKey;
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      key: appBarKey,
       leading: leadingIconButton != null
           ? IconButton(
               onPressed: leadingOnPressCallback, icon: Icon(leadingIconButton))
