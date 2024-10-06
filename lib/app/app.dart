@@ -20,6 +20,7 @@ import 'package:thuprai_stacked/ui/views/bottom_navigation/bottom_navigation_vie
 import 'package:thuprai_stacked/ui/views/signup/signup_view.dart';
 import 'package:thuprai_stacked/ui/views/mylibrary/mylibrary_view.dart';
 import 'package:thuprai_stacked/ui/views/signup/repository/signup_repository_implementation_service.dart';
+import 'package:thuprai_stacked/ui/views/profile/profile_view.dart';
 // @stacked-import
 
 @StackedApp(
@@ -33,6 +34,7 @@ import 'package:thuprai_stacked/ui/views/signup/repository/signup_repository_imp
     MaterialRoute(page: BottomNavigationView),
     MaterialRoute(page: SignupView),
     MaterialRoute(page: MylibraryView),
+    MaterialRoute(page: ProfileView),
 // @stacked-route
   ],
   dependencies: [

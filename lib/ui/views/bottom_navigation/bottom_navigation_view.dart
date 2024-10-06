@@ -40,7 +40,7 @@ class BottomNavigationView extends StackedView<BottomNavigationViewModel> {
             label: AppText.myLibrary,
           ),
           NavigationDestination(
-            icon: Icon(Icons.more_horiz, color: Colors.black),
+            icon: Icon(Icons.person_outlined, color: Colors.black),
             label: AppText.more,
           ),
         ],

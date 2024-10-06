@@ -40,8 +40,8 @@ class LoginRobot {
     expect(loginView, findsAtLeast(1));
   }
 
-    void verifyHomeScreen() async{
+  void verifyHomeScreen() async {
     expect(HomeView(), findsOneWidget);
-        await tester.pumpAndSettle();
+    await tester.pumpAndSettle();
   }
 }

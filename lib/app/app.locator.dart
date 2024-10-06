@@ -45,6 +45,6 @@ Future<void> setupLocator({
   locator
       .registerLazySingleton(() => BookdetailrepositoryImplementationService());
   locator.registerLazySingleton(() => CartrepositoryimplementationService());
-  locator.registerLazySingleton(() => SnackbarService());
   locator.registerLazySingleton(() => SignupRepositoryImplementationService());
+  locator.registerLazySingleton(() => SnackbarService());
 }

@@ -112,15 +112,15 @@ class HomeView extends StackedView<HomeViewModel> {
               //bestsellingEbooks
               SectionView(
                   onPressedBuilder: (index) => () => viewModel.onPressedBook(
-                      data.bestsellingEbooks?[index].title ?? 'No Title',
+                      data.ebooks?[index].title ?? 'No Title',
                       index,
-                      data.bestsellingEbooks?[index].slug),
-                  sectionTitleText: "Bestselling Ebooks",
-                  dataLength: data.bestsellingEbooks?.length,
+                      data.ebooks?[index].slug),
+                  sectionTitleText: " Ebooks",
+                  dataLength: data.ebooks?.length,
                   titleBuilder: (index) =>
-                      data.bestsellingEbooks?[index].title ?? 'No Title',
+                      data.ebooks?[index].title ?? 'No Title',
                   imageUrlBuilder: (index) =>
-                      data.bestsellingEbooks?[index].frontCover ?? 'notext'),
+                      data.ebooks?[index].frontCover ?? 'notext'),
             ],
           ),
         ));

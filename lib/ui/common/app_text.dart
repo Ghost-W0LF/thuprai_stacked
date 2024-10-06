@@ -19,7 +19,7 @@ class AppText {
   static const String home = 'Home';
   static const String cart = 'Cart';
   static const String myLibrary = 'MyLibrary';
-  static const String more = 'More';
+  static const String more = 'Profile';
 
   //appBar
   static const String appBarTitle = 'thuprai';

@@ -33,8 +33,7 @@ class PrimaryAppbar extends StatelessWidget implements PreferredSizeWidget {
       this.textStyle,
       this.cartItem,
       this.leadingOnPressCallback,
-      this.appBarKey
-      });
+      this.appBarKey});
 
   /// Leading Icon Buttton [onPressed] Callback
   final VoidCallback? onPressedCallBack;
