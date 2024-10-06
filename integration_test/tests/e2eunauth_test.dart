@@ -53,7 +53,6 @@ void main() async {
       loginRobot.verifySnackBar();
       await Future.delayed(Duration(seconds: 3));
       await loginRobot.tapCartIcon();
-      await Future.delayed(Duration(seconds: 10));
     });
   });
 }
