@@ -90,7 +90,7 @@ class CartViewModel extends BaseViewModel with Initialisable {
       return cart;
     } catch (e) {
       debugPrint(e.toString());
-      return null;
+      rethrow;
     } finally {
       setBusy(false);
     }
