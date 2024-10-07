@@ -31,17 +31,10 @@ class LoginViewModel extends FormViewModel with $LoginView {
             email: emailController.text, password: passwordController.text));
         _navigation.replaceWithHomeView();
       } on DioException catch (e) {
-        if (e.response?.data["non_field_errors"]) {
-          (snackBar.showSnackbar(
-              title: "${e.response?.statusMessage.toString()}",
-              message: "Invalid Email or Password",
-              duration: const Duration(seconds: 2)));
-        } else {
-          snackBar.showSnackbar(
-              title: "${e.response?.statusMessage.toString()}",
-              message: "${e.response?.data.toString()}",
-              duration: const Duration(seconds: 2));
-        }
+        snackBar.showSnackbar(
+            title: "${e.response?.statusMessage.toString()}",
+            message: "${e.response?.data["non_field_errors"].toString()}",
+            duration: const Duration(seconds: 2));
       }
     }
   }

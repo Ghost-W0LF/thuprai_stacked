@@ -34,7 +34,7 @@ class MainApp extends StatelessWidget {
             themeMode: ThemeMode.system,
             theme: KAppTheme.lightTheme,
             darkTheme: KAppTheme.darkTheme,
-            initialRoute: Routes.loginView,
+            initialRoute: Routes.startupView,
             onGenerateRoute: StackedRouter().onGenerateRoute,
             navigatorKey: StackedService.navigatorKey,
             navigatorObservers: [
