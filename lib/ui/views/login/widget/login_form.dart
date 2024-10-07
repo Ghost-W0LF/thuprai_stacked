@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:thuprai_stacked/base/keys/key.dart';
+import 'package:thuprai_stacked/ui/common/key.dart';
 import 'package:thuprai_stacked/ui/common/app_colors.dart';
 import 'package:thuprai_stacked/ui/common/app_text.dart';
 import 'package:thuprai_stacked/ui/common/ui_helpers.dart';

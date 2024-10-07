@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:thuprai_stacked/base/keys/key.dart';
+import 'package:thuprai_stacked/ui/common/key.dart';
 import 'package:thuprai_stacked/ui/views/home/home_view.dart';
 
 class LoginRobot {

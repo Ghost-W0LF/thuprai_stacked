@@ -5,7 +5,7 @@ import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:thuprai_stacked/app/app.locator.dart';
 import 'package:thuprai_stacked/app/app.router.dart';
-import 'package:thuprai_stacked/base/keys/key.dart';
+import 'package:thuprai_stacked/ui/common/key.dart';
 import 'package:thuprai_stacked/base/validator/text_form_field_validator.dart';
 import 'package:thuprai_stacked/ui/common/app_image.dart';
 import 'package:thuprai_stacked/ui/common/app_text.dart';

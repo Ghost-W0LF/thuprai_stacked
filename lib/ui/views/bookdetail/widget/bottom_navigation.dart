@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:thuprai_stacked/base/keys/key.dart';
+import 'package:thuprai_stacked/ui/common/key.dart';
 import 'package:thuprai_stacked/base/utils/helpers.dart';
 import 'package:thuprai_stacked/ui/views/bookdetail/bookdetail_viewmodel.dart';
 import 'package:thuprai_stacked/widgets/primary_button.dart';
