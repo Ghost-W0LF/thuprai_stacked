@@ -1,17 +1,15 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import 'package:thuprai_stacked/app/app.locator.dart';
 import 'package:thuprai_stacked/base/debouncer/debounce.dart';
+import 'package:thuprai_stacked/base/wrapper/base_view_model_wrapper.dart';
 import 'package:thuprai_stacked/ui/views/cart/model/cart_patch_model.dart';
 import 'package:thuprai_stacked/ui/views/cart/model/get_cart_model.dart';
-import 'package:thuprai_stacked/ui/views/cart/repository/cartrepositoryimplementation_service.dart';
 
-class CartViewModel extends BaseViewModel with Initialisable {
+class CartViewModel extends BaseViewModelWrapper with Initialisable {
   /// Items of cart
   GetCartModel? cart = GetCartModel();
 
-  final repositort = locator<CartrepositoryimplementationService>();
   final Debouncer _debouncer = Debouncer(milliseconds: 300);
   int increaseCounter = 0;
   int decreaseCount = 0;

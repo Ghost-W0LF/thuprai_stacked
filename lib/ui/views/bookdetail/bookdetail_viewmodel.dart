@@ -2,30 +2,20 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
-import 'package:thuprai_stacked/app/app.locator.dart';
 import 'package:thuprai_stacked/app/app.router.dart';
+import 'package:thuprai_stacked/base/wrapper/base_view_model_wrapper.dart';
 import 'package:thuprai_stacked/ui/common/app_colors.dart';
 import 'package:thuprai_stacked/ui/views/bookdetail/model/book_model.dart';
-import 'package:thuprai_stacked/ui/views/bookdetail/repository/bookdetailrepository_implementation_service.dart';
 import 'package:thuprai_stacked/ui/views/cart/model/add_cart_request_model.dart';
 import 'package:thuprai_stacked/ui/views/cart/model/get_cart_model.dart';
-import 'package:thuprai_stacked/ui/views/cart/repository/cartrepositoryimplementation_service.dart';
 
-class BookdetailViewModel extends BaseViewModel with Initialisable {
+class BookdetailViewModel extends BaseViewModelWrapper with Initialisable {
   BookdetailViewModel({this.viewModelslug});
 
   String? viewModelslug;
   BookModel? bookModel = BookModel();
-  final _bookRepository =
-      locator.get<BookdetailrepositoryImplementationService>();
-  final snackBar = locator<SnackbarService>();
   GetCartModel? cartData = GetCartModel();
-
-  final _cartRepository = locator<CartrepositoryimplementationService>();
-  final navigation = locator<NavigationService>();
-
   final int quantity = 1;
-
   @override
   Future<void> initialise() async {
     await getBookData();
@@ -48,7 +38,7 @@ class BookdetailViewModel extends BaseViewModel with Initialisable {
   /// Add to cart
   Future<String> addTocart() async {
     try {
-      await _bookRepository.addToCart(AddCartRequest(
+      await bookRepository.addToCart(AddCartRequest(
           path: '/book/$viewModelslug/',
           quantity: quantity,
           url: bookModel?.hardcover != null
@@ -100,9 +90,9 @@ class BookdetailViewModel extends BaseViewModel with Initialisable {
     setBusy(true);
     try {
       final response =
-          await _bookRepository.getBookDetail(viewModelslug.toString());
+          await bookRepository.getBookDetail(viewModelslug.toString());
       bookModel = response;
-      final cartItem = await _cartRepository.getCart();
+      final cartItem = await cartRepository.getCart();
       cartData = cartItem;
     } catch (e) {
       debugPrint(e.toString());
