@@ -5,7 +5,6 @@ import 'package:thuprai_stacked/base/utils/helpers.dart';
 import 'package:thuprai_stacked/ui/views/bookdetail/bookdetail_viewmodel.dart';
 import 'package:thuprai_stacked/widgets/primary_button.dart';
 
-
 class BottomNavigation extends StatelessWidget {
   const BottomNavigation({super.key, this.viewModel});
   final BookdetailViewModel? viewModel;

@@ -48,6 +48,7 @@ class LoginView extends StackedView<LoginViewModel> with $LoginView {
           child: Column(
             children: [
               verticalSpaceMedium,
+
               /// Title Text
               Text(
                 AppText.loginTitle,
@@ -82,7 +83,7 @@ class LoginView extends StackedView<LoginViewModel> with $LoginView {
               ),
 
               /// Footter
-              Footer(viewModel:viewModel)
+              Footer(viewModel: viewModel)
             ],
           ),
         ),

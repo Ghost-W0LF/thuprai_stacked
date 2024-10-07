@@ -8,5 +8,4 @@ class Helpers {
   static getScreenHeight(BuildContext context) {
     return MediaQuery.of(context).size.height;
   }
-
 }

@@ -10,12 +10,11 @@ import 'package:thuprai_stacked/widgets/primary_text_form_field.dart';
 // ignore: must_be_immutable
 
 class LoginForm extends StatelessWidget {
-  const LoginForm({
-    super.key,
-    required this.emailController,
-    required this.passwordController,
-    this.viewModel
-  });
+  const LoginForm(
+      {super.key,
+      required this.emailController,
+      required this.passwordController,
+      this.viewModel});
 
   final TextEditingController emailController;
   final TextEditingController passwordController;
@@ -69,4 +68,3 @@ class LoginForm extends StatelessWidget {
     );
   }
 }
-

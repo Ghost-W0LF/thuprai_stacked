@@ -4,11 +4,7 @@ import 'package:thuprai_stacked/ui/views/home/model/home_model.dart';
 import 'package:thuprai_stacked/widgets/section_view.dart';
 
 class EbookSection extends StatelessWidget {
-  const EbookSection({
-    super.key,
-    required this.data,
-    this.viewModel
-  });
+  const EbookSection({super.key, required this.data, this.viewModel});
   final HomeViewModel? viewModel;
 
   final HomeModel? data;

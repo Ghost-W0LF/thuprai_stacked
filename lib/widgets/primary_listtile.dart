@@ -3,7 +3,6 @@ import 'package:thuprai_stacked/base/theme/custome_theme/app_text_theme.dart';
 
 /// Create ListTile
 class PrimaryListTile extends StatelessWidget {
-  
   const PrimaryListTile(
       {super.key,
       required this.title,

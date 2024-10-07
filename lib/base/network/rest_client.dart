@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/error_logger.dart';
 import 'package:retrofit/http.dart';
-import 'package:thuprai_stacked/base/network/app_url.dart';
 import 'package:thuprai_stacked/ui/views/bookdetail/model/book_model.dart';
 import 'package:thuprai_stacked/ui/views/cart/model/add_cart_request_model.dart';
 import 'package:thuprai_stacked/ui/views/cart/model/cart_patch_model.dart';
@@ -14,7 +13,7 @@ import 'package:thuprai_stacked/ui/views/signup/model/signup_response_model.dart
 
 part 'rest_client.g.dart';
 
-@RestApi(baseUrl: AppUrl.baseUrl)
+@RestApi()
 abstract class RestClient {
   factory RestClient(Dio dio, {String? baseUrl}) = _RestClient;
 

@@ -49,7 +49,7 @@ class HomeViewModel extends BaseViewModelWrapper with Initialisable {
     return featchedDataa;
   }
 
- void onPressedBook(String bookTitle, int index, String? slugs) {
+  void onPressedBook(String bookTitle, int index, String? slugs) {
     navigation.replaceWithBookdetailView(bookTitle: bookTitle, slugs: slugs);
   }
 }

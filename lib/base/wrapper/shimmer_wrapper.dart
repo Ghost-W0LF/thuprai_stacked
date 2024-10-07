@@ -6,9 +6,4 @@ abstract class BaseViewmodelWrapper extends BaseViewModel {
   final navigationService = locator<NavigationService>();
   final dialogService = locator<DialogService>();
   final bottomSheetService = locator<BottomSheetService>();
-
-
-
-    
-  }
-
+}

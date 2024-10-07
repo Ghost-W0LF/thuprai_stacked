@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:thuprai_stacked/base/utils/helpers.dart';
@@ -21,8 +20,7 @@ class BottomSection extends StatelessWidget {
       bottom: 5.h,
       child: Container(
         width: Helpers.getScreenWidth(context),
-        decoration:
-            BoxDecoration(color: kcPrimaryColor.withOpacity(0.2)),
+        decoration: BoxDecoration(color: kcPrimaryColor.withOpacity(0.2)),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,

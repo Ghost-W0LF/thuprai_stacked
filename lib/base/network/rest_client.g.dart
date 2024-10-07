@@ -13,9 +13,7 @@ class _RestClient implements RestClient {
     this._dio, {
     this.baseUrl,
     this.errorLogger,
-  }) {
-    baseUrl ??= 'https://tbe.thuprai.com/v1/';
-  }
+  });
 
   final Dio _dio;
 

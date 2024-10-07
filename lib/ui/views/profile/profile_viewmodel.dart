@@ -6,5 +6,4 @@ import 'package:thuprai_stacked/ui/views/login/repository/loginrepository_implem
 class ProfileViewModel extends BaseViewModel {
   final loginRepository = locator<LoginrepositoryImplementationService>();
   LoginResponseModel? loginResponse = LoginResponseModel();
-
 }

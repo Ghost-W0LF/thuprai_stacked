@@ -61,9 +61,7 @@ void main() {
       // Arrange
       when(loginRepository.loginRepository(LoginRequestModel(
               email: 'Abhinab1221@gmail.com', password: 'akkhatri')))
-          .thenAnswer((_) async {
-            
-          });
+          .thenAnswer((_) async {});
 
       // Act
       await model.requestLogin();
