@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:thuprai_stacked/base/utils/helpers.dart';
+import 'package:thuprai_stacked/base/theme/custome_theme/app_text_theme.dart';
 import 'package:thuprai_stacked/ui/common/app_text.dart';
 import 'package:thuprai_stacked/ui/views/home/home_viewmodel.dart';
 import 'package:thuprai_stacked/widgets/primary_listtile.dart';
@@ -16,7 +16,7 @@ class HomeDrawer extends StatelessWidget {
           child: Center(
         child: Text(
           AppText.thuprai,
-          style: Helpers.headlineLarg(context),
+          style: AppTextTheme.headlineLarge(context),
         ),
       )),
 

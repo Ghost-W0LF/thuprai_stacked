@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
+import 'package:thuprai_stacked/base/theme/custome_theme/app_text_theme.dart';
 import 'package:thuprai_stacked/base/utils/helpers.dart';
 import 'package:thuprai_stacked/ui/common/app_colors.dart';
 import 'package:thuprai_stacked/ui/common/app_image.dart';
@@ -83,11 +84,11 @@ class BookdetailView extends StackedView<BookdetailViewModel> {
                         child: data?.nepaliTitle == null
                             ? Text(
                                 data?.englishTitle.toString() ?? "No title",
-                                style: Helpers.titleText(context),
+                                style: AppTextTheme.headlineMedium(context),
                               )
                             : Text(
                                 data?.nepaliTitle.toString() ?? "No title",
-                                style: Helpers.titleText(context),
+                                style: AppTextTheme.headlineMedium(context),
                               ),
                       ),
 
@@ -158,7 +159,7 @@ class BookdetailView extends StackedView<BookdetailViewModel> {
                             /// Price
                             Text(
                               "HardCover",
-                              style: Helpers.bodyLarge(context),
+                              style: AppTextTheme.bodyLarge(context),
                             ),
                             Text(
                               'Rs.${data?.hardcover?["mrp"].toString()}',
@@ -184,7 +185,7 @@ class BookdetailView extends StackedView<BookdetailViewModel> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text("PaperBack",
-                                style: Helpers.bodyLarge(context)),
+                                style: AppTextTheme.bodyLarge(context)),
                             Text('Rs.${data?.paperback?.mrp.toString()}',
                                 style: Theme.of(context)
                                     .textTheme
@@ -208,7 +209,7 @@ class BookdetailView extends StackedView<BookdetailViewModel> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("ebook", style: Helpers.bodyLarge(context)),
+                    Text("ebook", style: AppTextTheme.bodyLarge(context)),
                     Text('Rs.${data?.ebook?.mrp.toString()}',
                         style: Theme.of(context)
                             .textTheme

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:thuprai_stacked/base/utils/helpers.dart';
+import 'package:thuprai_stacked/base/theme/custome_theme/app_text_theme.dart';
 
 /// Create ListTile
 class PrimaryListTile extends StatelessWidget {
@@ -30,7 +30,7 @@ class PrimaryListTile extends StatelessWidget {
       leading: Icon(leadingIconData),
       title: Text(
         title,
-        style: Helpers.titleLarge(context),
+        style: AppTextTheme.titleLarge(context),
       ),
       trailing: Icon(tralingIconData),
     );
