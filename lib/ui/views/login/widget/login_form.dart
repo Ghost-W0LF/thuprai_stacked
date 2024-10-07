@@ -8,12 +8,19 @@ import 'package:thuprai_stacked/ui/views/login/login_viewmodel.dart';
 import 'package:thuprai_stacked/widgets/primary_text_form_field.dart';
 
 // ignore: must_be_immutable
-class LoginForm extends StatelessWidget with $LoginView {
-  LoginForm({
+
+class LoginForm extends StatelessWidget {
+  const LoginForm({
     super.key,
-    required this.viewmodel,
+    required this.emailController,
+    required this.passwordController,
+    this.viewModel
   });
-  LoginViewModel viewmodel;
+
+  final TextEditingController emailController;
+  final TextEditingController passwordController;
+  final LoginViewModel? viewModel;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -28,10 +35,10 @@ class LoginForm extends StatelessWidget with $LoginView {
             labelText: AppText.email,
             hintText: AppText.email,
           ),
-          if (viewmodel.hasEmailValidationMessage) ...[
+          if (viewModel!.hasEmailValidationMessage) ...[
             Text(
               textAlign: TextAlign.left,
-              viewmodel.emailValidationMessage!,
+              viewModel!.emailValidationMessage!,
               style: const TextStyle(
                 color: kcPrimaryColor,
                 fontSize: 10,
@@ -47,9 +54,9 @@ class LoginForm extends StatelessWidget with $LoginView {
             hintText: AppText.password,
             haveSuffixIcon: true,
           ),
-          if (viewmodel.hasPasswordValidationMessage) ...[
+          if (viewModel!.hasPasswordValidationMessage) ...[
             Text(
-              viewmodel.passwordValidationMessage!,
+              viewModel!.passwordValidationMessage!,
               style: const TextStyle(
                 color: kcPrimaryColor,
                 fontSize: 10,
@@ -62,3 +69,4 @@ class LoginForm extends StatelessWidget with $LoginView {
     );
   }
 }
+

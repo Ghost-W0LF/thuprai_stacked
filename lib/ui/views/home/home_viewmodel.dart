@@ -1,34 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import 'package:stacked_services/stacked_services.dart';
 import 'package:thuprai_stacked/app/app.locator.dart';
 import 'package:thuprai_stacked/app/app.router.dart';
 import 'package:thuprai_stacked/base/network/retro_fit_injection.dart';
-import 'package:thuprai_stacked/services/securestorage_service.dart';
+import 'package:thuprai_stacked/base/wrapper/base_view_model_wrapper.dart';
 import 'package:thuprai_stacked/ui/views/cart/model/get_cart_model.dart';
 import 'package:thuprai_stacked/ui/views/cart/repository/cartrepositoryimplementation_service.dart';
 import 'package:thuprai_stacked/ui/views/home/model/home_model.dart';
 import 'package:thuprai_stacked/ui/views/home/repository/homerepositort_implementation_service.dart';
 
-class HomeViewModel extends BaseViewModel with Initialisable {
+class HomeViewModel extends BaseViewModelWrapper with Initialisable {
   final _homeRepository = locator<HomerepositortImplementationService>();
   final _cartRepository = locator<CartrepositoryimplementationService>();
-  final _navigation = locator<NavigationService>();
 
-  final tokenStorage = locator<SecurestorageService>();
   @override
   Future<void> initialise() async {
     await getHomeData();
   }
 
   void navigatetoCart() {
-    _navigation.navigateToCartView();
+    navigation.navigateToCartView();
   }
 
   void logout() {
     restClient.logout();
     tokenStorage.deleteToken();
-    _navigation.replaceWithLoginView();
+    navigation.replaceWithLoginView();
   }
 
   HomeModel? featchedDataa = HomeModel();
@@ -52,7 +49,7 @@ class HomeViewModel extends BaseViewModel with Initialisable {
     return featchedDataa;
   }
 
-  onPressedBook(String bookTitle, int index, String? slugs) {
-    _navigation.replaceWithBookdetailView(bookTitle: bookTitle, slugs: slugs);
+ void onPressedBook(String bookTitle, int index, String? slugs) {
+    navigation.replaceWithBookdetailView(bookTitle: bookTitle, slugs: slugs);
   }
 }
