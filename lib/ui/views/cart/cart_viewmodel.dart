@@ -33,7 +33,7 @@ class CartViewModel extends BaseViewModelWrapper with Initialisable {
   /// To delete item
   Future<void> deleteItem(int index) async {
     try {
-      repositort.deleteCart(
+      cartRepositort.deleteCart(
           cart?.id.toString() ?? '', cart?.lines?[index].id.toString() ?? '');
       _debouncer.run(() async {
         await getCartData();
@@ -48,7 +48,7 @@ class CartViewModel extends BaseViewModelWrapper with Initialisable {
     int quantity = cart?.lines?[index].quantity ?? 1;
 
     try {
-      repositort.updateCart(
+      cartRepositort.updateCart(
           CartPatchModel(quantity: quantity + increaseCounter),
           cart?.id.toString() ?? '',
           cart?.lines?[index].id.toString() ?? '');
@@ -68,7 +68,7 @@ class CartViewModel extends BaseViewModelWrapper with Initialisable {
     int quantity = cart?.lines?[index].quantity ?? 1;
 
     try {
-      repositort.updateCart(CartPatchModel(quantity: quantity + decreaseCount),
+      cartRepositort.updateCart(CartPatchModel(quantity: quantity + decreaseCount),
           cart?.id.toString() ?? '', cart?.lines?[index].id.toString() ?? '');
       _debouncer.run(() async {
         decreaseCount = 0;
@@ -83,7 +83,7 @@ class CartViewModel extends BaseViewModelWrapper with Initialisable {
   Future<GetCartModel?> getCartData() async {
     setBusy(true);
     try {
-      final fetchedData = await repositort.getCart();
+      final fetchedData = await cartRepositort.getCart();
       cart = fetchedData;
       return cart;
     } catch (e) {

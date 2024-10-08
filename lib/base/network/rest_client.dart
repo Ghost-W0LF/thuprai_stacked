@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/error_logger.dart';
 import 'package:retrofit/http.dart';
+import 'package:thuprai_stacked/ui/views/allbook/model/all_book_model.dart';
 import 'package:thuprai_stacked/ui/views/bookdetail/model/book_model.dart';
 import 'package:thuprai_stacked/ui/views/cart/model/add_cart_request_model.dart';
 import 'package:thuprai_stacked/ui/views/cart/model/cart_patch_model.dart';
@@ -28,11 +29,12 @@ abstract class RestClient {
 
   @GET("book/{slug}")
   Future<BookModel> getBookData(@Path("slug") String slug);
-
   @GET('index/')
   Future<HomeModel> getHomeData();
   @GET('api/basket/')
   Future<GetCartModel> getCart();
+  @GET('books/audiobooks/?page=1')
+  Future<AllBookModel> getAllBook();
 
   @DELETE("api/baskets/{cartId}/lines/{linesId}/")
   Future<void> deleteCart(

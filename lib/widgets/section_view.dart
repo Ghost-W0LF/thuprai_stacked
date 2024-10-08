@@ -14,7 +14,8 @@ class SectionView extends StatelessWidget {
       required this.imageUrlBuilder,
       required this.dataLength,
       required this.sectionTitleText,
-      this.onPressedBuilder});
+      this.onPressedBuilder,
+      this.onPressedCallBack});
 
   /// Sets the string title to be shown under the book. Use callback Function to get the index from the child ie.Sectionview and pass the index to use by the parent
   final String Function(int index) titleBuilder;
@@ -31,7 +32,7 @@ class SectionView extends StatelessWidget {
   final String sectionTitleText;
 
   /// call back onTap method on the container .ie(book)
-
+  final VoidCallback? onPressedCallBack;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -51,7 +52,7 @@ class SectionView extends StatelessWidget {
                 PrimaryButton(
                   isATextButtton: true,
                   text: "View All",
-                  onPressedCallBack: () {},
+                  onPressedCallBack: onPressedCallBack,
                 )
               ],
             ),

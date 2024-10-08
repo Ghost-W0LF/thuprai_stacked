@@ -148,7 +148,7 @@ class BookdetailView extends StackedView<BookdetailViewModel> {
                       Container(
                         width: data?.paperback != null
                             ? Helpers.getScreenWidth(context) * 0.45
-                            : Helpers.getScreenWidth(context) * 0.9,
+                            : Helpers.getScreenWidth(context) * 0.95,
                         height: 70.h,
                         decoration: BoxDecoration(
                             color: kcPrimaryColor.withOpacity(0.13),
@@ -177,7 +177,7 @@ class BookdetailView extends StackedView<BookdetailViewModel> {
                         height: 70.h,
                         width: data?.hardcover != null
                             ? Helpers.getScreenWidth(context) * 0.48
-                            : Helpers.getScreenWidth(context) * 0.9,
+                            : Helpers.getScreenWidth(context) * 0.95,
                         decoration: BoxDecoration(
                             color: kcPrimaryColor.withOpacity(0.13),
                             border: Border.all(color: kcPrimaryColor)),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:thuprai_stacked/app/app.router.dart';
 import 'package:thuprai_stacked/ui/views/home/home_viewmodel.dart';
 import 'package:thuprai_stacked/ui/views/home/model/home_model.dart';
 import 'package:thuprai_stacked/widgets/section_view.dart';
@@ -11,6 +12,7 @@ class NewRelease extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SectionView(
+      onPressedCallBack: viewModel!.navigation.replaceWithAllbookView,
       onPressedBuilder: (index) => () => viewModel?.onPressedBook(
           data?.newReleases?[index].title ?? 'No Title',
           index,

@@ -5,10 +5,11 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:flutter/material.dart' as _i12;
+import 'package:flutter/material.dart' as _i13;
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i13;
+import 'package:stacked_services/stacked_services.dart' as _i14;
+import 'package:thuprai_stacked/ui/views/allbook/allbook_view.dart' as _i12;
 import 'package:thuprai_stacked/ui/views/bookdetail/bookdetail_view.dart'
     as _i6;
 import 'package:thuprai_stacked/ui/views/bottom_navigation/bottom_navigation_view.dart'
@@ -43,6 +44,8 @@ class Routes {
 
   static const profileView = '/profile-view';
 
+  static const allbookView = '/allbook-view';
+
   static const all = <String>{
     startupView,
     uikitView,
@@ -54,6 +57,7 @@ class Routes {
     signupView,
     mylibraryView,
     profileView,
+    allbookView,
   };
 }
 
@@ -99,17 +103,21 @@ class StackedRouter extends _i1.RouterBase {
       Routes.profileView,
       page: _i11.ProfileView,
     ),
+    _i1.RouteDef(
+      Routes.allbookView,
+      page: _i12.AllbookView,
+    ),
   ];
 
   final _pagesMap = <Type, _i1.StackedRouteFactory>{
     _i2.StartupView: (data) {
-      return _i12.MaterialPageRoute<dynamic>(
+      return _i13.MaterialPageRoute<dynamic>(
         builder: (context) => const _i2.StartupView(),
         settings: data,
       );
     },
     _i3.UikitView: (data) {
-      return _i12.MaterialPageRoute<dynamic>(
+      return _i13.MaterialPageRoute<dynamic>(
         builder: (context) => const _i3.UikitView(),
         settings: data,
       );
@@ -118,52 +126,58 @@ class StackedRouter extends _i1.RouterBase {
       final args = data.getArgs<LoginViewArguments>(
         orElse: () => const LoginViewArguments(),
       );
-      return _i12.MaterialPageRoute<dynamic>(
+      return _i13.MaterialPageRoute<dynamic>(
         builder: (context) => _i4.LoginView(key: args.key),
         settings: data,
       );
     },
     _i5.HomeView: (data) {
-      return _i12.MaterialPageRoute<dynamic>(
+      return _i13.MaterialPageRoute<dynamic>(
         builder: (context) => const _i5.HomeView(),
         settings: data,
       );
     },
     _i6.BookdetailView: (data) {
       final args = data.getArgs<BookdetailViewArguments>(nullOk: false);
-      return _i12.MaterialPageRoute<dynamic>(
+      return _i13.MaterialPageRoute<dynamic>(
         builder: (context) => _i6.BookdetailView(
             key: args.key, bookTitle: args.bookTitle, slugs: args.slugs),
         settings: data,
       );
     },
     _i7.CartView: (data) {
-      return _i12.MaterialPageRoute<dynamic>(
+      return _i13.MaterialPageRoute<dynamic>(
         builder: (context) => const _i7.CartView(),
         settings: data,
       );
     },
     _i8.BottomNavigationView: (data) {
-      return _i12.MaterialPageRoute<dynamic>(
+      return _i13.MaterialPageRoute<dynamic>(
         builder: (context) => const _i8.BottomNavigationView(),
         settings: data,
       );
     },
     _i9.SignupView: (data) {
-      return _i12.MaterialPageRoute<dynamic>(
+      return _i13.MaterialPageRoute<dynamic>(
         builder: (context) => const _i9.SignupView(),
         settings: data,
       );
     },
     _i10.MylibraryView: (data) {
-      return _i12.MaterialPageRoute<dynamic>(
+      return _i13.MaterialPageRoute<dynamic>(
         builder: (context) => const _i10.MylibraryView(),
         settings: data,
       );
     },
     _i11.ProfileView: (data) {
-      return _i12.MaterialPageRoute<dynamic>(
+      return _i13.MaterialPageRoute<dynamic>(
         builder: (context) => const _i11.ProfileView(),
+        settings: data,
+      );
+    },
+    _i12.AllbookView: (data) {
+      return _i13.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i12.AllbookView(),
         settings: data,
       );
     },
@@ -179,7 +193,7 @@ class StackedRouter extends _i1.RouterBase {
 class LoginViewArguments {
   const LoginViewArguments({this.key});
 
-  final _i12.Key? key;
+  final _i13.Key? key;
 
   @override
   String toString() {
@@ -205,7 +219,7 @@ class BookdetailViewArguments {
     this.slugs,
   });
 
-  final _i12.Key? key;
+  final _i13.Key? key;
 
   final String bookTitle;
 
@@ -230,7 +244,7 @@ class BookdetailViewArguments {
   }
 }
 
-extension NavigatorStateExtension on _i13.NavigationService {
+extension NavigatorStateExtension on _i14.NavigationService {
   Future<dynamic> navigateToStartupView([
     int? routerId,
     bool preventDuplicates = true,
@@ -260,7 +274,7 @@ extension NavigatorStateExtension on _i13.NavigationService {
   }
 
   Future<dynamic> navigateToLoginView({
-    _i12.Key? key,
+    _i13.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -290,7 +304,7 @@ extension NavigatorStateExtension on _i13.NavigationService {
   }
 
   Future<dynamic> navigateToBookdetailView({
-    _i12.Key? key,
+    _i13.Key? key,
     required String bookTitle,
     String? slugs,
     int? routerId,
@@ -378,6 +392,20 @@ extension NavigatorStateExtension on _i13.NavigationService {
         transition: transition);
   }
 
+  Future<dynamic> navigateToAllbookView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.allbookView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
   Future<dynamic> replaceWithStartupView([
     int? routerId,
     bool preventDuplicates = true,
@@ -407,7 +435,7 @@ extension NavigatorStateExtension on _i13.NavigationService {
   }
 
   Future<dynamic> replaceWithLoginView({
-    _i12.Key? key,
+    _i13.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -437,7 +465,7 @@ extension NavigatorStateExtension on _i13.NavigationService {
   }
 
   Future<dynamic> replaceWithBookdetailView({
-    _i12.Key? key,
+    _i13.Key? key,
     required String bookTitle,
     String? slugs,
     int? routerId,
@@ -519,6 +547,20 @@ extension NavigatorStateExtension on _i13.NavigationService {
         transition,
   ]) async {
     return replaceWith<dynamic>(Routes.profileView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithAllbookView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.allbookView,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

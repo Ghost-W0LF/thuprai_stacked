@@ -64,48 +64,43 @@ class HomeView extends StackedView<HomeViewModel> {
         drawer: HomeDrawer(
           viewModel: viewModel,
         ),
-        body: StreamBuilder(
-          stream: null,
-          builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-            return SingleChildScrollView(
-              child: Column(
-                children: [
-                  // top section selector
-                  const SectionSelector(),
-                  verticalSpaceSmall,
-                  // top featured List
-                  BannerSlider(
-                    listLength: data.featured?.length ?? 0,
-                    imageBuilder: (index) =>
-                        data.featured?[index].image ?? 'No data',
-                  ),
-
-                  // second section selector
-                  const SectionSelector(),
-
-                  //newRelease section
-                  NewRelease(data: data, viewModel: viewModel),
-
-                  verticalSpaceSmall,
-                  // third section selector
-                  const SectionSelector(),
-                  //AudioBook
-                  AudioBooksection(
-                    data: data,
-                    viewModel: viewModel,
-                  ),
-                  verticalSpaceSmall,
-                  // fourth section selector
-                  const SectionSelector(),
-                  //bestsellingEbooks
-                  EbookSection(
-                    data: data,
-                    viewModel: viewModel,
-                  ),
-                ],
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              // top section selector
+              const SectionSelector(),
+              verticalSpaceSmall,
+              // top featured List
+              BannerSlider(
+                listLength: data.featured?.length ?? 0,
+                imageBuilder: (index) =>
+                    data.featured?[index].image ?? 'No data',
               ),
-            );
-          },
+
+              // second section selector
+              const SectionSelector(),
+
+              //newRelease section
+              NewRelease(data: data, viewModel: viewModel),
+
+              verticalSpaceSmall,
+              // third section selector
+              const SectionSelector(),
+              //AudioBook
+              AudioBooksection(
+                data: data,
+                viewModel: viewModel,
+              ),
+              verticalSpaceSmall,
+              // fourth section selector
+              const SectionSelector(),
+              //bestsellingEbooks
+              EbookSection(
+                data: data,
+                viewModel: viewModel,
+              ),
+            ],
+          ),
         ));
   }
 
