@@ -1482,7 +1482,6 @@ class MockHomeViewModel extends _i1.Mock implements _i31.HomeViewModel {
         ),
       ) as _i10.CartrepositoryimplementationService);
 
-  @override
   _i10.CartrepositoryimplementationService get repositort =>
       (super.noSuchMethod(
         Invocation.getter(#repositort),
@@ -2449,7 +2448,6 @@ class MockBookdetailViewModel extends _i1.Mock
         ),
       ) as _i10.CartrepositoryimplementationService);
 
-  @override
   _i10.CartrepositoryimplementationService get repositort =>
       (super.noSuchMethod(
         Invocation.getter(#repositort),

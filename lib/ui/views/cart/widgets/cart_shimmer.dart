@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:thuprai_stacked/base/utils/helpers.dart';
 import 'package:thuprai_stacked/base/wrapper/shimmer_wrapper.dart';
-import 'package:thuprai_stacked/ui/common/app_colors.dart';
 import 'package:thuprai_stacked/ui/common/ui_helpers.dart';
-import 'package:thuprai_stacked/widgets/primary_appbar.dart';
 
 class CartShimmer extends StatelessWidget {
   const CartShimmer({super.key});

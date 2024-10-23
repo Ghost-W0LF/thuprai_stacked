@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
+import 'package:thuprai_stacked/base/theme/custome_theme/app_text_theme.dart';
 import 'package:thuprai_stacked/ui/common/app_image.dart';
 import 'package:thuprai_stacked/ui/common/ui_helpers.dart';
-import 'package:thuprai_stacked/widgets/primary_appbar.dart';
 
 import 'profile_viewmodel.dart';
 
@@ -17,7 +17,12 @@ class ProfileView extends StackedView<ProfileViewModel> {
     Widget? child,
   ) {
     return Scaffold(
-        appBar: PrimaryAppbar(),
+        appBar: AppBar(
+          title: Text(
+            "thuprai",
+            style: AppTextTheme.headlineLarge(context),
+          ),
+        ),
         backgroundColor: Theme.of(context).colorScheme.surface,
         body: SingleChildScrollView(
             child: Padding(
