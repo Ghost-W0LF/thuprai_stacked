@@ -13,6 +13,7 @@ dependencies:
   dio: ^5.7.0
   flutter:
     sdk: flutter
+  flutter_flavorizr: ^2.2.3
   flutter_screenutil: ^5.9.3
   flutter_secure_storage: ^4.2.1
   http: ^1.2.2
@@ -44,3 +45,26 @@ flutter:
     - assets/
 
 
+flavorizr:
+  ide: "vscode"
+  flavors:
+    prod:
+      app:
+        name: "Prod App"
+
+      android:
+        applicationId: "com.testing.thupraiStacked"
+      ios:
+        bundleId: "com.testing.thupraiStacked"
+      macos:
+        bundleId: "com.testing.thupraiStacked"        
+    dev:
+      app:
+        name: "dev App"
+
+      android:
+        applicationId: "com.testing.thupraiStacked-dev"
+      ios:
+        bundleId: "com.testing.thupraiStacked-dev"
+      macos:
+        bundleId: "com.testing.thupraiStacked-dev"
