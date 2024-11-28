@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
 import 'package:thuprai_stacked/app/app.router.dart';
-import 'package:thuprai_stacked/main.dart';
 import 'package:thuprai_stacked/ui/common/ui_helpers.dart';
-import 'package:thuprai_stacked/ui/views/home/shimmer/login_shimmer.dart';
 import 'package:thuprai_stacked/widgets/rounded_image.dart';
 
 import 'allbook_viewmodel.dart';

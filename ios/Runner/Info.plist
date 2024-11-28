@@ -47,5 +47,19 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>CFBundleURLTypes</key>
+<array>
+  <dict>
+    <key>CFBundleURLSchemes</key>
+    <array>
+      <string>thuprai</string>
+    </array>
+    <key>Thuprai</key>
+    <string>com.testing.thupraiStacked</string>
+  </dict>
+</array>
+<key>FlutterDeepLinkingEnabled</key>
+<true/>
+	
 </dict>
 </plist>
